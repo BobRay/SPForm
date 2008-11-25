@@ -22,7 +22,7 @@ $sources= array (
     'root' => $root,
     'assets' => $root . 'assets/',
     'build' => $root . '_build/',
-    'lexicon' => $build . 'lexicon/',
+    'lexicon' => $root . 'assets/snippets/spform/lexicon/',
     'docs' => $root . 'assets/snippets/spform/docs/'
 
 );
