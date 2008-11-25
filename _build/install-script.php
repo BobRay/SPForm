@@ -42,7 +42,7 @@ switch($options[XPDO_TRANSPORT_PACKAGE_ACTION]) {
                         'desc'=>'Where to email error reports',
                         'type'=>'textfield',
                         'options'=>'',
-                        'value'=>$newRecipientArray
+                        'value'=>$options['user_email']
                     ),
                     array(
                         'name'=>'spfResponseID',

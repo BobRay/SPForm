@@ -241,7 +241,7 @@ array(
     'desc'=>'Use max and min time limits for the form. Spambots often fill the form very quickly or very slowly. The settings should be fairly generous to avoid accessibility issues.',
     'type'=>'combo-boolean',
     'options'=>'',
-    'value'=>'0'
+    'value'=>'1'
 ),
 
 array(
