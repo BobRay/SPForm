@@ -330,8 +330,9 @@ function validate() {
     if($this->spfconfig['requireVerify']) {
 
         if($_SESSION['veriword'] !=  $_POST['verify']) {
-            /*  echo "Session: " . $_SESSION['veriword'] . '<br />';
-            echo "Post: " . $_POST['verify'] . '<br />'; */
+           /* echo "Session: " . $_SESSION['veriword'] . '<br />';
+            echo "Post: " . $_POST['verify'] . '<br />';
+            die(); */
             if($this->spfconfig['logOnVerify']) {
                 error_log("[" . $scriptName . "]" . $this->modx->lexicon('bad-verification') . $_SERVER['REMOTE_ADDR'], 0);
             }
@@ -339,10 +340,11 @@ function validate() {
                 $this->_advise = true;
             }
             if ($this->spfconfig['warnVerify'] || $this->spfconfig['warnAll']) {
-                $this->_errors[] = $this->modx->lexicon('bad-verification');
+               $this->_errors[] = $this->modx->lexicon('bad-verification');
             } else {
-                exit;  /* die quietly with no error message */
+                exit;  /* if not warning, die quietly with no error message */
             }
+
 
         }
     }
@@ -350,8 +352,8 @@ function validate() {
     /* if there were errors already , print out an error page and bail out
      * before doing any more work  */
 
-    if(count($this->errors)) {
-        return($this->_show_errors($this->errors));
+    if(count($this->_errors)) {
+        return($this->_show_errors($this->_errors));
     }
 
 
@@ -464,8 +466,8 @@ function validate() {
 
     /* final error check before mailing */
 
-    if(count($this->errors)) {
-        return($this->_show_errors($this->errors));
+    if(count($this->_errors)) {
+        return($this->_show_errors($this->_errors));
     } else {
         return("validated");
     }
