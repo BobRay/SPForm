@@ -94,7 +94,7 @@ Completely re-factored for MODx Revolution
 
 if ($spfconfig['spfDebug'] ) {
     echo "SPFormPath: " . $spfconfig['spformPath'];
-    $iFile = $spformPath . "spfdebug.php";
+    $iFile = $spfconfig['spformPath'] . "spfdebug.php";
     echo '<br> iFile = ' . $iFile . '<br>';
     require $iFile;
 }
