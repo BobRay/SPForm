@@ -627,7 +627,7 @@ function _show_error_list($errors) {
 
     for($i = 0; $i < $nerrors; $i++)
     $output .= '<li class = "spf_error">' . $errors[$i] . "</li>\n";
-    $this->modx->setPlaceholder('spf_errors',$output);
+    $this->modx->setPlaceholder('spf-errors',$output);
     $output = $this->modx->getChunk($this->spfconfig['spformprocTpl']);
     return($output);
 
@@ -645,12 +645,12 @@ function _show_error_list($errors) {
 function _show_errors($errors) {
 
 
-    $this->modx->setPlaceholder('spf_error_header', $this->modx->lexicon('form-errors') );
-    $this->modx->setPlaceholder('spf_error_footer', "" );
+    $this->modx->setPlaceholder('spf-error-header', $this->modx->lexicon('form-errors') );
+    $this->modx->setPlaceholder('spf-error-footer', "" );
 
 
 
-    $this->modx->setPlaceholder('spf_error_back_button','<br><input type="button" value="Back" onclick="history.back(1)">');
+    $this->modx->setPlaceholder('spf-error-back-button','<br><input type="button" value="Back" onclick="history.back(1)">');
 
     if ($this->spfconfig['adviseAll'] || $this->_advise) {
         $this->_mail_advisory($errors);
@@ -668,9 +668,9 @@ function _show_errors($errors) {
 */
 function _show_fatal($errors) {
 
-    $this->modx->setPlaceholder('spf_error_header',$this->modx->lexicon('fatal1'));
-    $this->modx->setPlaceholder('spf_error_footer', $this->modx->lexicon('fatal2'));
-    $this->modx->setPlaceholder('spf_error_back_button','<br><input type="button" value="Back" onclick="history.back(1)">');
+    $this->modx->setPlaceholder('spf-error-header',$this->modx->lexicon('fatal1'));
+    $this->modx->setPlaceholder('spf-error-footer', $this->modx->lexicon('fatal2'));
+    $this->modx->setPlaceholder('spf-error-back-button','<br><input type="button" value="Back" onclick="history.back(1)">');
 
     if ($this->spfconfig['adviseAll'] || $this->_advise) {
         $this->_mail_advisory($errors);
@@ -788,7 +788,7 @@ function _check_allowed_referer($referers, $logOnReferer) {
 
         $banListFile = $this->spfconfig['spformPath'] . 'banlist.inc.php';
 
-        // Get the banList
+        /* Get the banList */
         if($fp = fopen($banListFile, "r")) {
             while($inString = $this->_read_file_line($fp))
                 $banList[] = $inString;

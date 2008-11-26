@@ -1,14 +1,14 @@
 <div id = "spf_errors">
-<p>[[+spf_error_header]]</p>
+<p>[[+spf-error-header]]</p>
 <ul id = "spf_error_list">
 
-[[+spf_errors]]
+[[+spf-errors]]
 
 
 </ul>
-<p>[[+spf_error_footer]]</p>
+<p>[[+spf-error-footer]]</p>
 
-[[+spf_error_back_button]]
+[[+spf-error-back-button]]
 
 
 </div>

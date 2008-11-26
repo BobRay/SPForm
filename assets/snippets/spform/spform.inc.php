@@ -29,7 +29,7 @@ Completely re-factored for MODx Revolution
 *******************************************/
 
     global $modx;
-    //$modx->setDebug(E_ALL & ~E_NOTICE);
+    /* $modx->setDebug(E_ALL & ~E_NOTICE); */
 
     $spfconfig = $scriptProperties;
     $spfconfig['spformPath'] = isset($spfconfig['spformPath'])?  $spfconfig['spformPath'] : MODX_ASSETS_PATH . 'snippets/spform/';

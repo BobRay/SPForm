@@ -36,10 +36,10 @@ $packageNamespace = 'spform';
 *  directory, you'll only need one file resolver.
 */
 
-$package_name = 'SPForm';  // The name of the package as it will appear in Workspaces will be this plus the next two variables
+$package_name = 'SPForm';  /* The name of the package as it will appear in Workspaces will be this plus the next two variables */
 $package_version = '3.0.6';
 $package_release = 'beta';
-//$category = 'spform';  /* There's only one category here, but there could be more */
+
 
 /* Note that for file resolvers, the named directory itself is also packaged.
 *  e.g. $source = /snippets/spform
@@ -47,37 +47,34 @@ $package_release = 'beta';
 */
 
 /* Array of snippets and chunks to be created.
- * Note that these will appear in the Manager Tree in reverse order
- * from the order you use here
+ * Note that these will appear in the Manager Tree in the order
+ * you use here.
  */
 
 $objectArray = array (
 
     array(
 
-        object_type => 'modSnippet',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'SPForm',         // name of your element as it will appear in the Manager
-        description => 'SPForm 3.0.6-beta -  Creates a contact form for your site', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/spform.inc.php', // Where's the file PB will use to create the element
-        props_file => $sources['build'] . 'spformprops.inc.php',  // properties source file
+        object_type => 'modSnippet',  /*  What is it?  modSnippet, modChunk, modPlugin, etc. */
+        name => 'SPForm',         /* name of your element as it will appear in the Manager */
+        description => 'SPForm 3.0.6-beta -  Creates a contact form for your site', /* description field in the element's editing page */
+        type => 'snippet',   /* What's the content field called. Note: this field for chunks is also called "snippet" */
+        source_file => $sources['assets'] . 'snippets/spform/spform.inc.php', /* Where's the file PB will use to create the element */
+        props_file => $sources['build'] . 'spformprops.inc.php',  /* properties source file  */
         resolver_type => 'file',
-        resolver_source => $sources['assets'] . 'snippets/spform',   // Files in this directory will be packaged
-        resolver_target => "return MODX_ASSETS_PATH . 'snippets/';", // Those files will go here
-        php_resolver_type => 'php',
-        php_resolver_source => $sources['build'] . "install-script.php",
-        php_resolver_target => "return '" . $sources['build'] . "';"
+        resolver_source => $sources['assets'] . 'snippets/spform',   /* Files in this directory will be packaged  */
+        resolver_target => "return MODX_ASSETS_PATH . 'snippets/';", /* Those files will go here  */
 
     ),
 
     array (
 
-        object_type => 'modSnippet',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'SPFResponse',         // name of your element as it will appear in the Manager
-        description => 'SPForm "Thank You" page', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/spfresponse.inc.php', // Where's the file PB will use to create the element
-        props_file => $sources['build'] . 'spfresponseprops.inc.php',  // properties source file
+        object_type => 'modSnippet',
+        name => 'SPFResponse',
+        description => 'SPForm "Thank You" page',
+        type => 'snippet',
+        source_file => $sources['assets'] . 'snippets/spform/spfresponse.inc.php',
+        props_file => $sources['build'] . 'spfresponseprops.inc.php',
         resolver_source => ""
 
     ),
@@ -85,53 +82,51 @@ $objectArray = array (
 
     array(
 
-        object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'spformTpl',         // name of your element as it will appear in the Manager
-        description => 'SPForm contact form template', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/templates/spform.tpl', // Where's the file PB will use to create the element
-        props_file => "",  // properties source file
-        resolver_source => "",   // Files in this directory will be packaged
-        resolver_target => "" // Those files will go here
+        object_type => 'modchunk',
+        name => 'spformTpl',
+        description => 'SPForm contact form template',
+        type => 'snippet',
+        source_file => $sources['assets'] . 'snippets/spform/templates/spform.tpl',
+        props_file => "",
+        resolver_source => "",
+        resolver_target => ""
     ),
 
 array(
 
-        object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'spformprocTpl',         // name of your element as it will appear in the Manager
-        description => 'SPForm error page template', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/templates/spformproc.tpl', // Where's the file PB will use to create the element
-        props_file => "",  // properties source file
-        resolver_source => "",   // Files in this directory will be packaged
-        resolver_target => "" // Those files will go here
+        object_type => 'modchunk',
+        name => 'spformprocTpl',
+        description => 'SPForm error page template',
+        type => 'snippet',
+        source_file => $sources['assets'] . 'snippets/spform/templates/spformproc.tpl',
+        props_file => "",
+        resolver_source => "",
+        resolver_target => ""
     ),
 
 array(
 
-        object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'spfresponseTpl',         // name of your element as it will appear in the Manager
-        description => 'SPForm "Thank You" page template', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/templates/spfresponse.tpl', // Where's the file PB will use to create the element
-        props_file => "",  // properties source file
-        resolver_source => "",   // Files in this directory will be packaged
-        resolver_target => "" // Those files will go here
+        object_type => 'modchunk',
+        name => 'spfresponseTpl',
+        description => 'SPForm "Thank You" page template',
+        type => 'snippet',
+        source_file => $sources['assets'] . 'snippets/spform/templates/spfresponse.tpl',
+        props_file => "",
+        resolver_source => "",
+        resolver_target => ""
     ),
 
   array(
 
-        object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'spfcaptchaTpl',         // name of your element as it will appear in the Manager
-        description => 'SPForm captcha template', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/templates/spfcaptcha.tpl', // Where's the file PB will use to create the element
-        props_file => "",  // properties source file
-        resolver_source => "",   // Files in this directory will be packaged
-        resolver_target => "" // Those files will go here
+        object_type => 'modchunk',
+        name => 'spfcaptchaTpl',
+        description => 'SPForm captcha template',
+        type => 'snippet',
+        source_file => $sources['assets'] . 'snippets/spform/templates/spfcaptcha.tpl',
+        props_file => "",
+        resolver_source => "",
+        resolver_target => ""
     )
-
-
 
 );
 /*   Uncomment for debugging
@@ -153,19 +148,19 @@ foreach ($objectArray as $object) {
 die ("<br> Finished");
 */
 
-// get rid of time limit
+/* get rid of time limit  */
 set_time_limit(0);
 
-// override with your own defines here (see build.config.sample.php)
+  /* override with your own defines here (see build.config.sample.php */
 require_once dirname(__FILE__).'/build.config.php';
 
 require_once (MODX_CORE_PATH . 'model/modx/modx.class.php');
 $modx= new modX();
 $modx->initialize('mgr');
-echo '<pre>'; // used for nice formatting for log messages
+echo '<pre>'; /* used for nice formatting for log messages  */
 $modx->setLogLevel(MODX_LOG_LEVEL_INFO);
 $modx->setLogTarget('ECHO');
-//$modx->setDebug(true);
+    /* $modx->setDebug(true); */
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
@@ -185,8 +180,8 @@ foreach($objectArray as $object) {
     }
     $modx->log(MODX_LOG_LEVEL_INFO,"Creating element from source file: {$object['source_file']}<br />");
 
-    // get the source from the actual element in your database OR
-    // manually create the object, grabbing the source from a file
+    /* You can get the source from the actual element in your database OR
+     manually create the object, grabbing the source from a file */
     echo "   Creating newObject of type ". $object['object_type'] . "\n";
     $c= $modx->newObject($object['object_type']);
 
@@ -202,7 +197,7 @@ foreach($objectArray as $object) {
 
     if($object['props_file'] != "") {
         require_once($object['props_file']);
-        $c->setProperties($properties, true);  // merge with current properties
+        $c->setProperties($properties, true);  /* merge with current properties */
     }
 
     if ($object['object_type'] == "modSnippet" ) {
@@ -213,7 +208,7 @@ foreach($objectArray as $object) {
         $chunks[] = $c;
     }
 
-    // create a transport vehicle for the data object
+    /* create a transport vehicle for the data object */
     $attributes= array(
         XPDO_TRANSPORT_UNIQUE_KEY => 'name',
         XPDO_TRANSPORT_UPDATE_OBJECT => true,
@@ -399,10 +394,10 @@ $builder->setPackageAttributes(array(
 ));
 
 
-// load lexicon strings
+/* load lexicon strings */
 $builder->buildLexicon($sources['lexicon']);
 
-// zip up the package
+/* zip up the package  */
 $builder->pack();
 
 $mtime= microtime();
