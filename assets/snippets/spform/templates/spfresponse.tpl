@@ -1,9 +1,9 @@
    <div id="spf_response">
-   <h3>[[+thank-you]]</h3>
+   <h3>[[+spf-thank-you]]</h3>
 
-   [[+came-from]]
+   [[+spf-came-from]]
 
-   [[+back]]
+   [[+spf-back]]
 
    </div>
 

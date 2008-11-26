@@ -83,19 +83,6 @@ $objectArray = array (
     ),
 
 
-
-    array(
-
-        object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
-        name => 'spfcaptchaTpl',         // name of your element as it will appear in the Manager
-        description => 'SPForm captcha template', // description field in the element's editing page
-        type => 'snippet',   // What is it without the "mod"
-        source_file => $sources['assets'] . 'snippets/spform/templates/spfcaptcha.tpl', // Where's the file PB will use to create the element
-        props_file => "",  // properties source file
-        resolver_source => "",   // Files in this directory will be packaged
-        resolver_target => "" // Those files will go here
-    ),
-
     array(
 
         object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
@@ -130,7 +117,20 @@ array(
         props_file => "",  // properties source file
         resolver_source => "",   // Files in this directory will be packaged
         resolver_target => "" // Those files will go here
+    ),
+
+  array(
+
+        object_type => 'modchunk',   // What is it?  modSnippet, modChunk, modPlugin, etc.
+        name => 'spfcaptchaTpl',         // name of your element as it will appear in the Manager
+        description => 'SPForm captcha template', // description field in the element's editing page
+        type => 'snippet',   // What is it without the "mod"
+        source_file => $sources['assets'] . 'snippets/spform/templates/spfcaptcha.tpl', // Where's the file PB will use to create the element
+        props_file => "",  // properties source file
+        resolver_source => "",   // Files in this directory will be packaged
+        resolver_target => "" // Those files will go here
     )
+
 
 
 );
@@ -307,40 +307,6 @@ $builder->putVehicle($vehicle);
  * from the order you use here*/
 
 
-$modx->log(MODX_LOG_LEVEL_INFO,"Creating resource: Response Page<br />");
-$r = $modx->newObject('modResource');
-$r->set('class_key','modDocument');
-$r->set('context_key','web');
-
-$r->set('type','document');
-$r->set('contentType','text/html');
-$r->set('pagetitle','Thank You');
-$r->set('longtitle','Thank You');
-$r->set('description','Spam-proof Contact Form "Thank You" page');
-$r->set('alias','thankyou');
-$r->set('published',1);
-$r->set('parent',0);
-$r->set('isfolder',0);
-$r->setContent('[[!SPFResponse]]');
-$r->set('richtext',0);
-$r->set('searchable',0);
-$r->set('cacheable',1);
-$r->set('donthit',1);
-$r->set('hidemenu',1);
-   $attributes= array(
-        XPDO_TRANSPORT_UNIQUE_KEY => 'pagetitle',
-        XPDO_TRANSPORT_UPDATE_OBJECT => true,
-        XPDO_TRANSPORT_PRESERVE_KEYS => false
-
-    );
-$vehicle = $builder->createVehicle($r, $attributes);
-$builder->putVehicle($vehicle);
-
-unset($r);
-
-/* and a second resource */
-
-
 $modx->log(MODX_LOG_LEVEL_INFO,"Creating resource: Contact Page<br />");
 $r = $modx->newObject('modResource');
 $r->set('class_key','modDocument');
@@ -368,6 +334,45 @@ $r->set('hidemenu',0);
         XPDO_TRANSPORT_PRESERVE_KEYS => false
 
     );
+
+
+$vehicle = $builder->createVehicle($r, $attributes);
+$builder->putVehicle($vehicle);
+
+unset($r);
+
+/* and a second resource */
+
+$modx->log(MODX_LOG_LEVEL_INFO,"Creating resource: Response Page<br />");
+$r = $modx->newObject('modResource');
+$r->set('class_key','modDocument');
+$r->set('context_key','web');
+
+$r->set('type','document');
+$r->set('contentType','text/html');
+$r->set('pagetitle','Thank You');
+$r->set('longtitle','Thank You');
+$r->set('description','Spam-proof Contact Form "Thank You" page');
+$r->set('alias','thankyou');
+$r->set('published',1);
+$r->set('parent',0);
+$r->set('isfolder',0);
+$r->setContent('[[!SPFResponse]]');
+$r->set('richtext',0);
+$r->set('searchable',0);
+$r->set('cacheable',1);
+$r->set('donthit',1);
+$r->set('hidemenu',1);
+   $attributes= array(
+        XPDO_TRANSPORT_UNIQUE_KEY => 'pagetitle',
+        XPDO_TRANSPORT_UPDATE_OBJECT => true,
+        XPDO_TRANSPORT_PRESERVE_KEYS => false
+
+    );
+
+
+
+
 $vehicle = $builder->createVehicle($r, $attributes);
 
  $vehicle->resolve('php',array(

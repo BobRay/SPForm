@@ -110,7 +110,7 @@ switch($options[XPDO_TRANSPORT_PACKAGE_ACTION]) {
                 $obj->set('template',$default_template);  /* give it the default template */
                 $obj->set('parent',$temp_spform_id);   /* set parent to contact page */
                 if ($obj->save() == false ) {
-                    $object->xpdo->log(XPDO_LOG_LEVEL_ERROR,'Could not save SPForm properties');
+                    $object->xpdo->log(XPDO_LOG_LEVEL_ERROR,'Could not save SPFResponse properties');
                 }
             }
 
