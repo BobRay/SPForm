@@ -1,25 +1,32 @@
 <?php
-
+/**
+ * Install resolver for
+ *
+ * @package spform
+ * @subpackage build
+ */
 $success = false;
 switch($options[XPDO_TRANSPORT_PACKAGE_ACTION]) {
 
     case XPDO_TRANSPORT_ACTION_INSTALL:
-
-
-            $resource = $object->xpdo->getObject('modDocument', array('pagetitle' => 'Thank You') );
-            $temp_spfresponse_id = (integer) $resource->id;
+            /* get thank you resource */
+            $resource = $object->xpdo->getObject('modDocument',array(
+                'pagetitle' => 'Thank You'
+            ));
+            $temp_spfresponse_id = (integer) $resource->get('id');
             $myServer = $_SERVER['HTTP_HOST'];
 
-
-
             if (strstr($myServer,'www')) {
-                $temp = str_replace('www.',"",$myServer);
-                $myServer = $myServer . "," . $temp;
+                $temp = str_replace('www.','',$myServer);
+                $myServer = $myServer . ',' . $temp;
             } else {
-                $myServer = "www." .$myServer . "," . $myServer;
+                $myServer = 'www.' .$myServer . ',' . $myServer;
             }
 
-        $obj = $object->xpdo->getObject('modSnippet',array('name'=>'SPForm'));
+            /* get snippet */
+            $obj = $object->xpdo->getObject('modSnippet',array(
+                'name'=>'SPForm'
+            ));
             if (!$obj) {
               $object->xpdo->log(XPDO_LOG_LEVEL_ERROR,'Could not get SPForm object');
             } else {
@@ -124,4 +131,3 @@ switch($options[XPDO_TRANSPORT_PACKAGE_ACTION]) {
 
 }
 return $success;
-?>
