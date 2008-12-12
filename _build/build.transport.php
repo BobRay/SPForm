@@ -15,15 +15,16 @@ $mtime = microtime();
 $mtime = explode(" ", $mtime);
 $mtime = $mtime[1] + $mtime[0];
 $tstart = $mtime;
+set_time_limit(0);
 
 $root = dirname(dirname(__FILE__)).'/';
 
 $sources= array (
     'root' => $root,
-    'assets' => $root . 'assets/',
+    'spform' => $root . 'spform/',
     'build' => $root . '_build/',
-    'lexicon' => $root . 'assets/snippets/spform/lexicon/',
-    'docs' => $root . 'assets/snippets/spform/docs/'
+    'lexicon' => $root . 'spform/lexicon/',
+    'docs' => $root . 'spform/docs/'
 
 );
 
@@ -59,11 +60,11 @@ $objectArray = array (
         name => 'SPForm',         /* name of your element as it will appear in the Manager */
         description => 'SPForm 3.0.6-beta -  Creates a contact form for your site', /* description field in the element's editing page */
         type => 'snippet',   /* What's the content field called. Note: this field for chunks is also called "snippet" */
-        source_file => $sources['assets'] . 'snippets/spform/spform.inc.php', /* Where's the file PB will use to create the element */
+        source_file => $sources['spform'] . 'spform.inc.php', /* Where's the file PB will use to create the element */
         props_file => $sources['build'] . 'spformprops.inc.php',  /* properties source file  */
         resolver_type => 'file',
-        resolver_source => $sources['assets'] . 'snippets/spform',   /* Files in this directory will be packaged  */
-        resolver_target => "return MODX_ASSETS_PATH . 'snippets/';", /* Those files will go here  */
+        resolver_source => $sources['assets'],   /* Files in this directory will be packaged  */
+        resolver_target => "return MODX_ASSETS_PATH . 'components/';", /* Those files will go here  */
 
     ),
 
@@ -73,7 +74,7 @@ $objectArray = array (
         name => 'SPFResponse',
         description => 'SPForm "Thank You" page',
         type => 'snippet',
-        source_file => $sources['assets'] . 'snippets/spform/spfresponse.inc.php',
+        source_file => $sources['spform'] . 'spfresponse.inc.php',
         props_file => $sources['build'] . 'spfresponseprops.inc.php',
         resolver_source => ""
 
@@ -86,7 +87,7 @@ $objectArray = array (
         name => 'spformTpl',
         description => 'SPForm contact form template',
         type => 'snippet',
-        source_file => $sources['assets'] . 'snippets/spform/templates/spform.tpl',
+        source_file => $sources['spform'] . 'templates/spform.tpl',
         props_file => "",
         resolver_source => "",
         resolver_target => ""
@@ -98,7 +99,7 @@ array(
         name => 'spformprocTpl',
         description => 'SPForm error page template',
         type => 'snippet',
-        source_file => $sources['assets'] . 'snippets/spform/templates/spformproc.tpl',
+        source_file => $sources['spform'] . 'templates/spformproc.tpl',
         props_file => "",
         resolver_source => "",
         resolver_target => ""
@@ -110,7 +111,7 @@ array(
         name => 'spfresponseTpl',
         description => 'SPForm "Thank You" page template',
         type => 'snippet',
-        source_file => $sources['assets'] . 'snippets/spform/templates/spfresponse.tpl',
+        source_file => $sources['spform'] . 'templates/spfresponse.tpl',
         props_file => "",
         resolver_source => "",
         resolver_target => ""
@@ -122,10 +123,10 @@ array(
         name => 'spfcaptchaTpl',
         description => 'SPForm captcha template',
         type => 'snippet',
-        source_file => $sources['assets'] . 'snippets/spform/templates/spfcaptcha.tpl',
-        props_file => "",
-        resolver_source => "",
-        resolver_target => ""
+        source_file => $sources['spform'] . 'templates/spfcaptcha.tpl',
+        props_file => '',
+        resolver_source => '',
+        resolver_target => '',
     )
 
 );
@@ -148,13 +149,10 @@ foreach ($objectArray as $object) {
 die ("<br> Finished");
 */
 
-/* get rid of time limit  */
-set_time_limit(0);
-
   /* override with your own defines here (see build.config.sample.php */
 require_once dirname(__FILE__).'/build.config.php';
+require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
 
-require_once (MODX_CORE_PATH . 'model/modx/modx.class.php');
 $modx= new modX();
 $modx->initialize('mgr');
 echo '<pre>'; /* used for nice formatting for log messages  */
