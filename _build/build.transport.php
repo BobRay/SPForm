@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SPform Build Script
  *
@@ -8,7 +7,6 @@
  * @release beta
  * @author BobRay <bobray@softville.com>
  */
-
 global $modx;
 
 $mtime = microtime();
@@ -18,26 +16,33 @@ $tstart = $mtime;
 set_time_limit(0);
 
 $root = dirname(dirname(__FILE__)).'/';
-
 $sources= array (
     'root' => $root,
     'spform' => $root . 'spform/',
     'build' => $root . '_build/',
     'lexicon' => $root . 'spform/lexicon/',
     'docs' => $root . 'spform/docs/'
-
 );
+unset($root);
+
 
 $packageNamespace = 'spform';
-/* This example assumes that you are creating one element with one namespace, a lexicon, and one file resolver.
-*  You'll need to modify it if your situation is different. A snippet with no support files (no images, no css, no js includes, etc.) doesn't need a file
-*  resolver so you can comment out that part of the code. If you have no lexicon, you can comment out that part of the code. If you need to create multiple
-*  elements (e.g. a snippet, several chunks, and maybe a plugin) you can do it all in this file, but you'll have to duplicate the code below that creates
-*  and packages the element. You'll also have to reset the variables for each segment. If you put all your support files in or below in a single
-*  directory, you'll only need one file resolver.
+/* This example assumes that you are creating one element with one namespace, a
+ * lexicon, and one file resolver.  You'll need to modify it if your situation
+ * is different. A snippet with no support files (no images, no css, no js
+ * includes, etc.) doesn't need a file  resolver so you can comment out that
+ * part of the code. If you have no lexicon, you can comment out that part of
+ * the code. If you need to create multiple  elements (e.g. a snippet, several
+ * chunks, and maybe a plugin) you can do it all in this file, but you'll have
+ * to duplicate the code below that creates  and packages the element. You'll
+ * also have to reset the variables for each segment. If you put all your
+ * support files in or below in a single  directory, you'll only need one file
+ * resolver.
 */
 
-$package_name = 'SPForm';  /* The name of the package as it will appear in Workspaces will be this plus the next two variables */
+/* The name of the package as it will appear in Workspaces will be this plus
+ * the next two variables */
+$package_name = 'SPForm';
 $package_version = '3.0.6';
 $package_release = 'beta';
 
@@ -53,18 +58,35 @@ $package_release = 'beta';
  */
 
 $objectArray = array (
+    array (
+        /* What is it? modSnippet, modChunk, modPlugin, etc. */
+        'object_type' => 'modSnippet',
 
-    array(
+        /* name of your element as it will appear in the Manager */
+        'name' => 'SPForm',
 
-        object_type => 'modSnippet',  /*  What is it?  modSnippet, modChunk, modPlugin, etc. */
-        name => 'SPForm',         /* name of your element as it will appear in the Manager */
-        description => 'SPForm 3.0.6-beta -  Creates a contact form for your site', /* description field in the element's editing page */
-        type => 'snippet',   /* What's the content field called. Note: this field for chunks is also called "snippet" */
-        source_file => $sources['spform'] . 'spform.inc.php', /* Where's the file PB will use to create the element */
-        props_file => $sources['build'] . 'spformprops.inc.php',  /* properties source file  */
-        resolver_type => 'file',
-        resolver_source => $sources['assets'],   /* Files in this directory will be packaged  */
-        resolver_target => "return MODX_ASSETS_PATH . 'components/';", /* Those files will go here  */
+        /* description field in the element's editing page */
+        'description' => 'SPForm 3.0.6-beta -  Creates a contact form for ' .
+            'your site',
+
+        /* What's the content field called. Note: this field for chunks is also
+         * called "snippet" */
+        'type' => 'snippet',
+
+        /* Where's the file PB will use to create the element */
+        'source_file' => $sources['spform'] . 'spform.inc.php',
+
+        /* properties source file  */
+        'props_file' => $sources['build'] . 'spformprops.inc.php',
+
+        /* type of resolver */
+        'resolver_type' => 'file',
+
+        /* Files in this directory will be packaged  */
+        'resolver_source' => $sources['assets'],
+
+         /* Those files will go here  */
+        'resolver_target' => "return MODX_ASSETS_PATH . 'components/';",
 
     ),
 
@@ -76,7 +98,7 @@ $objectArray = array (
         type => 'snippet',
         source_file => $sources['spform'] . 'spfresponse.inc.php',
         props_file => $sources['build'] . 'spfresponseprops.inc.php',
-        resolver_source => ""
+        resolver_source => ''
 
     ),
 
@@ -88,9 +110,9 @@ $objectArray = array (
         description => 'SPForm contact form template',
         type => 'snippet',
         source_file => $sources['spform'] . 'templates/spform.tpl',
-        props_file => "",
-        resolver_source => "",
-        resolver_target => ""
+        props_file => '',
+        resolver_source => '',
+        resolver_target => ''
     ),
 
 array(
@@ -100,9 +122,9 @@ array(
         description => 'SPForm error page template',
         type => 'snippet',
         source_file => $sources['spform'] . 'templates/spformproc.tpl',
-        props_file => "",
-        resolver_source => "",
-        resolver_target => ""
+        props_file => '',
+        resolver_source => '',
+        resolver_target => ''
     ),
 
 array(
@@ -112,9 +134,9 @@ array(
         description => 'SPForm "Thank You" page template',
         type => 'snippet',
         source_file => $sources['spform'] . 'templates/spfresponse.tpl',
-        props_file => "",
-        resolver_source => "",
-        resolver_target => ""
+        props_file => '',
+        resolver_source => '',
+        resolver_target => ''
     ),
 
   array(
@@ -174,35 +196,40 @@ $chunks = array();
 foreach($objectArray as $object) {
 
     if (!file_exists($object['source_file'])) {
-        $modx->log(MODX_LOG_LEVEL_FATAL,"<b>Error</b> - Element source file not found: {$object['source_file']}<br />");
+        $modx->log(MODX_LOG_LEVEL_FATAL,'<b>Error</b> - Element source file not'
+            . ' found: '.$object['source_file'].'<br />');
     }
-    $modx->log(MODX_LOG_LEVEL_INFO,"Creating element from source file: {$object['source_file']}<br />");
+    $modx->log(MODX_LOG_LEVEL_INFO,'Creating element from source file: ' .
+            $object['source_file'].'<br />');
 
-    /* You can get the source from the actual element in your database OR
-     manually create the object, grabbing the source from a file */
-    echo "   Creating newObject of type ". $object['object_type'] . "\n";
+    /* You can get the source from the actual element in your database
+     * OR manually create the object, grabbing the source from a file */
+    echo '   Creating newObject of type '. $object['object_type'] . "\n";
     $c= $modx->newObject($object['object_type']);
 
-    echo "   Setting name to " . $object['name'] . "\n";
+    echo '   Setting name to ' . $object['name'] . "\n";
     $c->set('name', $object['name']);
 
-    echo "   Setting description to " . $object['description'] . "\n";
+    echo '   Setting description to ' . $object['description'] . "\n";
     $c->set('description', $object['description']);
 
-    echo "   Setting " . $object['type'] . " from " . $object['source_file'] . "\n";
+    echo '   Setting ' . $object['type'] . ' from ' . $object['source_file']
+         . "\n";
 
     $c->setContent(file_get_contents($object['source_file']));
 
-    if($object['props_file'] != "") {
-        require_once($object['props_file']);
-        $c->setProperties($properties, true);  /* merge with current properties */
+    if($object['props_file'] != '') {
+        require_once $object['props_file'];
+
+        /* merge with current properties */
+        $c->setProperties($properties, true);
     }
 
-    if ($object['object_type'] == "modSnippet" ) {
+    if ($object['object_type'] == 'modSnippet' ) {
         $snippets[] = $c;
     }
 
-    if ($object['object_type'] == "modchunk") {
+    if ($object['object_type'] == 'modChunk') {
         $chunks[] = $c;
     }
 
@@ -215,14 +242,20 @@ foreach($objectArray as $object) {
     );
     $vehicle = $builder->createVehicle($c, $attributes);
 
-    if ($object['resolver_source'] != "") {
+    if ($object['resolver_source'] != '') {
         $modx->log(MODX_LOG_LEVEL_INFO,"Creating Resolver<br />");
 
-        if ( $object['resolver_type'] == 'file' && !is_dir($object['resolver_source'])) {
-            $modx->log(MODX_LOG_LEVEL_FATAL,"<b>Error</b> - Resolver source directory not found: {$object['resolver_source']}<br />");
+        if ($object['resolver_type'] == 'file'
+         && !is_dir($object['resolver_source'])) {
+            $modx->log(MODX_LOG_LEVEL_FATAL,'<b>Error</b> - Resolver source '
+                    . 'directory not found: '.$object['resolver_source']
+                    . '<br />');
         }
-        $modx->log(MODX_LOG_LEVEL_INFO,"Source: {$object['resolver_source']}<br />");
-        $modx->log(MODX_LOG_LEVEL_INFO,"Target: {$object['resolver_target']}<br /><br />");
+
+        $modx->log(MODX_LOG_LEVEL_INFO,'Source: '.$object['resolver_source']
+            . '<br />');
+        $modx->log(MODX_LOG_LEVEL_INFO,'Target: '.$object['resolver_target']
+            . '<br /><br />');
 
         $vehicle->resolve($object['resolver_type'],array(
             'type' => $object['resolver_type'],
@@ -300,7 +333,7 @@ $builder->putVehicle($vehicle);
  * from the order you use here*/
 
 
-$modx->log(MODX_LOG_LEVEL_INFO,"Creating resource: Contact Page<br />");
+$modx->log(MODX_LOG_LEVEL_INFO,'Creating resource: Contact Page<br />');
 $r = $modx->newObject('modResource');
 $r->set('class_key','modDocument');
 $r->set('context_key','web');
@@ -336,7 +369,7 @@ unset($r);
 
 /* and a second resource */
 
-$modx->log(MODX_LOG_LEVEL_INFO,"Creating resource: Response Page<br />");
+$modx->log(MODX_LOG_LEVEL_INFO,'Creating resource: Response Page<br />');
 $r = $modx->newObject('modResource');
 $r->set('class_key','modDocument');
 $r->set('context_key','web');
@@ -370,7 +403,7 @@ $vehicle = $builder->createVehicle($r, $attributes);
 
  $vehicle->resolve('php',array(
             'type' => 'php',
-            'source' => $sources['build'] . "install-script.php",
+            'source' => $sources['build'] . 'install-script.php',
             'target' => "return '" . $sources['build'] . "';"
 
         ));
@@ -405,6 +438,7 @@ $tend= $mtime;
 $totalTime= ($tend - $tstart);
 $totalTime= sprintf("%2.4f s", $totalTime);
 
-$modx->log(MODX_LOG_LEVEL_INFO,"Package completed.<br />Execution time: {$totalTime}<br>");
+$modx->log(MODX_LOG_LEVEL_INFO,'Package completed.<br />Execution time: '
+        . $totalTime . '<br />');
 
-exit ();
+exit();
