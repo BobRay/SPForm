@@ -9,7 +9,7 @@
 * @see spformresponse
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.0.6
+* @version 3.0.7
 *
 */
 
@@ -18,7 +18,7 @@
 File:         spform.inc.php
 
 Snippet:       SPForm
-Version: 3.0.6
+Version: 3.0.7
 $Revision: 259 $
 $Author: Bob Ray $
 $Date: 2008-11-23 18:37:55 -0600 (Sun, 23 Nov 2008) $

@@ -5,7 +5,7 @@
 * @package spform
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.0.6
+* @version 3.0.7
 */
 
 /* error_reporting(E_ALL); */
@@ -13,7 +13,7 @@
 File:         spformprocclass.inc.php
 
 Snippet:       SPForm
-Version: 3.0.6
+Version: 3.0.7
 $Revision: 208 $
 $Author: Bob Ray $
 $Date: 2008-11-03 01:44:13 -0600 (Mon, 03 Nov 2008) $

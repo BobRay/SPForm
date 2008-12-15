@@ -1,5 +1,5 @@
 # file: banlist.inc.php
-# Version: 3.0.6
+# Version: 3.0.7
 # $Revision: 118 $
 # $Author: Bob Ray $
 # $Date: 2008-10-01 01:12:07 -0500 (Wed, 01 Oct 2008) $

@@ -1,21 +1,201 @@
-/*******************************************
-File: readme.txt $
 
-Snippet:       SPForm
-Version: 1.0.3
-$Revision: 118 $
-$Author: Bob Ray $
-$Date: 2008-10-01 01:12:07 -0500 (Wed, 01 Oct 2008) $
-Adapted from:  Many sources but particularly scform by James Seymour and CFFormProtect by Jake Munson
-Compatibility: MODX 0.9.6
+SPForm Version: 3.0.7 - Simple Spam-proof Contact Form Snippet
+==============================================================
 
-Special thanks to the following for their help and support:
-	* René Tschannen
-	* Susan Ottwell
-	* Jason Coward
-	* Ryan Thrash
 
-*******************************************/
+This File
+---------
+    If you need to refer to this file again, you can view it by going to
+    Tools | Package Management and clicking on the plus sign next to
+    the SPForm Package.
+
+    It is also stored as a file at: assets/components/spform/docs/readme.txt.
+
+Introduction
+------------
+    SPForm is a simple spam-proof contact form for MODx. There are more
+    details below, but that's all you need to know for now.
+
+Basic Usage
+-----------
+
+    When the installation is completed, you should have a fully working
+    spam-proof contact form that sends email to address you give during the install.
+
+    Minimal snippet call: [[!SPForm]]
+
+    To see SPForm's options, just go to the elements section of the Manager
+    and select the SPForm snippet. Then click on the Snippet Properties tab.
+
+    You can set almost all the options either by editing the snippet properties
+    or by using parameters to override them in the snippet call on your contact
+    page. You can rename the contact page if you like. You can also rename the
+    response ("thank you") page but don't do it until after you have visited
+    the contact page at least once so the response page ID has been set.
+    You can also move the pages around in the tree so they appear where
+    you want them to in your menu.
+
+    To override the settings in the snippet call, just add parameters you see
+    in the snippet properties grid.
+
+    Example:
+
+    [[!SPForm? &useTimer=`0` &warnAll=`1` &spfDebug=`1`]]
+
+    This will turn off the timer and turn on all warnings and debug messages.
+    You can override any property in the grid with a parameter in the snippet call,
+    but if you only have one contact form, it's usually easier just to edit the
+    properties in the grid.
+
+    A few properties are attached to the SPFReponse snippet and you'll have to set
+    those on the properties tab for that snippet.
+
+    Hopefully, everything you need to know about the property settings is there
+    in the snippet properties grids. Just click on the little plus sign next to
+    a property to see an explanation of what it does.
+
+    Important Note: If you have the "log" properties on at a busy site, your
+    error log (assets/components/spform/error.log) can get very big, very fast.
+    You can delete it or save it empty it at any time.
+
+Styling the pages
+-----------------
+    Almost anything you want to do in the way of styling the form and the response
+    page can be done by editing the spformTpl and spfresponseTpl files and by
+    changing the SPForm CSS file at assets/components/spform/css/spform.css.
+    The error page can be styled by editing the spformprocTpl file and
+    the spform.css file.
+
+    Note that the default is to have the prompts and inputs on separate lines
+    of the form, but CSS for having then inline is already in the CSS file.
+    Just change spf_block_prompt to spf_inline_prompt in the spformTpl chunk.
+
+    If you want to have your own CSS file (a good idea if you've made changes
+    that you don't want overwritten when you update the snipet), just create
+    your css file and pass the path to it as a parameter in the snippet call:
+
+    [[!SPForm? &spfCssPath=`path_to_your_css_file`]]
+    [[!SPFResponse? &spfCssPath=`path_to_your_css_file`]]
+
+    Be sure to do this for both snippet calls if you've made changes that will
+    affect the response page.
+
+    Another option is to paste the spform CSS file into your main CSS file and
+    use &spfCssPath=`""` in the snippet calls. SPForm will then ignore its own
+    CSS file.
+
+The Ban List
+------------
+    You can ban individual email addresses, domains and subdomains either
+    by name or by IP number by editing the banlist file at
+    assets/components/spform/banlist.inc.php.
+
+    There are instructions in the comments section of the
+    file on how to do it. With all the spam-proofing options,
+    banning is usually unnecessary but if someone is manually
+    entering stuff in the form and annoying you, this is the
+    way to stop them.
+
+Troubleshooting
+---------------
+
+* Everything appears to work but no mail arrives.
+
+    The most common problem with SPForm is that it uses php mail() by default.
+    Many servers have this disabled. If this is the case, you should see an
+    error message suggesting that you use SMTP. Use the SMTP settings in the snippet
+    properties grid to turn on this option. You can use any SMTP account, even at
+    a different server, to send with SPForm. Be sure to set all the SMTP options
+    correctly.
+
+    If you continue to have this problem, take a close look at the recipientArray
+    setting in the snippet properties. It should be a comma-separated list of
+    titles and email addresses. Like this:
+
+    Webmaster :webmaster@yourdomain.com,Sales :Sales@yourdomain.com, Support :support@yourdomain.com
+
+* I changed an option, but nothing has changed.
+
+    Remember that when you change a snippet property
+    setting, you have to *save* the snippet or the change will be lost.
+
+    Clear the MODx site cache (Site | Clear cache), then clear your browswer cache
+    (usually on the Tools menu -- something like Clear Private Data or Delete
+    Browsing History).
+
+* After submitting the page, I get a white screen with an unauthorized referer message.
+
+    Make sure that the formprocAllowedRefers setting includes all domains that your
+    form can be reached through (e.g. yourdomain.com,www.yourdomain.com, etc.). If
+    you turn on the spfDebug option, you should see the actual referer near the top
+    of the output. Make sure that referer is listed in formprocAllowedReferers.
+
+    For example, if you see this for the referer:
+        http://mydomain.com/modx/index.php?id=0
+
+    You should have mydomain.com in your referers list.
+
+* The spform page looks unstyled and the validation doesn't work.
+
+    Be sure that the Contact page and the Response page have been assigned
+    a template. If they have no template, they will display but with no
+    CSS and no javascript.
+
+    Clear the site cache after assigning a template.
+
+* I have the hidden field turned on, but I can see it in the form.
+
+    Be sure that the Contact page and the Response page have been assigned
+    a template. If they have no template, they will display but with no
+    CSS which will allow the hidden field to be visible.
+
+    Clear the site cache after assigning a template.
+
+
+* I keep getting error messages when submitting the form.
+
+    The error message should tell you which SPForm option is causing the trouble.
+    Turn it off in the properties grid.
+
+* I have the takeMeBack option on, but no link appears on the response page.
+
+    Some servers will delete the referer variable. For those servers, the
+    Take Me Back option won't work.
+
+* My users often send me lots of links in their messages and they always get an error.
+
+    Change the maxLinks setting in the snippet properties grid to allow more links
+    in a message.
+
+* The box for entering a message is too big or too small.
+
+    Change the spTextRows and spTextCols settings to make it the size you want.
+
+* I'm still having trouble.
+
+    Set the warnAll, spfDebug, and adviseAll settings to 1. This will give a warning
+    for all errors and also email the errors to the errorsTo address in addition to
+    printing the debugging information on the form. Be sure to turn all three off after
+    you find the problem.
+
+    If you're still having trouble, post your problem in the SPForm section at the
+    MODx forums:
+
+    http://modxcms.com/forums
+
+
+About SPForm
+------------
+    Adapted from:  Many sources but particularly scform by James Seymour and CFFormProtect by Jake Munson
+    Compatibility: MODX Revolution
+
+    Special thanks to the following for their help and support:
+        * Rene Tschannen
+        * Susan Ottwell
+        * Jason Coward
+        * Ryan Thrash
+        * Shaun McCormick
+
     I created this snippet for people who want a really simple, easy to
     install, easy to use, easy to reconfigure, email contact form with the
     best spam protection I could manage. The MODx eForm snippet is available
@@ -52,29 +232,12 @@ Special thanks to the following for their help and support:
     SPForm will protect you from most autospammers and will let you limit
     the number of http links in each e-mail message.
 
-    As a MODx snippet, SPForm is fairly lame. The form simply has a
-    contact(s) field, subject, return email address, and a comment text
-    box. At present, these are hard-coded into the snippet (i.e. no TPL, no
-    placeholders). It has many options, but they can only be set by editing
-    the config file, spfconfig.cfg.php, (i.e. no parameters in the snippet
-    call). If you have multiple recipients to send to, the user will see a
-    drop-down box to select from. My goal was to adapt Jim Seymour's ScForm
-    for use as a MODx snippet and add some new spam-protection tricks to
-    it. To increase the spam protection, Jim's ScForm handles the form over
-    two separate pages so the parameter values need to be available in two
-    separate places. It seemed that it might compromise the spam proofing
-    to _POST them to the second page and I didn't have time to put them all
-    into a session variable and test them, so I left them in the config file
-    as per the original design.
+    SPForm has been completely refactored for MODx Revolution. It now has
+    templates, classes, and its behavior can be controlled by changing
+    the settings in the snippet properties grid.
 
-    On the plus side, installation is simple and SPForm should work for you
-    with very little configuration.
-
-    The parameters are described in the spfconfig.cfg.php file (where they
-    are also set), but once you set the few required parameters at the top
-    of that file, the defaults should work fine on the rest. The intended
-    email addresses are set in the contacts.cfg.php file. Banned emailers
-    or domains are set in the banlist.cfg.php file.
+    Installation is now fully automated and SPForm should work for you
+    with little or no configuration.
 
     Some of the original code for SPForm comes from Scform.php, written by
     James Seymour. I left Jim's GPL notice in the snippet source code. I've
@@ -87,125 +250,7 @@ Special thanks to the following for their help and support:
     neither are MODx-aware and they almost certainly won't be able to help
     you.
 
-    If there is enough interest, I may rewrite SPForm from scratch as a
-    proper, object-oriented, MODx snippet with multi-language support and
-    parameters in the snippet call. For now, it's ugly on the inside but
-    beautiful on the outside. I've been using it on a production site for
-    about three months and it seems stable and reliable, but I'm not
-    guaranteeing anything.
-
     Please let me know via the MODx forum if you have any problems with
     SPForm or suggestions for improving it or these instructions.
 
-	Bob Ray
-
-	Installing SPForm
-
-    [Note: The naming convention I used has file, directory, and document
-    names in all lower case and all snippet names in mixed case (camel-case
-    -- sort of). Remembering this may help keep you from running into
-    trouble, especially if your server honors case-sensitive names. It's
-    difficult to debug naming errors in SPForm, so be careful.]
-
-    1. Expand the the spform .zip file in your assets/snippets folder or,
-       to install manually, follow step 1a.
-
-	1a. Create a subdirectory under assets/snippets called spform.
-
-	  Unzip spform.zip somewhere and upload these files to the spform directory:
-		 index.html
-	     spform.inc.php
-	     spformproc.inc.php
-	     spfresponse.inc.php
-	     spfconfig.cfg.php
-         spfdebug.php
-	     contacts.cfg.php
-	     banlist.cfg.php
-	     spfveriword.php
-	     spfvericlass.inc.php
-	     mathstringclass.inc.php
-	     mouseMovement.js
-	     usedKeyboard.js
-
-	     In the spform directory, create the following three directories:
-	     	noises
-	     	ttf
-	     	lang
-
-	     Copy the 4 noise jpgs to the noise subdirectory
-	     Copy the .ttf files to the ttf subdirectory
-	     Copy the language files (en.inc.php, etc.) to the lang subdirectory
-
-    2. In the Modx Manager, create the contact page you want your form to
-    appear on (click on "New Document" on the Site tab). Be sure to publish
-    it, make it show in the menu, and enter a menu alias for it (e.g.
-    "Contact Us"). You can probably use your default template because the
-    form is not very wide and will fit in most designs.
-
-	Put the following snippet call on the contact page:
-
-	     [!SPForm!]
-
-         Note: For MODx 0.9.7 use: [[!SPForm]]
-
-    3. Create a page to hold the processing snippet (SPFormProc). Use any
-    template. This page will only be viewed by users who have made an
-    error. Set the title and alias to spformproc. It should not show in the
-    menu. Put the following snippet call on that page:
-
-	     [!SPFormProc!]
-
-         Note: For MODx 0.9.7 use: [[!SPFormProc]]
-
-	IMPORTANT: Make a note of the spformproc document ID, you'll need it.
-
-    4. Create a response page using your default template. Set the page
-    title and alias to spfresponse. It should not show in the menu. Put the
-    following snippet call on that page:
-
-	     [!SPFResponse!]
-
-         Note: For MODx 0.9.7 use: [[!SPFResponse]]
-
-    IMPORTANT: Make a note of the spfresponse document ID, you'll need it/
-
-    5. Create the snippets. Remember that snippet names are case sensitive
-    so the snippet names need to match the names in the snippet calls
-    above.
-
-	Paste the following code into a snippet called SPForm:
-		require_once $modx->config['base_path']."assets/snippets/spform/spform.inc.php";
-
-	Paste the following code into a snippet called SPFormProc:
-		require_once $modx->config['base_path']."assets/snippets/spform/spformproc.inc.php";
-
-	Paste the following code into a snippet called SPFResponse:
-		require_once $modx->config['base_path']."assets/snippets/spform/spfresponse.inc.php";
-
-    6. In the MODx file manager, edit the file contacts.cfg.php.
-    Instructions in that file will tell you what to do. This is where you
-    put the email address(es) to send form content to. (The file should be
-    in the /assets/snippets/spform directory.)
-
-    7. In the MODx file manager, edit the file spfconfig.cfg.php.
-    Instructions in the file will tell you what to do. (The file should be
-    in the /assets/snippets/spform directory.) Be sure to set the two document
-    IDs you noted above (for spformproc and spfresponse).
-
-    8. For additional protection, you may also want to create a robots.txt
-    file (name must be all lower case) or add the lines below to your
-    existing robots.txt file. Not all search bots will honor it, but many
-    do. This may help keep your spform files from being indexed and found
-    directly by spammers searching for "contact."
-
-    There can be only one robots.txt file at a site and it must be in the
-    root (usually in the public_html directory).
-
-	[add just these two lines to robots.txt]
-
-	User-agent: *
-	Disallow: /assets/snippets/spform/
-
-
-
-
+    Bob Ray

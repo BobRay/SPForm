@@ -6,7 +6,7 @@
 *    @package spform
 *    @author  Bob Ray <bobray@softville.com>
 *    @created 10/04/2008
-*    @version 3.0.6  */
+*    @version 3.0.7  */
 
 class spform {
 /**
