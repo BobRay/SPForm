@@ -164,7 +164,7 @@ function set_placeholders () {
 
         if($this->spfconfig['requireVerify']) {
 
-            $verifyUrl=MODX_ASSETS_URL.'captcha/captcha.php';
+            $verifyUrl=MODX_ASSETS_URL.'components/captcha/captcha.php';
             $this->modx->setPlaceholder('spf-cookie-message','<div class="spf_cookie_msg">('.$this->modx->lexicon('cookies-required').')</div>');
             $this->modx->lexicon->load('captcha:default');
 
@@ -331,7 +331,7 @@ function set_placeholders () {
 
         /*   make sure we can  find the captcha files   */
 
-        if (! file_exists(MODX_ASSETS_PATH. "captcha/captcha.php")) {
+        if (! file_exists(MODX_ASSETS_PATH. "components/captcha/captcha.php")) {
           echo "<br>" . $this->modx->lexicon('no-captcha');
           exit();
         }
@@ -343,8 +343,8 @@ function set_placeholders () {
            $alt = $this->modx->lexicon("login_captcha_message");
         }
 
-        $captcha_image= '<img '. 'onclick="this.src=' . "'" . $this->modx->config['site_url'] . "assets/captcha/captcha.php?rand='" .
-            "+Math.floor(Math.random()*200);".'"' .' src="'.$this->modx->config['site_url'].'assets/captcha/captcha.php?rand='.rand().'" alt="'.$alt.'" />';
+        $captcha_image= '<img '. 'onclick="this.src=' . "'" . MODX_ASSETS_URL . "components/captcha/captcha.php?rand='" .
+            "+Math.floor(Math.random()*200);".'"' .' src="'. MODX_ASSETS_URL . 'components/captcha/captcha.php?rand='.rand().'" alt="'.$alt.'" />';
 
 
         if ($useMathString) {
