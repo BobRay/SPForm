@@ -1,7 +1,7 @@
 <?php
 /**
 * This snippet creates a simple contact form with many spam-proofing options.
-* For more information, see the assets/snippets/spform/docs/readme.txt file
+* For more information, see the assets/components/spform/docs/readme.txt file
 * @package spform
 *
 * @see spformclass.inc.php
@@ -32,7 +32,7 @@ Completely re-factored for MODx Revolution
     /* $modx->setDebug(E_ALL & ~E_NOTICE); */
 
     $spfconfig = $scriptProperties;
-    $spfconfig['spformPath'] = isset($spfconfig['spformPath'])?  $spfconfig['spformPath'] : MODX_ASSETS_PATH . 'snippets/spform/';
+    $spfconfig['spformPath'] = isset($spfconfig['spformPath'])?  $spfconfig['spformPath'] : MODX_ASSETS_PATH . 'components/spform/';
 
     ini_set("error_log", $spformPath . "/error.log");
 
@@ -51,7 +51,7 @@ Completely re-factored for MODx Revolution
      */
     if (!isset($spfconfig['spfCssPath'])) {
 
-        $spfCSS = MODX_ASSETS_URL . "snippets/spform/css/spform.css";
+        $spfCSS = MODX_ASSETS_URL . "components/spform/css/spform.css";
         $modx->regClientCSS($spfCSS);
 
 

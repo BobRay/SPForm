@@ -46,7 +46,7 @@ Compatibility: MODX Revolution
      */
     if (!isset($spfconfig['spfCssPath'])) {
 
-        $spfCSS = MODX_ASSETS_PATH . "snippets/spform/css/spform.css";
+        $spfCSS = MODX_ASSETS_PATH . "components/spform/css/spform.css";
         $modx->regClientCSS($spfCSS);
 
     } else if (isset($spfconfig['spfCssPath']) && $spfconfig['spfCssPath'] != "" ) {

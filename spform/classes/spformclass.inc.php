@@ -55,7 +55,7 @@ function register_js() {
 
 
     /* javascript validation */
-    $inFile = MODX_ASSETS_URL . "snippets/spform/js/emailcheck.js";
+    $inFile = MODX_ASSETS_URL . "components/spform/js/emailcheck.js";
 
     $this->modx->regClientStartupScript($inFile);
 

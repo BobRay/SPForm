@@ -9,7 +9,7 @@ This File
     Tools | Package Management and clicking on the plus sign next to
     the SPForm Package.
 
-    It is also stored as a file at: assets/snippets/spform/docs/readme.txt.
+    It is also stored as a file at: assets/components/spform/docs/readme.txt.
 
 Introduction
 ------------
@@ -55,14 +55,14 @@ Basic Usage
     a property to see an explanation of what it does.
 
     Important Note: If you have the "log" properties on at a busy site, your
-    error log (assets/snippets/spform/erro.log) can get very big, very fast.
+    error log (assets/components/spform/error.log) can get very big, very fast.
     You can delete it or save it empty it at any time.
 
 Styling the pages
 -----------------
     Almost anything you want to do in the way of styling the form and the response
     page can be done by editing the spformTpl and spfresponseTpl files and by
-    changing the SPForm CSS file at assets/snippets/spform/css/spform.css.
+    changing the SPForm CSS file at assets/components/spform/css/spform.css.
     The error page can be styled by editing the spformprocTpl file and
     the spform.css file.
 
@@ -88,7 +88,7 @@ The Ban List
 ------------
     You can ban individual email addresses, domains and subdomains either
     by name or by IP number by editing the banlist file at
-    assets/snippets/spform/banlist.inc.php.
+    assets/components/spform/banlist.inc.php.
 
     There are instructions in the comments section of the
     file on how to do it. With all the spam-proofing options,
