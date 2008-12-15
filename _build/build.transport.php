@@ -48,7 +48,7 @@ $package_release = 'beta';
 
 
 /* Note that for file resolvers, the named directory itself is also packaged.
-*  e.g. $source = /snippets/spform
+*  e.g. $source = /components/spform
 *  $target = MODX_ASSETS_PATH".
 */
 
@@ -83,10 +83,10 @@ $objectArray = array (
         'resolver_type' => 'file',
 
         /* Files in this directory will be packaged  */
-        'resolver_source' => $sources['assets'],
+        'resolver_source' => $sources['spform'],
 
          /* Those files will go here  */
-        'resolver_target' => "return MODX_ASSETS_PATH . 'components/';",
+        'resolver_target' => "return MODX_ASSETS_PATH . 'components/';"
 
     ),
 
@@ -105,7 +105,7 @@ $objectArray = array (
 
     array(
 
-        object_type => 'modchunk',
+        object_type => 'modChunk',
         name => 'spformTpl',
         description => 'SPForm contact form template',
         type => 'snippet',
@@ -117,7 +117,7 @@ $objectArray = array (
 
 array(
 
-        object_type => 'modchunk',
+        object_type => 'modChunk',
         name => 'spformprocTpl',
         description => 'SPForm error page template',
         type => 'snippet',
@@ -129,7 +129,7 @@ array(
 
 array(
 
-        object_type => 'modchunk',
+        object_type => 'modChunk',
         name => 'spfresponseTpl',
         description => 'SPForm "Thank You" page template',
         type => 'snippet',
@@ -141,14 +141,14 @@ array(
 
   array(
 
-        object_type => 'modchunk',
+        object_type => 'modChunk',
         name => 'spfcaptchaTpl',
         description => 'SPForm captcha template',
         type => 'snippet',
         source_file => $sources['spform'] . 'templates/spfcaptcha.tpl',
         props_file => '',
         resolver_source => '',
-        resolver_target => '',
+        resolver_target => ''
     )
 
 );

@@ -612,7 +612,7 @@ array(
 
 array(
     'name'=>'useBanList',
-    'desc'=>'Check every attempt against the Ban List. To use the banlist, manually edit the banlist file: assets/snippets/spform/banlist.inc.php.',
+    'desc'=>'Check every attempt against the Ban List. To use the banlist, manually edit the banlist file: assets/components/spform/banlist.inc.php.',
     'type'=>'combo-boolean',
     'options'=>'',
     'value'=>'0'
