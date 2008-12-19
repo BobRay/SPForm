@@ -42,7 +42,7 @@ $packageNamespace = 'spform';
 
 /* The name of the package as it will appear in Workspaces will be this plus
  * the next two variables */
-$package_name = 'SPForm';
+$package_name = 'spform';
 $package_version = '3.0.7';
 $package_release = 'beta';
 
@@ -92,63 +92,63 @@ $objectArray = array (
 
     array (
 
-        object_type => 'modSnippet',
-        name => 'SPFResponse',
-        description => 'SPForm "Thank You" page',
-        type => 'snippet',
-        source_file => $sources['spform'] . 'spfresponse.inc.php',
-        props_file => $sources['build'] . 'spfresponseprops.inc.php',
-        resolver_source => ''
+        'object_type' => 'modSnippet',
+        'name' => 'SPFResponse',
+        'description' => 'SPForm "Thank You" page',
+        'type' => 'snippet',
+        'source_file' => $sources['spform'] . 'spfresponse.inc.php',
+        'props_file' => $sources['build'] . 'spfresponseprops.inc.php',
+        'resolver_source' => ''
 
     ),
 
 
-    array(
+    array (
 
-        object_type => 'modChunk',
-        name => 'spformTpl',
-        description => 'SPForm contact form template',
-        type => 'snippet',
-        source_file => $sources['spform'] . 'templates/spform.tpl',
-        props_file => '',
-        resolver_source => '',
-        resolver_target => ''
+        'object_type' => 'modChunk',
+        'name' => 'spformTpl',
+        'description' => 'SPForm contact form template',
+        'type' => 'snippet',
+        'source_file' => $sources['spform'] . 'templates/spform.tpl',
+        'props_file' => '',
+        'resolver_source' => '',
+        'resolver_target' => ''
     ),
 
-array(
+    array (
 
-        object_type => 'modChunk',
-        name => 'spformprocTpl',
-        description => 'SPForm error page template',
-        type => 'snippet',
-        source_file => $sources['spform'] . 'templates/spformproc.tpl',
-        props_file => '',
-        resolver_source => '',
-        resolver_target => ''
+        'object_type' => 'modChunk',
+        'name' => 'spformprocTpl',
+        'description' => 'SPForm error page template',
+        'type' => 'snippet',
+        'source_file' => $sources['spform'] . 'templates/spformproc.tpl',
+        'props_file' => '',
+        'resolver_source' => '',
+        'resolver_target' => ''
     ),
 
-array(
+    array (
 
-        object_type => 'modChunk',
-        name => 'spfresponseTpl',
-        description => 'SPForm "Thank You" page template',
-        type => 'snippet',
-        source_file => $sources['spform'] . 'templates/spfresponse.tpl',
-        props_file => '',
-        resolver_source => '',
-        resolver_target => ''
+        'object_type' => 'modChunk',
+        'name' => 'spfresponseTpl',
+        'description' => 'SPForm "Thank You" page template',
+        'type' => 'snippet',
+        'source_file' => $sources['spform'] . 'templates/spfresponse.tpl',
+        'props_file' => '',
+        'resolver_source' => '',
+        'resolver_target' => ''
     ),
 
-  array(
+    array (
 
-        object_type => 'modChunk',
-        name => 'spfcaptchaTpl',
-        description => 'SPForm captcha template',
-        type => 'snippet',
-        source_file => $sources['spform'] . 'templates/spfcaptcha.tpl',
-        props_file => '',
-        resolver_source => '',
-        resolver_target => ''
+        'object_type' => 'modChunk',
+        'name' => 'spfcaptchaTpl',
+        'description' => 'SPForm captcha template',
+        'type' => 'snippet',
+        'source_file' => $sources['spform'] . 'templates/spfcaptcha.tpl',
+        'props_file' => '',
+        'resolver_source' => '',
+        'resolver_target' => ''
     )
 
 );
