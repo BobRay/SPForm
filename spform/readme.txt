@@ -20,23 +20,19 @@ Basic Usage
 -----------
 
     When the installation is completed, you should have a fully working
-    spam-proof contact form that sends email to address you give during the install.
+    spam-proof contact form that sends email to the address you give
+    during the install.
 
     Minimal snippet call: [[!SPForm]]
 
     To see SPForm's options, just go to the elements section of the Manager
-    and select the SPForm snippet. Then click on the Snippet Properties tab.
+    and select the SPForm snippet. Then click on the "Properties" tab.
 
-    You can set almost all the options either by editing the snippet properties
-    or by using parameters to override them in the snippet call on your contact
-    page. You can rename the contact page if you like. You can also rename the
-    response ("thank you") page but don't do it until after you have visited
-    the contact page at least once so the response page ID has been set.
-    You can also move the pages around in the tree so they appear where
-    you want them to in your menu.
+    There are three ways to set SPForm's options.
 
-    To override the settings in the snippet call, just add parameters you see
-    in the snippet properties grid.
+    1. You can add parameters to the snippet call. You can use any properties
+    you see in the snippet properties grid. Values sent as parameters will
+    override any other settings.
 
     Example:
 
@@ -44,8 +40,37 @@ Basic Usage
 
     This will turn off the timer and turn on all warnings and debug messages.
     You can override any property in the grid with a parameter in the snippet call,
-    but if you only have one contact form, it's usually easier just to edit the
-    properties in the grid.
+    however, it's usually easier to creat a custom property set and edit
+    the properties (options) in the grid. See number 3 below.
+
+    2. You can edit the default properties grid. We STRONGLY recommend that you
+    NOT do this. It is a bad practice because your values will all be overwritten
+    when you upgrade the snippet.
+
+    3. The recommended method is to create a custom property set. Here's how:
+
+       - In the tree, click on Elements | Snippets | SPForm snippets | SPform.
+       - Click on the properties tab.
+       - On the right side, click on "Add Property Set."
+       - Check the checkbox for "Create New Property Set."
+       - Give the set a name (e.g. SPForm Local) and a description.
+       - Click on Save.
+       - Edit any properties you want to change (the names of the changed
+         items will appear in green after you save the set).
+       - Click on "Save Property Set."
+       - In the tree, click on Resources.
+       - Right-click on "Contact" and select edit.
+       - Change the snippet call to look like this:
+
+           [[!SPForm@SPFormLocal]]
+
+       SPForm will then use your custom property set to override any values in
+       the default set. You can still override any values by sending parameters
+       in the snippet call.
+
+       Important: When changing SPForm options, be sure to select your custom
+       property set before editing. Be careful not to edit the default property
+       set by accident!
 
     A few properties are attached to the SPFReponse snippet and you'll have to set
     those on the properties tab for that snippet.
@@ -78,7 +103,8 @@ Styling the pages
     [[!SPFResponse? &spfCssPath=`path_to_your_css_file`]]
 
     Be sure to do this for both snippet calls if you've made changes that will
-    affect the response page.
+    affect the response page. You can also add an spfCssPath property to any
+    custom property set you've attached to the SPForm and SPFResponse snippets.
 
     Another option is to paste the spform CSS file into your main CSS file and
     use &spfCssPath=`""` in the snippet calls. SPForm will then ignore its own
@@ -147,7 +173,8 @@ Troubleshooting
 
     Be sure that the Contact page and the Response page have been assigned
     a template. If they have no template, they will display but with no
-    CSS which will allow the hidden field to be visible.
+    CSS which will allow the hidden field to be visible. Make sure, also
+    the the path to the CSS file is correct.
 
     Clear the site cache after assigning a template.
 
