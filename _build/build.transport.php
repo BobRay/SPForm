@@ -3,7 +3,7 @@
  * SPform Build Script
  *
  * @name SPform
- * @version 3.0.7
+ * @version 3.0.8
  * @release beta
  * @author BobRay <bobray@softville.com>
  */
@@ -43,7 +43,7 @@ $packageNamespace = 'spform';
 /* The name of the package as it will appear in Workspaces will be this plus
  * the next two variables */
 $package_name = 'spform';
-$package_version = '3.0.7';
+$package_version = '3.0.8';
 $package_release = 'beta';
 
 
@@ -66,7 +66,7 @@ $objectArray = array (
         'name' => 'SPForm',
 
         /* description field in the element's editing page */
-        'description' => 'SPForm 3.0.7-beta -  Creates a contact form for ' .
+        'description' => 'SPForm 3.0.8-beta -  Creates a contact form for ' .
             'your site',
 
         /* What's the content field called. Note: this field for chunks is also
