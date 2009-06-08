@@ -1,8 +1,0 @@
-Version 3.0.8
--------------
-Fixed critical bug in PHP4 Constructor.
-
-
-Version 3.0.7
---------------
-Completely refactored for Revolution.
