@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @package spform
+ * @subpackage build
+ */
  /* global $modx;
 
   $obj = $modx->getObject('modSnippet',array('name'=>'SPForm'));
@@ -24,7 +27,6 @@ $properties = array (
         'options'=>'',
         'value'=>'1'
     ),
-
     array(
         'name'=>'spfresponseTpl',
         'desc'=>'SPF Response Template chunk name',
@@ -32,15 +34,14 @@ $properties = array (
         'options'=>'',
         'value'=>'spfresponseTpl'
     ),
-array(
-    'name'=>'spfDebug',
-    'desc'=>'Print debugging info - Do not leave this on for a working site',
-    'type'=>'combo-boolean',
-    'options'=>'',
-    'value'=>'0'
-)
+    array(
+        'name'=>'spfDebug',
+        'desc'=>'Print debugging info - Do not leave this on for a working site',
+        'type'=>'combo-boolean',
+        'options'=>'',
+        'value'=>'0'
+    )
 );
-
 
 /* $obj->setProperties($spfResponseProperties);
   $obj->save();

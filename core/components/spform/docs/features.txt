@@ -1,0 +1,53 @@
+SPForm Version 3.0.6
+
+SPForm Features and Options
+
+Note: All options are set and unset either in the snippet
+properties grids for the SPForm and SPFResponse snippets.
+
+For many of the options, you also have the option of warning the user of violations,
+logging errors, emailing error reports to you -- or not.
+
+Features
+--------
+
+MODx Revolution compatible
+No email addresses on the screen or in the page source
+Multiple, configurable, spam-proofing options
+Full documentation on all options
+Easily editable drop-down list of recipients
+Automatic installation and configuration
+Easily ban individual spammers, domain names, or IP addresses
+Send mail with phpMailer using mail() or with authenticated SMTP
+Javascript validation which degrades to php validation if JS is off
+Accept only legal email addresses for return address
+Multi-language support
+
+
+Options - Each can easily be turned on or off
+
+Require keyboard and/or mouse activity
+Time users and set minimum and maximum times allowed to submit the form
+Present CAPTCHA-style image verification (requires CAPTCHA plugin)
+Present a simple random math problem as an image and ask the user to solve it (requires CAPTCHA plugin)
+Use an invisible (but not hidden) field that spambots will get caught filling
+Check for illegal content in fields
+Require name, subject, and/or email
+Set size of message window
+Limit number of http:// links in a message
+Set maximum length of subject and recipient
+Add subject prefix to message subject field
+Set the size of the text input area
+email errors to to specified address
+log errors in log file
+cc all messages to a specified address (in addition to recipient)
+Set maximum number of http links in message
+Restrict the use of the form to certain domains
+Report remote host, user, address, identity, and referrer in msg headers
+Disallow blank referrer
+Reject messages with fake referrer set to self
+Require messages to be sent from one's own server
+
+
+
+
