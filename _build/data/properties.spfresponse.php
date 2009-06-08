@@ -47,4 +47,5 @@ $properties = array (
   $obj->save();
 
   return $output;*/
-?>
+
+return $properties;

@@ -38,9 +38,11 @@ class spform {
      */
 
     function  __construct(&$modx, $spfconfig = array()) {
-        $this->spfconfig = $spfconfig;
         $this->modx =& $modx;
 
+        $this->spfconfig = array_merge(array(
+            'assets_path' => $this->modx->getOption('assets_path').'components/spform/',
+        ),$spfconfig);
     }
 
 
@@ -180,7 +182,7 @@ function set_placeholders () {
       /* Send the keycount value if we're requiring the mouse and/or keyboard */
     if ($this->modx->getOption('requireKeyboard',$this->spfconfig,false)
      || $this->modx->getOption('requireMouseOrKeyboard',$this->spfconfig,false)) {
-        $file = $this->spfconfig['spformPath'] . "js/usedkeyboard.js";
+        $file = $this->spfconfig['assets_path'] . "js/usedkeyboard.js";
         if( false == ($str = file_get_contents($file))) {
             $val = $this->modx->lexicon('no-js') . $file;
             die($val);
@@ -201,7 +203,7 @@ function set_placeholders () {
     if ($this->modx->getOption('requireMouse',$this->spfconfig,false)
      || $this->modx->getOption('requireMouseOrKeyboard',$this->spfconfig,false)) {
 
-        $file = $this->spfconfig['spformPath'] . "js/mousemovement.js";
+        $file = $this->spfconfig['assets_path'] . "js/mousemovement.js";
         if( false == ($str = file_get_contents($file))) {
             $val = $this->modx->lexicon('no-js') . $file;
             die($val);

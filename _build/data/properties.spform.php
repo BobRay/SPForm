@@ -24,7 +24,6 @@ if (!$obj) {
 }
 */
 
-
 $properties = array(
 
 array (
@@ -302,7 +301,7 @@ array(
     'desc'=>'Subject prefix to use. If addSubjSig = 1, this prefix is added to the subject of all messages. Another possibilty is $modx->config["site_name"]',
     'type'=>'textfield',
     'options'=>'',
-    'value'=>$_SERVER["SERVER_NAME"] . " Contact"
+    'value'=>" Contact"
 ),
 
 
@@ -685,5 +684,4 @@ array(
  }
 */
 
-
-?>
+return $properties;

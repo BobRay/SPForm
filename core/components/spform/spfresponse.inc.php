@@ -76,7 +76,7 @@ if( (!empty($originalReferer)) && $modx->getOption('takeMeBack',$spfconfig,true)
     $spf_back = '';
 }
 
-$spfResponseTpl = $this->modx->getOption('spfresponseTpl',$this->spfconfig,'spfresponseTpl');
+$spfResponseTpl = $modx->getOption('spfresponseTpl',$spfconfig,'spfresponseTpl');
 $o = $modx->getChunk($spfResponseTpl,array(
     'spf-back' => $spf_back,
     'spf-came-from' => $spf_from,

@@ -32,7 +32,7 @@ global $modx;
 /* $modx->setDebug(E_ALL & ~E_NOTICE); */
 
 $spfconfig = $scriptProperties;
-$spconfig['spformPath'] = $modx->getOption('spformPath',$spfconfig,$modx->getOption('assets_path').'components/spform');
+$spfconfig['spformPath'] = $modx->getOption('spformPath',$spfconfig,$modx->getOption('core_path').'components/spform/');
 
 ini_set('error_log', $spformPath . 'error.log');
 
@@ -108,7 +108,6 @@ $localKey = md5($localKey);
 $_SESSION['include_auth'] = $localKey;
 
 $iFile = $spfconfig['spformPath'] . "classes/spformclass.inc.php";
-
 require_once $iFile;
 
 $spform = new spform($modx, $spfconfig);
