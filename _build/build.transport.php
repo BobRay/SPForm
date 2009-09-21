@@ -72,12 +72,12 @@ $attr = array(
     XPDO_TRANSPORT_UPDATE_OBJECT => true,
     XPDO_TRANSPORT_RELATED_OBJECTS => true,
     XPDO_TRANSPORT_RELATED_OBJECT_ATTRIBUTES => array (
-        'modSnippet' => array (
+        'Snippets' => array (
             XPDO_TRANSPORT_PRESERVE_KEYS => false,
             XPDO_TRANSPORT_UPDATE_OBJECT => true,
             XPDO_TRANSPORT_UNIQUE_KEY => 'name',
         ),
-        'modChunk' => array (
+        'Chunks' => array (
             XPDO_TRANSPORT_PRESERVE_KEYS => false,
             XPDO_TRANSPORT_UPDATE_OBJECT => true,
             XPDO_TRANSPORT_UNIQUE_KEY => 'name',
@@ -90,11 +90,11 @@ $categoryObject->set('category','SPForm');
 
 /* add snippets to category */
 $snippets = require_once $sources['data'].'transport.snippets.php';
-$categoryObject->addMany($snippets,'modSnippet');
+$categoryObject->addMany($snippets);
 
 /* add chunks to category */
 $chunks = require_once $sources['data'].'transport.chunks.php';
-$categoryObject->addMany($chunks,'modChunk');
+$categoryObject->addMany($chunks);
 
 /* build category */
 $vehicle = $builder->createVehicle($categoryObject,$attr);
