@@ -67,20 +67,20 @@ $builder->registerNamespace($packageNamespace,false,true);
 
 /* create category */
 $attr = array(
-    XPDO_TRANSPORT_UNIQUE_KEY => 'category',
-    XPDO_TRANSPORT_PRESERVE_KEYS => false,
-    XPDO_TRANSPORT_UPDATE_OBJECT => true,
-    XPDO_TRANSPORT_RELATED_OBJECTS => true,
-    XPDO_TRANSPORT_RELATED_OBJECT_ATTRIBUTES => array (
+    xPDOTransport::UNIQUE_KEY => 'category',
+    xPDOTransport::PRESERVE_KEYS => false,
+    xPDOTransport::UPDATE_OBJECT => true,
+    xPDOTransport::RELATED_OBJECTS => true,
+    xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array (
         'Snippets' => array (
-            XPDO_TRANSPORT_PRESERVE_KEYS => false,
-            XPDO_TRANSPORT_UPDATE_OBJECT => true,
-            XPDO_TRANSPORT_UNIQUE_KEY => 'name',
+            xPDOTransport::PRESERVE_KEYS => false,
+            xPDOTransport::UPDATE_OBJECT => true,
+            xPDOTransport::UNIQUE_KEY => 'name',
         ),
         'Chunks' => array (
-            XPDO_TRANSPORT_PRESERVE_KEYS => false,
-            XPDO_TRANSPORT_UPDATE_OBJECT => true,
-            XPDO_TRANSPORT_UNIQUE_KEY => 'name',
+            xPDOTransport::PRESERVE_KEYS => false,
+            xPDOTransport::UPDATE_OBJECT => true,
+            xPDOTransport::UNIQUE_KEY => 'name',
         ),
     )
 );
@@ -111,18 +111,17 @@ $builder->putVehicle($vehicle);
 /* done setting category/snippets/chunks */
 
 
-/* Add the resources (documents).
- * Note that these will appear in the Manager Tree in reverse order
- * from the order you use here*/
+/* Add the resources (documents) */
 $resources = require_once $sources['data'].'transport.resources.php';
 $attributes= array(
-    XPDO_TRANSPORT_UNIQUE_KEY => 'pagetitle',
-    XPDO_TRANSPORT_UPDATE_OBJECT => false,
-    XPDO_TRANSPORT_PRESERVE_KEYS => false,
+    xPDOTransport::UNIQUE_KEY => 'pagetitle',
+    xPDOTransport::UPDATE_OBJECT => false,
+   xPDOTransport::PRESERVE_KEYS => false,
 );
 foreach ($resources as $k => $resource) {
     $vehicle = $builder->createVehicle($resource,$attributes);
     if ($resource->get('pagetitle') == 'Thank You') {
+        $modx->log(MODX_LOG_LEVEL_INFO,'Packaging install script.<br />');
         $vehicle->resolve('php',array(
             'type' => 'php',
             'source' => $sources['build'] . 'install-script.php',
