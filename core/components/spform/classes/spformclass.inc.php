@@ -233,7 +233,7 @@ function set_placeholders () {
 
     /*  Set timer variables, if using timer */
 
-    if ($this->modx->getOption('useTime',$this->spfconfig,false)) {
+    if ($this->modx->getOption('useTimer',$this->spfconfig,false)) {
         $val = "";
         $tm = time();  /* get current time in seconds  */
         if ($this->modx->getOption('spfDebug',$this->spfconfig,false)) {
