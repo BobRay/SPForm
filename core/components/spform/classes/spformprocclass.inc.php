@@ -229,7 +229,7 @@ function validate() {
 
         if(!(empty($_POST['Last__Name']))) {  /* probable spammer filled the hidden field */
             if ($this->modx->getOption('logOnHidden',$this->spfconfig,false)) {
-                error_log($this->modx->lexicon('last-name'));
+               $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('last-name'));
             }
             if ($this->modx->getOption('warnHiddenField',$this->spfconfig,false) || $warnAll) {
                 $this->_errors[] = $this->modx->lexicon('last-name');
@@ -255,7 +255,7 @@ function validate() {
     if ($this->modx->getOption('requireMouseOrKeyboard',$this->spfconfig,false)) {
         if (($mouseMove < 5)&&($keysUsed < 5)) {
             if ($this->modx->getOption('logMouseAndKeyboardErrors',$this->spfconfig,false)) {
-                error_log($this->modx->lexicon("mouse-kb-warning"));
+                $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon("mouse-kb-warning"));
             }
             if ($this->modx->getOption('warnMouseAndKeyboard',$this->spfconfig,false) || $warnAll) {
                 $this->_errors[] = $this->modx->lexicon('mouse-kb-warning');
@@ -269,7 +269,7 @@ function validate() {
             /* Make sure the keyboard was used  */
             if ($keysUsed < 5) {
                 if ($this->modx->getOption('logMouseAndKeyboardErrors',$this->spfconfig,false)) {
-                    error_log($this->modx->lexicon("kb-warning"));
+                    $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon("kb-warning"));
                 }
                 if ($this->modx->getOption('warnMouseAndKeyboard',$this->spfconfig,false) || $warnAll) {
                     $this->_errors[] = $this->modx->lexicon('kb-warning');
@@ -284,7 +284,7 @@ function validate() {
             if ($mouseMove < 5) {
 
                 if ($this->modx->getOption('logMouseAndKeyboardErrors',$this->spfconfig,false)) {
-                    error_log($this->modx->lexicon("mouse-warning"));
+                    $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon("mouse-warning"));
                 }
                 if ($this->modx->getOption('warnMouseAndKeyboard',$this->spfconfig,false) || $warnAll) {
                     $this->_errors[] = $this->modx->lexicon('mouse-warning');
@@ -309,7 +309,7 @@ function validate() {
              || $elapsedTime > $this->modx->getOption('useTimerMax',$this->spfconfig,1800)) {
                 /* Timer violation  */
                 if ($this->modx->getOption('logOnTimer',$this->spfconfig,false)) {
-                    error_log($this->modx->lexicon('timer-violation'));
+                    $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('timer-violation'));
                 }
                 if ($this->modx->getOption('warnTimer',$this->spfconfig,false) || $warnAll) {
                      $this->_errors[] = $this->modx->lexicon('timeout1');
@@ -333,7 +333,7 @@ function validate() {
                 echo "Post: " . $_POST['verify'] . '<br />';
             }
             if ($this->modx->getOption('logOnVerify',$this->spfconfig,false)) {
-                error_log("[SPForm]" . $this->modx->lexicon('bad-verification') . $_SERVER['REMOTE_ADDR'], 0);
+                $this->modx->log(modX::LOG_LEVEL_ERROR,"[SPForm]" . $this->modx->lexicon('bad-verification') . $_SERVER['REMOTE_ADDR'], 0);
             }
             if ($this->modx->getOption('adviseOnVerify',$this->spfconfig,false)) {
                 $this->_advise = true;
@@ -393,7 +393,7 @@ function validate() {
     if (! preg_match("/^[^@\s]+@([-a-z0-9]+\.)+[a-z]{2,}$/i", $this->_recipient, $result)) {
 
         if ($this->modx->getOption('logInjections',$this->spfconfig,false)) {
-            error_log($this->modx->lexicon('bad-recipient') . $this->_recipient);
+            $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('bad-recipient') . $this->_recipient);
         }
         if ($this->modx->getOption('warnInjections',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('bad-recipient');
@@ -406,7 +406,7 @@ function validate() {
     if (strlen($this->_recipient) > $this->modx->getOption('maxRecipientLen',$this->spfconfig,65)) {
 
         if ($this->modx->getOption('logRecipientLen',$this->spfconfig,false)) {
-            error_log($this->modx->lexicon('bad-recipient-length'));
+            $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('bad-recipient-length'));
         }
         if ($this->modx->getOption('warnRecipientLen',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('bad-recipient-length');
@@ -418,7 +418,7 @@ function validate() {
     /* Make sure the subject  field isn't too long   */
     if (strlen($this->_finalSubject) > $this->modx->getOption('maxSubjectLen',$this->spfconfig,100)) {
         if ($this->modx->getOption('logSubjectLen',$this->spfconfig,false)) {
-            error_log($this->modx->lexicon('bad-subject-length'));
+            $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('bad-subject-length'));
         }
         if ($this->modx->getOption('warnSubjectLen',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('bad-subject-length');
@@ -431,7 +431,7 @@ function validate() {
     if(stristr($this->_finalSubject, "Bcc:") or stristr($this->_finalSubject, "cc:") or stristr($this->_finalSubject, "to:")) {
 
         if ($this->modx->getOption('logIllegalSubject',$this->spfconfig,false)) {
-            error_log($this->modx->lexicon('illegal-subject' . $this->_finalSubject));
+            $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('illegal-subject' . $this->_finalSubject));
         }
         if ($this->modx->getOption('warnIllegalSubject',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('illegal-subject');
@@ -443,7 +443,7 @@ function validate() {
 /*    Check for illegal content in Content field   */
     if(stristr($this->_content, "Bcc:") or stristr($this->_content, "cc:") or stristr($this->_content, "to:")) {
         if ($this->modx->getOption('logIllegalContent',$this->spfconfig,false)) {
-            error_log($this->modx->lexicon('illegal-message') . $this->_content);
+            $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('illegal-message') . $this->_content);
         }
         if ($this->modx->getOption('warnIllegalContent',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('illegal-message');
@@ -457,7 +457,7 @@ function validate() {
     $linkCount = substr_count($this->_content,'http');  /* count links in content */
     if ($linkCount > $this->modx->getOption('maxLinks',$this->spfconfig,3)) {
          if ($this->modx->getOption('logMaxLinks',$this->spfconfig,false)) {
-            error_log($this->modx->lexicon('content-links') . $linkCount);
+            $this->modx->log(modX::LOG_LEVEL_ERROR,$this->modx->lexicon('content-links') . $linkCount);
          }
          if ($this->modx->getOption('warnMaxLinks',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('content-links');
@@ -560,7 +560,7 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
         return;
     }
     if (!$this->modx->getService('mail', 'mail.modPHPMailer')) {
-        $this->modx->log(MODX_LOG_LEVEL_FATAL,$this->modx->lexicon('could-not-initiate-mail-service'));
+        die($this->modx->lexicon('could-not-initiate-mail-service'));
     }
 
     $this->modx->mail->set(MODX_MAIL_CHARSET,$this->modx->getOption('modx_charset'));
@@ -603,7 +603,7 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
             die($this->modx->mail->mailer->ErrorInfo);
         }
 
-        $this->modx->log(MODX_LOG_LEVEL_FATAL,'<b>' . $this->modx->lexicon('mail-failure') . '</b>');
+       die('<b>' . $this->modx->lexicon('mail-failure') . '</b>');
     }
     $this->modx->mail->reset();
 }
@@ -712,7 +712,7 @@ function _show_errors($errors) {
                     $this->_errors[] = $this->modx->lexicon('unauthorized-server') ."(" .
                             $_SERVER['HTTP_REFERER'] . ")";
                     if ($this->modx->getOption('logOnReferer',$this->spfconfig,false)) {
-                        error_log("[" . $scriptName . "] " . " Illegal Referer. (" .
+                        $this->modx->log(modX::LOG_LEVEL_ERROR,"[" . $scriptName . "] " . " Illegal Referer. (" .
                                $_SERVER['HTTP_REFERER'] . ") ", 0);
                     }
                 }
@@ -847,7 +847,7 @@ function _show_errors($errors) {
         if($notAllowed) {
             $this->_errors[] = $this->modx->lexicon('banned'). $bannedOn;
             if ($this->modx->getOption('logOnBan',$this->spfconfig,false)) {
-                error_log("[" . $scriptName . "]" . '  Banned on "' . $bannedOn . '"');
+                $this->modx->log(modX::LOG_LEVEL_ERROR,"[" . $scriptName . "]" . '  Banned on "' . $bannedOn . '"');
             }
         }
 
