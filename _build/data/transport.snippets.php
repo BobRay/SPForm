@@ -9,7 +9,7 @@ $snippets[1]= $modx->newObject('modSnippet');
 $snippets[1]->fromArray(array(
     'id' => 1,
     'name' => 'SPForm',
-    'description' => 'SPForm '.$package_version.'-'.$package_release
+    'description' => 'SPForm '.PKG_VERSION.'-'.PKG_RELEASE
             .' -  Creates a contact form for your site',
 ),'',true,true);
 $snippets[1]->setContent(file_get_contents($sources['source_core'] . '/spform.inc.php'));

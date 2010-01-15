@@ -5,7 +5,7 @@
  */
 $resources = array();
 
-$modx->log(MODX_LOG_LEVEL_INFO,'Creating resource: Contact Page<br />');
+$modx->log(modX::LOG_LEVEL_INFO,'Creating resource: Contact Page<br />');
 $resources[1]= $modx->newObject('modResource');
 $resources[1]->fromArray(array(
     'id' => 1,
@@ -30,7 +30,7 @@ $resources[1]->fromArray(array(
 ),'',true,true);
 $resources[1]->setContent('[[!SPForm]]');
 
-$modx->log(MODX_LOG_LEVEL_INFO,'Creating resource: Response Page<br />');
+$modx->log(modX::LOG_LEVEL_INFO,'Creating resource: Response Page<br />');
 $resources[2]= $modx->newObject('modResource');
 $resources[2]->fromArray(array(
     'id' => 2,

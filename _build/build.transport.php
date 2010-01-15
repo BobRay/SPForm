@@ -44,9 +44,10 @@ $packageNamespace = 'spform';
 
 /* The name of the package as it will appear in Workspaces will be this plus
  * the next two variables */
-$package_name = 'spform';
-$package_version = '3.0.9';
-$package_release = 'beta1';
+define('PKG_NAME','spform');
+define('PKG_NAME_LOWER','spform');
+define('PKG_VERSION','3.0.9');
+define('PKG_RELEASE','beta1');
 
 
 /* override with your own defines here (see build.config.sample.php */
@@ -62,8 +63,8 @@ $modx->setLogTarget('ECHO');
 
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
-$builder->createPackage($package_name,$package_version,$package_release);
-$builder->registerNamespace($packageNamespace,false,true);
+$builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
+$builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/');
 
 /* create category */
 $attr = array(
@@ -90,11 +91,11 @@ $categoryObject->set('category','SPForm');
 
 /* add snippets to category */
 $snippets = require_once $sources['data'].'transport.snippets.php';
-$categoryObject->addMany($snippets);
+$categoryObject->addMany($snippets,'Snippets');
 
 /* add chunks to category */
 $chunks = require_once $sources['data'].'transport.chunks.php';
-$categoryObject->addMany($chunks);
+$categoryObject->addMany($chunks,'Chunks');
 
 /* build category */
 $vehicle = $builder->createVehicle($categoryObject,$attr);
@@ -116,12 +117,12 @@ $resources = require_once $sources['data'].'transport.resources.php';
 $attributes= array(
     xPDOTransport::UNIQUE_KEY => 'pagetitle',
     xPDOTransport::UPDATE_OBJECT => false,
-   xPDOTransport::PRESERVE_KEYS => false,
+    xPDOTransport::PRESERVE_KEYS => false,
 );
 foreach ($resources as $k => $resource) {
     $vehicle = $builder->createVehicle($resource,$attributes);
     if ($resource->get('pagetitle') == 'Thank You') {
-        $modx->log(MODX_LOG_LEVEL_INFO,'Packaging install script.<br />');
+        $modx->log(modX::LOG_LEVEL_INFO,'Packaging install script.<br />');
         $vehicle->resolve('php',array(
             'type' => 'php',
             'source' => $sources['build'] . 'install-script.php',
