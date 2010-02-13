@@ -5,7 +5,7 @@
 * @package spform
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.0.8
+* @version 3.0.9
 */
 
 /* error_reporting(E_ALL); */
@@ -563,12 +563,12 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
         die($this->modx->lexicon('could-not-initiate-mail-service'));
     }
 
-    $this->modx->mail->set(MODX_MAIL_CHARSET,$this->modx->getOption('modx_charset'));
-    $this->modx->mail->set(MODX_MAIL_BODY, $content);
-    $this->modx->mail->set(MODX_MAIL_FROM, $from);
-    $this->modx->mail->set(MODX_MAIL_FROM_NAME, $fromName);
-    $this->modx->mail->set(MODX_MAIL_SENDER, $from);
-    $this->modx->mail->set(MODX_MAIL_SUBJECT, $finalSubject);
+    $this->modx->mail->set(modMail::MAIL_CHARSET,$this->modx->getOption('modx_charset'));
+    $this->modx->mail->set(modMail::MAIL_BODY, $content);
+    $this->modx->mail->set(modMail::MAIL_FROM, $from);
+    $this->modx->mail->set(modMail::MAIL_FROM_NAME, $fromName);
+    $this->modx->mail->set(modMail::MAIL_SENDER, $from);
+    $this->modx->mail->set(modMail::MAIL_SUBJECT, $finalSubject);
     $this->modx->mail->address('to', $recipient);
     foreach($this->_addlHeaders as $value) {
         /*  MS-Win mail servers want crlf and *don't* want a trailing pair
@@ -582,15 +582,15 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
 
 
     if ($this->modx->getOption('spfUseSMTP',$this->spfconfig,false)) {
-        $this->modx->mail->set(MODX_MAIL_ENGINE, 'smtp');
-        $this->modx->mail->set(MODX_MAIL_SMTP_AUTH, true);
-        $this->modx->mail->set(MODX_MAIL_SMTP_HOSTS,$this->modx->getOption('spfSMTP_Host',$this->spfconfig,'localhost'));
+        $this->modx->mail->set(modMail::MAIL_ENGINE, 'smtp');
+        $this->modx->mail->set(modMail::MAIL_SMTP_AUTH, true);
+        $this->modx->mail->set(modMail::MAIL_SMTP_HOSTS,$this->modx->getOption('spfSMTP_Host',$this->spfconfig,'localhost'));
 
-        $this->modx->mail->set(MODX_MAIL_SMTP_PASS,$this->modx->getOption('spfSMTP_Password',$this->spfconfig,'password'));
+        $this->modx->mail->set(modMail::MAIL_SMTP_PASS,$this->modx->getOption('spfSMTP_Password',$this->spfconfig,'password'));
 
-        $this->modx->mail->set(MODX_MAIL_SMTP_PORT,$this->modx->getOption('spfSMTP_Port',$this->spfconfig,587));
+        $this->modx->mail->set(modMail::_MAIL_SMTP_PORT,$this->modx->getOption('spfSMTP_Port',$this->spfconfig,587));
 
-        $this->modx->mail->set(MODX_MAIL_SMTP_USER,$this->modx->getOption('spfSMTP_UserName',$this->spfconfig,'username'));
+        $this->modx->mail->set(modMail::MAIL_SMTP_USER,$this->modx->getOption('spfSMTP_UserName',$this->spfconfig,'username'));
     }
 
     if (!$this->modx->mail->send()) {
