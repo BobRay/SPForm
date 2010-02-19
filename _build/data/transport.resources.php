@@ -17,7 +17,7 @@ $resources[1]->fromArray(array(
     'logtitle' => 'Contact Us',
     'description' => 'Spam-proof Contact Form',
     'alias' => 'contact',
-    'published' => 0,
+    'published' => 1,
     'parent' => 0,
     'isfolder' => 0,
     'richtext' => 0,
@@ -42,7 +42,7 @@ $resources[2]->fromArray(array(
     'logtitle' => 'Thank You',
     'description' => 'Spam-proof Contact Form "Thank You" page',
     'alias' => 'thankyou',
-    'published' => 0,
+    'published' => 1,
     'parent' => 0,
     'isfolder' => 0,
     'richtext' => 0,
@@ -51,7 +51,7 @@ $resources[2]->fromArray(array(
     'cacheable' => 1,
     'menutitle' => 'Thank You',
     'donthit' => 0,
-    'hidemenu' => 0,
+    'hidemenu' => 1,
 ),'',true,true);
 $resources[2]->setContent('[[!SPFResponse]]');
 
