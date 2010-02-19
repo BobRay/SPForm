@@ -1,5 +1,5 @@
 
-SPForm Version: 3.0.8 - Simple Spam-proof Contact Form Snippet
+SPForm Version: 3.1.0 - Simple Spam-proof Contact Form Snippet
 ==============================================================
 
 

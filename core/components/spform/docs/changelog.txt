@@ -1,3 +1,10 @@
+Version 3.1.0
+-------------
+Changed resources to published
+Fixed minor bugs
+Fixed MODx xPDO and Log constants for RC1
+Added return email to message body.
+
 Version 3.0.8
 -------------
 Fixed critical bug in PHP4 Constructor.

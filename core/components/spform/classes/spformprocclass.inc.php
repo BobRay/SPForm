@@ -5,7 +5,7 @@
 * @package spform
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.0.9
+* @version 3.1.0
 */
 
 /* error_reporting(E_ALL); */
@@ -13,7 +13,7 @@
 File:         spformprocclass.inc.php
 
 Snippet:       SPForm
-Version: 3.0.8
+Version: 3.1.0
 $Revision: 208 $
 $Author: Bob Ray $
 $Date: 2008-11-03 01:44:13 -0600 (Mon, 03 Nov 2008) $
@@ -357,7 +357,7 @@ function validate() {
 
 
     if (!empty($_POST['name'])) {
-        $this->_content = $_POST['name'] .' '.$this->modx->lexicon('wrote');
+        $this->_content = $_POST['name'] .' <' . $_POST['email'] . '> ' . $this->modx->lexicon('wrote');
         $this->_fromName = $_POST['name'];
     }
     $this->_content .= preg_replace('/\r/', '', stripslashes($_POST['comments']));
