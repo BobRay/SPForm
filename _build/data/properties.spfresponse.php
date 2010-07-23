@@ -3,21 +3,6 @@
  * @package spform
  * @subpackage build
  */
- /* global $modx;
-
-  $obj = $modx->getObject('modSnippet',array('name'=>'SPForm'));
-
-  if (!$obj) {
-      $output .= "Object not found<br>";
-  }*/
-
-
-/*$obj = $modx->getObject('modSnippet',array('name'=>'SPFResponse'));
-
-  if (!$obj) {
-      die("Object not found<br>");
-  }
-*/
 
 $properties = array (
     array(
@@ -43,9 +28,5 @@ $properties = array (
     )
 );
 
-/* $obj->setProperties($spfResponseProperties);
-  $obj->save();
-
-  return $output;*/
 
 return $properties;

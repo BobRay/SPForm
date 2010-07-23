@@ -142,7 +142,8 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         $success = true;
         break;
     case xPDOTransport::ACTION_UNINSTALL:
-        $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Uninstalling');
+        $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Uninstalling . . .');
+        $object->xpdo->log(xPDO::LOG_LEVEL_WARN,'Note: You may have to remove the Contact and Thank You resources manually.');
         $success = true;
         break;
 
