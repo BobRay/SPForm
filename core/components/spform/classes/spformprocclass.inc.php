@@ -588,7 +588,7 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
 
         $this->modx->mail->set(modMail::MAIL_SMTP_PASS,$this->modx->getOption('spfSMTP_Password',$this->spfconfig,'password'));
 
-        $this->modx->mail->set(modMail::_MAIL_SMTP_PORT,$this->modx->getOption('spfSMTP_Port',$this->spfconfig,587));
+        $this->modx->mail->set(modMail::MAIL_SMTP_PORT,$this->modx->getOption('spfSMTP_Port',$this->spfconfig,587));
 
         $this->modx->mail->set(modMail::MAIL_SMTP_USER,$this->modx->getOption('spfSMTP_UserName',$this->spfconfig,'username'));
     }
