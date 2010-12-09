@@ -342,7 +342,7 @@ function set_placeholders () {
           echo "<br>" . $this->modx->lexicon('no-captcha');
           exit();
         }
-        $useMathString = $this->modx->getOption('useMathString',$this->spfconfig,false);
+        $useMathString = $this->modx->getOption('useMathString',$this->spfconfig,true);
 
         if ($useMathString) {
         $alt = $this->modx->lexicon("login_mathstring_message");
@@ -350,20 +350,18 @@ function set_placeholders () {
            $alt = $this->modx->lexicon("login_captcha_message");
         }
 
-        $captcha_image= '<img '. 'onclick="this.src=' . "'" . $this->modx->getOption('assets_url') . "components/captcha/captcha.php?rand='" .
-            "+Math.floor(Math.random()*200);".'"' .' src="'. $this->modx->getOption('assets_url') . 'components/captcha/captcha.php?rand='.rand().'" alt="'.$alt.'" />';
-
-
         if ($useMathString) {
-            $_SESSION['captcha_use_mathstring'] = true;
+            $_SESSION['captcha.use_mathstring'] = 'true';
             $captcha_prompt = $this->modx->lexicon("login_mathstring_message");
             $captcha_input_prompt = $this->modx->lexicon("captcha_mathstring_code").":";
         } else {
-            $_SESSION['captcha_use_mathstring'] = false;
+            $_SESSION['captcha.use_mathstring'] = 'false';
             $captcha_prompt = $this->modx->lexicon("login_captcha_message");
             $captcha_input_prompt = $this->modx->lexicon("captcha_code") . ":";
         }
 
+        $captcha_image= '<img '. 'onclick="this.src=' . "'" . $this->modx->getOption('assets_url') . "components/captcha/captcha.php?rand='" .
+            "+Math.floor(Math.random()*200);".'"' .' src="'. $this->modx->getOption('assets_url') . 'components/captcha/captcha.php?rand='.rand().'" alt="'.$alt.'" />';
 
         $this->modx->setPlaceholder('spf-captcha-instructions',$captcha_prompt);
         $this->modx->setPlaceholder('spf-captcha-image',$captcha_image);

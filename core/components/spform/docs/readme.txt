@@ -53,7 +53,7 @@ Basic Usage
        - Click on the properties tab.
        - On the right side, click on "Add Property Set."
        - Check the checkbox for "Create New Property Set."
-       - Give the set a name (e.g. SPForm Local) and a description.
+       - Give the set a name (e.g. SPFormLocal) and a description.
        - Click on Save.
        - Edit any properties you want to change (the names of the changed
          items will appear in green after you save the set).
@@ -129,10 +129,18 @@ Troubleshooting
 
     The most common problem with SPForm is that it uses php mail() by default.
     Many servers have this disabled. If this is the case, you should see an
-    error message suggesting that you use SMTP. Use the SMTP settings in the snippet
-    properties grid to turn on this option. You can use any SMTP account, even at
-    a different server, to send with SPForm. Be sure to set all the SMTP options
-    correctly.
+    error message suggesting that you use SMTP. You can ust the MODx SMTP System
+    Settings to send all mail from the site by SMTP. You can also use the SMTP
+    settings in the snippet properties grid to turn on this option, but --
+
+            Important: don't use both!!!.
+
+    The System Settings are the recommended method. The only reason to use the
+    snippet properties is if you have different forms and want to use a different
+    SMTP server for each of them.
+
+    You can use any SMTP account, even at a different server, to send with SPForm.
+    Be sure to set all the SMTP options correctly.
 
     If you continue to have this problem, take a close look at the recipientArray
     setting in the snippet properties. It should be a comma-separated list of
@@ -164,12 +172,18 @@ Troubleshooting
 * The spform page looks unstyled and the validation doesn't work.
 
     Be sure that the Contact page and the Response page have been assigned
-    a template. If they have no template, they will display but with no
-    CSS and no javascript.
+    a template. If they have no template (or a minimal template), they will
+    display but with no CSS and no javascript. Be sure to save the page after
+    assigning a template. Clear the site cache after assigning a template.
 
-    Clear the site cache after assigning a template.
+    The CSS file for SPForm is at:
 
-* I have the hidden field turned on, but I can see it in the form.
+    assets/components/spform/css/spform.css
+
+    If you want to change it, copy it to another file and use the
+    &spfCssPath parameter to point to it.
+
+  * I have the hidden field turned on, but I can see it in the form.
 
     Be sure that the Contact page and the Response page have been assigned
     a template. If they have no template, they will display but with no
@@ -182,7 +196,7 @@ Troubleshooting
 * I keep getting error messages when submitting the form.
 
     The error message should tell you which SPForm option is causing the trouble.
-    Turn it off in the properties grid.
+    Turn it off in the properties grid or with a parameter.
 
 * I have the takeMeBack option on, but no link appears on the response page.
 
@@ -191,8 +205,8 @@ Troubleshooting
 
 * My users often send me lots of links in their messages and they always get an error.
 
-    Change the maxLinks setting in the snippet properties grid to allow more links
-    in a message.
+    Change the maxLinks setting in the snippet properties grid or a parameter to
+    allow more links in a message.
 
 * The box for entering a message is too big or too small.
 

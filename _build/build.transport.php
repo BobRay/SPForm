@@ -3,7 +3,7 @@
  * SPform Build Script
  *
  * @name SPform
- * @version 3.1.2
+ * @version 3.1.3
  * @release beta
  * @author BobRay <bobray@softville.com>
  */
@@ -46,7 +46,7 @@ $packageNamespace = 'spform';
  * the next two variables */
 define('PKG_NAME','spform');
 define('PKG_NAME_LOWER','spform');
-define('PKG_VERSION','3.1.2');
+define('PKG_VERSION','3.1.3');
 define('PKG_RELEASE','beta1');
 
 

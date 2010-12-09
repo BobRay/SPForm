@@ -507,7 +507,7 @@ array(
     'desc'=>'Use simple math equations as captcha images. The user is asked to solve a simple equation. This fools spambots that can read captcha images.',
     'type'=>'combo-boolean',
     'options'=>'',
-    'value'=>'0'
+    'value'=>'1'
 ),
 
 
