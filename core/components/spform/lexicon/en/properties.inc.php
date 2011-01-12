@@ -18,13 +18,16 @@
  * Suite 330, Boston, MA 02111-1307 USA
  *
  * @package spform
- */
+  */
+
 /**
  * Properties (property descriptions) Lexicon Topic
  *
  * @package spform
  * @subpackage lexicon
  */
+
+/* ToDo: SPFResponse language strings */
 
 /* SPForm Property Description strings */
 $_lang['spf_recipientarray_desc'] = "Comma separated list of recipient title/email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com";
@@ -36,7 +39,7 @@ $_lang['spf_spftest_mode_desc'] = 'Test SPForm without sending mail; default: 0.
 $_lang['spf_spfdebug_desc'] = 'Print debugging info - Do not leave this on for a working site; default: 0.';
 $_lang['spf_formprocallowedreferers_desc'] = 'Comma separated list of allowed referers. Be sure this lists all the domains by which your contact page can be reached.';
 $_lang['spf_spfresponseid_desc'] = 'Resource ID of SPFResponse page. This value will be set automatically on the first visit to the form.';
-$_lang['spf_adviseall_desc'] = 'Email all errors to $errorsTo recipient; default: 0.';
+$_lang['spf_adviseall_desc'] = 'Email all errors to &errorsTo recipient; default: 0.';
 $_lang['spf_warnall_desc'] = "Warn the user of all errors (use this only for debugging); default: 0.";
 $_lang['spf_spfusesmtp_desc'] = 'Use SMTP instead of mail(). Be sure to set all spfSMTP_ variables if you use this; default: 0.';
 $_lang['spf_spfsmtp_port_desc'] = "SMTP Port; default: 587.";
@@ -80,7 +83,7 @@ $_lang['spf_sptextrows_desc'] = 'Row size of message window (the input box for t
 $_lang['spf_sptextcols_desc'] = 'Column size of message window (the input box for the message body); default: 50.';
 $_lang['spf_includeresetbutton_desc'] = 'Include a reset button that empties all form fields; default: 0.';
 $_lang['spf_showsinglerecipientto_desc'] = 'Show the recipient name if there is only one; default: 0.';
-$_lang['spf_requireverify_desc'] = 'Use captcha-style verification; default: 0.';
+$_lang['spf_requireverify_desc'] = 'Use cptcha-style verification; default: 0.';
 $_lang['spf_usemathstring_desc'] = 'Use simple math equations as captcha images. The user is asked to solve a simple equation. This fools spambots that can read captcha images; default: 1.';
 $_lang['spf_warnverify_desc'] = 'Warn users that their captcha entry is wrong; default: 1.';
 $_lang['spf_adviseonverify_desc'] = 'email errorsTo recipient about bad captcha attempts; default: 0.';
@@ -92,10 +95,10 @@ $_lang['spf_reportremoteident_desc'] = 'Put remote identity in x-headers (if the
 $_lang['spf_reportorigreferer_desc'] = 'Put original referer in x-headers (if there is one); default: 1.';
 $_lang['spf_formprocblankrefokay_desc'] = 'Allow HTTP REFERER to be blank; default: 1.';
 $_lang['spf_adviseonreferer_desc'] = 'Email errorsTo recipient about invalid referer hits; default: 0.';
-$_lang['spf_loconreferer_desc'] = 'Log invalid referer hits; default: 0.';
+$_lang['spf_logonreferer_desc'] = 'Log invalid referer hits; default: 0.';
 $_lang['spf_usebanlist_desc'] = 'Check every attempt against the Ban List. To use the banlist, manually edit the banlist file: core/components/spform/banlist.inc.php; default: 0.';
 $_lang['spf_warnbanned_desc'] = 'Warn people that they are banned; default: 0.';
-$_lang['spf_adviseonban_desc'] = 'email errorsTo recipient about banned attempts; default: 0.';
+$_lang['spf_adviseonban_desc'] = 'Email errorsTo recipient about banned attempts; default: 0.';
 $_lang['spf_logonban_desc'] = 'Log banned attempts; default: 0.';
 $_lang['spf_chkformrefnotself_desc'] = 'Make sure the referer is not the form itself. Spammers often set the referer to the form itself; default: 1.';
 $_lang['spf_chkformrefownserver_desc'] = 'Make sure request is coming from us. This can cause an intermittent "Disallowed HTTP referer" error if there are different urls for reaching the page or if users come directly to the contact page without visiting another page at the site first; default: 0.';

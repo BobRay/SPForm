@@ -68,7 +68,7 @@ array(
 ),
 array(
     'name'=>'test_mode',
-    'desc'=>'spf_test_mode_desc',
+    'desc'=>'spftest_mode_desc',
     'type'=>'combo-boolean',
     'options'=>'',
     'lexicon'=>'spform:properties',
@@ -292,7 +292,7 @@ array(
 ),
 array(
     'name'=>'warnInjections',
-    'desc'=>'spf_warninjections_descWarn user of script injection violations',
+    'desc'=>'spf_warninjections_desc',
     'type'=>'combo-boolean',
     'options'=>'',
     'lexicon'=>'spform:properties',
