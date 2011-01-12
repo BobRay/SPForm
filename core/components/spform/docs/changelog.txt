@@ -1,3 +1,9 @@
+Version 3.1.4
+-------------
+Refactored for Git
+Build tested with MODx 2.0.6-pl2
+
+
 Version 3.1.0
 -------------
 Changed resources to published
