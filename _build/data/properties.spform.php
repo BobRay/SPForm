@@ -31,6 +31,7 @@ array (
     'desc'=>'Comma separated list of recipient title/email pairs for the sent mail. Should be in this form --> Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'Webmaster: Webmaster: you@yourdomain.com'
 ),
 
@@ -39,6 +40,7 @@ array(
     'desc'=>'Error reports will be emailed to this address if the appropriate options are set.',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'you@yourdomain.com'
 ),
 
@@ -47,6 +49,7 @@ array(
     'desc'=>'SPForm Template chunk name',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'spformTpl'
 ),
 array(
@@ -54,6 +57,7 @@ array(
     'desc'=>'SPFormproc Template chunk name',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'spformprocTpl'
 ),
 array(
@@ -61,6 +65,7 @@ array(
     'desc'=>'SPForm captcha Template chunk name',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'spfcaptchaTpl'
 ),
 
@@ -69,6 +74,7 @@ array(
     'desc'=>'Test SPForm without sending mail',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -77,6 +83,7 @@ array(
     'desc'=>'Print debugging info - Do not leave this on for a working site',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -85,6 +92,7 @@ array(
     'desc'=>'Comma separated list of allowed referers. Be sure this lists all the domains by which your contact page can be reached.',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'mysite.com'
 ),
 
@@ -94,6 +102,7 @@ array(
     'desc'=>'Resource ID of SPFResponse page. This value will be set automatically on the first visit to the form.',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'9999'
 ),
 
@@ -103,6 +112,7 @@ array(
     'desc'=>'Email all errors to $errorsTo recipient',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -111,6 +121,7 @@ array(
     'desc'=>'Warn the user of all errors (use this only for debugging)',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -121,6 +132,7 @@ array(
     'desc'=>'Use SMTP instead of mail(). Be sure to set the four spfSMTP_ variables if you use this.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -131,6 +143,7 @@ array(
     'desc'=>'SMTP Port',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'587'
 ),
 
@@ -139,6 +152,7 @@ array(
     'desc'=>'SMTP acount Host',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'yourhost.com'
 ),
 
@@ -147,6 +161,7 @@ array(
     'desc'=>'SMTP account username',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'yourUserName'
 ),
 
@@ -155,6 +170,7 @@ array(
     'desc'=>'SMTP account password',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'yourPassword'
 ),
 
@@ -164,6 +180,7 @@ array(
     'desc'=>'Use hidden field to fool spambots. If they fill it out, the mail is not sent. Note: This doesn not use visibility:hidden so it should not affect SEO.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -174,6 +191,7 @@ array(
     'desc'=>'Warn the user about hidden field violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -184,6 +202,7 @@ array(
     'desc'=>'Log hidden field violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -194,6 +213,7 @@ array(
     'desc'=>'Require user to use either mouse or keyboard. Should not cause accessibility problems.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -204,6 +224,7 @@ array(
     'desc'=>'Require user to use keyboard (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -212,6 +233,7 @@ array(
     'desc'=>'Requre user to use mouse (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -222,6 +244,7 @@ array(
     'desc'=>'Warn user of mouse or keyboard violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -231,6 +254,7 @@ array(
     'desc'=>'Log mouse and keyboard violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -240,6 +264,7 @@ array(
     'desc'=>'Use max and min time limits for the form. Spambots often fill the form very quickly or very slowly. The settings should be fairly generous to avoid accessibility issues.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -248,6 +273,7 @@ array(
     'desc'=>'Minimum time allowed (seconds)',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'10'
 ),
 
@@ -256,6 +282,7 @@ array(
     'desc'=>'Maximum time allowed (seconds)',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1800'
 ),
 
@@ -266,6 +293,7 @@ array(
     'desc'=>'Warn user of timer violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -274,6 +302,7 @@ array(
     'desc'=>'Log timer violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -282,6 +311,7 @@ array(
     'desc'=>'Obfuscates the timer value',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'14543'
 ),
 
@@ -291,6 +321,7 @@ array(
     'desc'=>'Add a distinctive prefix to subject field',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -301,6 +332,7 @@ array(
     'desc'=>'Subject prefix to use. If addSubjSig = 1, this prefix is added to the subject of all messages. Another possibilty is $modx->config["site_name"]',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>" Contact"
 ),
 
@@ -311,6 +343,7 @@ array(
     'desc'=>'Log script injection attempts',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -319,6 +352,7 @@ array(
     'desc'=>'Warn user of script injection violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -329,6 +363,7 @@ array(
     'desc'=>'Maximum length of recipient field. If you are sending to multiple people with very long email addresses, you may need to change this.',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'65'
 ),
 
@@ -337,6 +372,7 @@ array(
     'desc'=>'Log recipient length violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -345,6 +381,7 @@ array(
     'desc'=>'Warn user of recipient length violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -355,6 +392,7 @@ array(
     'desc'=>'Maximum length of subject field. You can make this longer or shorter if you like.',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'100'
 ),
 
@@ -363,6 +401,7 @@ array(
     'desc'=>'Log subject length violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -371,6 +410,7 @@ array(
     'desc'=>'Warn user of subject length violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -381,6 +421,7 @@ array(
     'desc'=>'Maximum number of http links in the message body. If your users will be sending you long lists of links, you will need to make this bigger.',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'3'
 ),
 
@@ -389,6 +430,7 @@ array(
     'desc'=>'Log max links violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -397,6 +439,7 @@ array(
     'desc'=>'Warn user of max links violations',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -407,6 +450,7 @@ array(
     'desc'=>'Log illegal content in the subject field.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -415,6 +459,7 @@ array(
     'desc'=>'Warn user of illegal content in the subject field.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -425,6 +470,7 @@ array(
     'desc'=>'All emails sent will be CCd to this address',
     'type'=>'textfield',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>''
 ),
 
@@ -435,6 +481,7 @@ array(
     'desc'=>'Require the name field',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -443,6 +490,7 @@ array(
     'desc'=>'Require the subject field',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -451,6 +499,7 @@ array(
     'desc'=>'Require the email field',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -461,6 +510,7 @@ array(
     'desc'=>'Row size of message window (the input box for the message body)',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'10'
 ),
 
@@ -469,6 +519,7 @@ array(
     'desc'=>'Column size of message window (the input box for the message body)',
     'type'=>'integer',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'50'
 ),
 
@@ -479,6 +530,7 @@ array(
     'desc'=>'Include a reset button that empties all form fields.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -489,6 +541,7 @@ array(
     'desc'=>'Show the recipient name if there is only one',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -499,6 +552,7 @@ array(
     'desc'=>'Use captcha-style verification',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -507,6 +561,7 @@ array(
     'desc'=>'Use simple math equations as captcha images. The user is asked to solve a simple equation. This fools spambots that can read captcha images.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -517,6 +572,7 @@ array(
     'desc'=>'Warn users that their captcha entry is wrong',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 array(
@@ -524,6 +580,7 @@ array(
     'desc'=>'email errorsTo recipient about bad captcha attempts',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -534,6 +591,7 @@ array(
     'desc'=>'Log bad captcha attempts',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -543,6 +601,7 @@ array(
     'desc'=>'Put remote host in x-headers (if there is one).',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -551,6 +610,7 @@ array(
     'desc'=>'Put remote user in x-headers (if there is one)',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -559,6 +619,7 @@ array(
     'desc'=>'Put remote host address in x-headers (if there is one)',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -567,6 +628,7 @@ array(
     'desc'=>'Put remote identity in x-headers (if there is one)',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -575,6 +637,7 @@ array(
     'desc'=>'Put original referer in x-headers (if there is one)',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -586,6 +649,7 @@ array(
     'desc'=>'Allow HTTP REFERER to be blank',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -596,6 +660,7 @@ array(
     'desc'=>'Email errorsTo recipient about invalid referer hits',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -606,6 +671,7 @@ array(
     'desc'=>'Log invalid referer hits',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -614,6 +680,7 @@ array(
     'desc'=>'Check every attempt against the Ban List. To use the banlist, manually edit the banlist file: assets/components/spform/banlist.inc.php.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -622,6 +689,7 @@ array(
     'desc'=>'Warn people that they are banned',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -630,6 +698,7 @@ array(
     'desc'=>'email errorsTo recipient about banned attempts',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -638,6 +707,7 @@ array(
     'desc'=>'Log banned attempts',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -646,6 +716,7 @@ array(
     'desc'=>'Make sure the referer is not the form itself. Spammers often set the referer to the form itself.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'1'
 ),
 
@@ -656,6 +727,7 @@ array(
     'desc'=>'Make sure request is coming from us. This can cause an intermittent "Disallowed HTTP referer" error if there are different urls for reaching the page or if users come directly to the contact page without visiting another page at the site first.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
 
@@ -666,6 +738,7 @@ array(
     'desc'=>'Make sure referer is not blank. Use with care because some firewalls and proxies remove the HTTP referer.',
     'type'=>'combo-boolean',
     'options'=>'',
+    'lexicon'=>'spform:properties',
     'value'=>'0'
 )
 

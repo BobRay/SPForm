@@ -49,32 +49,36 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
 
                 array (
                     'name'=>'recipientArray',
-                    'desc'=>'Recipients',
+                    'desc'=>'spf_recipientarray_desc',
                     'type'=>'textfield',
                     'options'=>'',
+                    'lexicon'=>'spform:properties',
                     'value'=>$newRecipientArray
                 ),
 
 
                 array(
                     'name'=>'errorsTo',
-                    'desc'=>'Where to email error reports',
+                    'desc'=>'spf_errorsto_desc',
                     'type'=>'textfield',
                     'options'=>'',
+                    'lexicon'=>'spform:properties',
                     'value'=>$options['user_email']
                 ),
                 array(
                     'name'=>'spfResponseID',
-                    'desc'=>'Resource ID of SPFResponse page. This value will be set automatically on the first visit to the form.',
+                    'desc'=>'spf_spfresponseid_desc',
                     'type'=>'integer',
                     'options'=>'',
+                    'lexicon'=>'spform:properties',
                     'value'=>$temp_spfresponse_id
                 ),
                 array(
                     'name'=>'formProcAllowedReferers',
-                    'desc'=>'Comma separated list of allowed referers. Be sure this lists all the domains by which your contact page can be reached.',
+                    'desc'=>'spf_formprocallowedreferers_desc',
                     'type'=>'textfield',
                     'options'=>'',
+                    'lexicon'=>'spform:properties',
                     'value'=>$myServer
 
 
