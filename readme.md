@@ -22,7 +22,7 @@ list in the form. Here's an example:
 
       [[!SPForm? &recipientArray=`Webmaster:webmaster@yourdomain.com,Sales:sales@yourdomain.com`]]
 
-The entries are separated by commmas. For each entry, the part to the left of the colon will show
+The entries are separated by commas. For each entry, the part to the left of the colon will show
 in the drop-down list and the part to the right will be the email address the message is sent to.
 
 To see SPForm's many other options, just go to the elements section of the Manager
