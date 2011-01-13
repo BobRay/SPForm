@@ -137,6 +137,7 @@ foreach ($resources as $k => $resource) {
 $builder->setPackageAttributes(array(
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
+    'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
     'setup-options' => array(
         'source' => $sources['build'] . 'user_input.php',
     ),
