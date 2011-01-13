@@ -485,6 +485,7 @@ function validate() {
      * @access public
      */
 function send() {
+
     $this->_my_mail($this->_from, $this->_fromName, $this->_recipient, $this->_finalSubject, $this->_content, $this->_addlHeaders);
 
     $spfResponseId = $this->modx->getOption('spfResponseID',$this->spfconfig,9999);
@@ -701,7 +702,7 @@ function _show_errors($errors) {
                     list($referer) =
                         array_slice(explode("/", $_SERVER['HTTP_REFERER']), 2, 1);
                     for($x = 0; $x < count($referers); ++$x) {
-                        if(eregi($referers[$x], $referer)) {
+                        if(stristr($referer, $referers[$x] )) {
                         $found = true;
                         break;
                         }
@@ -738,10 +739,11 @@ function _show_errors($errors) {
 
         $addrMatch = false;    /* Assume no match */
 
+
         /* If the "check against" value contains a "/", it'll be an IP
          address (range) in CIDR notation. */
 
-        if(ereg('/[0-9]', $chkAgainst)) {
+        if(preg_match('#/[0-9]#', $chkAgainst)) {
 
         /* Break down dot.ted.qu.ad/bits of address to check against */
         list($addrBase, $hostBits) = explode('/', $chkAgainst);
@@ -760,7 +762,11 @@ function _show_errors($errors) {
         $addrMatch = (($chkAddr >= $lowLimit) && ($chkAddr <= $highLimit));
 
         } else {
-        $addrMatch = ereg("^$chkAgainst", $chkAddr);
+            $addrMatch = preg_match('#^' . $chkAgainst . '#', $chkAddr);
+            if ($addrMatch) {
+
+            }
+
         }
 
         return $addrMatch;
@@ -778,6 +784,8 @@ function _show_errors($errors) {
     function _check_banlist($logOnBan, $email) {
 
         global $scriptName;
+        
+/* ToDo: Remove this */
         $banListFile = $this->spfconfig['spformPath'] . 'banlist.inc.php';
 
         /* Get the banList */
@@ -789,6 +797,18 @@ function _show_errors($errors) {
             echo "banListFile = " . $banListFile;
             die("<br>Couldn't open banlist");
         }
+        /* ToDo: Check for file, fill chunk, unlink file */
+//       $lines = $this->modx->getChunk('spfbanlist');
+//
+//        $v = explode("\n",$lines);
+//        $banList = array();
+//
+//        foreach ($v as $l) {
+//            $l = rtrim(preg_replace('/\s*#.*/', '', $l));
+//            if(! empty($l)) {
+//                $banList[] = $l;
+//            }
+//        }
 
         $notAllowed = false;    /* Default to allowed */
 
@@ -797,17 +817,18 @@ function _show_errors($errors) {
             $remoteHostFix = trim(strtolower($_SERVER['REMOTE_HOST']));
 
             foreach($banList as $banned) {
-                $banFix = trim(strtolower(ereg_replace('\.', '\\.', $banned)));
+                $banFix = trim(strtolower(preg_replace('#\.#', '\\.', $banned)));
                 if(strstr($banFix, "@")) {            /* email address? */
-                    if(ereg('^@', $banFix)) {        /* Any user @host? */
+                    if(preg_match('#^@#', $banFix)) {        /* Any user @host? */
                         /* Expand the match expression to catch hosts and sub-domains  */
-                        $banFix = ereg_replace('^@', '[@\\.]', $banFix);
-                        if(($notAllowed = ereg("$banFix$", $emailFix))) {
+                        $banFix = preg_replace('#^@#', '[@\\.]', $banFix);
+                        if(($notAllowed = preg_match("#$banFix$#", $emailFix))) {
                             $bannedOn = $emailFix;
                             break;
                         }
-                    } elseif(ereg('@$', $banFix)) {    /* User at any host? */
-                        if(($notAllowed = ereg("^$banFix", $emailFix))) {
+                    }
+                    elseif(preg_match('#@$#', $banFix)) { /*  User at any host? */
+                        if(($notAllowed = preg_match('#^' . $banFix . '#', $emailFix))) {
                             $bannedOn = $emailFix;
                             break;
                         }
@@ -836,7 +857,7 @@ function _show_errors($errors) {
                     }
 
                 } else {                /* Must be a host/domain name  */
-                    if(($notAllowed = ereg("$banFix$", $remoteHostFix))) {
+                    if(($notAllowed = pregMatch("#$banFix$#", $remoteHostFix))) {
                         $bannedOn = $remoteHostFix;
                         break;
                     }
@@ -934,6 +955,7 @@ function _show_errors($errors) {
     * @param mixed $fp  file pointer to open file
     * @return string Line from file.
     */
+    /* ToDo: Remove this function */
     function _read_file_line($fp) {
         while(($inString = fgets($fp, 2048)) != false) {
         $inString = rtrim(preg_replace('/\s*#.*/', '', $inString));
