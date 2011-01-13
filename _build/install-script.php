@@ -45,6 +45,7 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
 
 
 
+
             $props = array(
 
                 array (
@@ -121,7 +122,10 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         if (!$obj) {
           $object->xpdo->log(xPDO::LOG_LEVEL_ERROR,'Could not get "Contact" Resource');
         } else {
-
+            /* store ID of contact page for uninstall */
+            $fp = fopen(MODX_CORE_PATH . 'components/spform/contactid.txt','w');
+            fwrite($fp,$obj->get('id'));
+            fclose($fp);
             $obj->set('template',$default_template);  /* give it the default template */
             $obj->set('isfolder',1);
             if ($obj->save() == false ) {
@@ -147,7 +151,19 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         break;
     case xPDOTransport::ACTION_UNINSTALL:
         $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Uninstalling . . .');
-        $object->xpdo->log(xPDO::LOG_LEVEL_WARN,'Note: You may have to remove the Contact and Thank You resources manually.');
+        $fp = fopen(MODX_CORE_PATH . 'components/spform/contactid.txt','r');
+        if ($fp) {
+            $id = fread($fp,20);
+            $id = (int) $id;
+            $obj = $object->xpdo->getObject('modResource',$id);
+            fclose($fp);
+        }
+        if ($obj) {
+            $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Removing "Contact" and "Thank You" resources.');
+            $obj->remove();
+        } else {
+            $object->xpdo->log(xPDO::LOG_LEVEL_WARN,'Note: You may have to remove the Contact and Thank You resources manually.');
+        }
         $success = true;
         break;
 
