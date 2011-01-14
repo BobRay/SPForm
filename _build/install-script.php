@@ -147,6 +147,21 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         $success =  true;
         break;
     case xPDOTransport::ACTION_UPGRADE:
+        $fName = MODX_CORE_PATH . 'components/spform/banlist.inc.php';
+        $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Upgrading SPForm.');
+        if (file_exists($fName)) {
+            $c = file_get_contents($fName);
+            $chunkObj = $object->xpdo->getObject('modChunk', array('name'=>'spfBanlist'));
+            if ($chunkObj && ! empty($c)) {
+                $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Moving the content of your Banlist file into the new spfBanlist chunk.');
+                $chunkObj->setContent($c);
+                if ($chunkObj->save()) {
+                     if (rename ($fName,$fName . 'bak'))
+                         $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Renamed banlist file banlist.bak.');;
+                }
+            }
+        }
+
         $success = true;
         break;
     case xPDOTransport::ACTION_UNINSTALL:

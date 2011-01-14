@@ -11,9 +11,9 @@
 * their position in the properties list.
 */
 
-/* This section and the one at the end for debugging
- *  They allow this run as a standalone script that
- *  sets the properties and prints debugging info
+/* This section and the one at the end are for debugging
+ *  They allow this run as a standalone script within MODx
+ * that sets the properties and prints debugging info
  */
 
 /*
@@ -609,7 +609,15 @@ array(
     'options'=>'',
     'lexicon'=>'spform:properties',
     'value'=>'0'
-)
+),
+array(
+    'name'=>'banlistChunk',
+    'desc'=>'spf_banlistchunk_desc',
+    'type'=>'textfield',
+    'options'=>'',
+    'lexicon'=>'spform:properties',
+    'value'=>'0'
+),
 );
 
 /* For debugging - see note above */

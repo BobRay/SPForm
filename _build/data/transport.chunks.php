@@ -37,4 +37,13 @@ $chunks[4]->fromArray(array(
 ),'',true,true);
 $chunks[4]->setContent(file_get_contents($sources['source_core'] . '/templates/spfcaptcha.tpl'));
 
+$chunks[5]= $modx->newObject('modChunk');
+$chunks[5]->fromArray(array(
+    'id' => 5,
+    'name' => 'spfBanlist',
+    'description' => 'SPForm Banned user List',
+),'',true,true);
+$chunks[5]->setContent(file_get_contents($sources['data'] . 'banlist.inc.php'));
+
+
 return $chunks;

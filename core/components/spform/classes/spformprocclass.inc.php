@@ -89,16 +89,7 @@ class spformproc {
      */
     var $_addlHeaders = array();
 
-    /**
-     * PHP4 Constructor
-     * @access public
-     * @param array $modx MODx object.
-     * @param array $spfconfig Array of snippet properties.
-     */
 
-    function spformproc(&$modx, $spfconfig = array()) {
-        $this->__construct($modx, $spfconfig);
-    }
 /**
      * PHP5 Constructor
      * @access public
@@ -785,30 +776,18 @@ function _show_errors($errors) {
 
         global $scriptName;
         
-/* ToDo: Remove this */
-        $banListFile = $this->spfconfig['spformPath'] . 'banlist.inc.php';
+       $banlistChunk = empty($this->spfconfig['banlistChunk']) ? 'spfBanlist' : $this->spfconfig['spfBanlistChunk'];
+       $lines = $this->modx->getChunk($banlistChunk);
 
-        /* Get the banList */
-        if($fp = fopen($banListFile, "r")) {
-            while($inString = $this->_read_file_line($fp))
-                $banList[] = $inString;
-            fclose($fp);
-        } else {
-            echo "banListFile = " . $banListFile;
-            die("<br>Couldn't open banlist");
+        $v = explode("\n",$lines);
+        $banList = array();
+
+        foreach ($v as $l) {
+            $l = rtrim(preg_replace('/\s*#.*/', '', $l));
+            if(! empty($l)) {
+                $banList[] = $l;
+            }
         }
-        /* ToDo: Check for file, fill chunk, unlink file */
-//       $lines = $this->modx->getChunk('spfbanlist');
-//
-//        $v = explode("\n",$lines);
-//        $banList = array();
-//
-//        foreach ($v as $l) {
-//            $l = rtrim(preg_replace('/\s*#.*/', '', $l));
-//            if(! empty($l)) {
-//                $banList[] = $l;
-//            }
-//        }
 
         $notAllowed = false;    /* Default to allowed */
 
