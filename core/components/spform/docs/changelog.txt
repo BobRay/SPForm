@@ -1,5 +1,8 @@
 Version 3.1.4
 -------------
+Moved Banlist into a chunk
+Uninstall now removes the two resources
+Added language strings for spfResponse properties
 Added changelog to build
 Removed deprecated PHP functions
 Internationalized property descriptions
