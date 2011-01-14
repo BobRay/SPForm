@@ -7,24 +7,28 @@
 $properties = array (
     array(
         'name'=>'takeMeBack',
-        'desc'=>'Put a "take me back" link on response page',
+        'desc'=>'spf_takemeback_desc',
         'type'=>'combo-boolean',
         'options'=>'',
+        'lexicon'=>'spform:properties',
         'value'=>'1'
     ),
     array(
         'name'=>'spfresponseTpl',
-        'desc'=>'SPF Response Template chunk name',
+        'desc'=>'spf_spfresponsetpl_desc',
         'type'=>'textfield',
         'options'=>'',
+        'lexicon'=>'spform:properties',
         'value'=>'spfresponseTpl'
     ),
     array(
         'name'=>'spfDebug',
-        'desc'=>'Print debugging info - Do not leave this on for a working site',
+        'desc'=>'spf_spfdebug_desc',
         'type'=>'combo-boolean',
         'options'=>'',
-        'value'=>'0'
+        'lexicon'=>'spform:properties',
+        'value'=>'0',
+
     )
 );
 

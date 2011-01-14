@@ -27,8 +27,6 @@
  * @subpackage lexicon
  */
 
-/* ToDo: SPFResponse language strings */
-
 /* SPForm Property Description strings */
 $_lang['spf_recipientarray_desc'] = "Comma separated list of recipient title/email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com";
 $_lang['spf_errorsto_desc'] = 'Error reports will be emailed to this address if the appropriate options are set.';
@@ -103,6 +101,11 @@ $_lang['spf_logonban_desc'] = 'Log banned attempts; default: 0.';
 $_lang['spf_chkformrefnotself_desc'] = 'Make sure the referer is not the form itself. Spammers often set the referer to the form itself; default: 1.';
 $_lang['spf_chkformrefownserver_desc'] = 'Make sure request is coming from us. This can cause an intermittent "Disallowed HTTP referer" error if there are different urls for reaching the page or if users come directly to the contact page without visiting another page at the site first; default: 0.';
 $_lang['spf_chkformrefnotblank_desc'] = 'Make sure referer is not blank. Use with care because some firewalls and proxies remove the HTTP referer; default: 0.';
+
+/* SPFResponse language strings */
+
+$_lang['spf_takemeback_desc'] = 'Put a "take me back" link on response page; default: 1.';
+$_lang['spf_spfresponsetpl_desc'] = 'SPF Response Template chunk name; default: spfresponseTpl.';
 
 
 
