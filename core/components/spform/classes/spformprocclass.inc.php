@@ -920,28 +920,10 @@ function _show_errors($errors) {
             $content .= "\n\nFrom: " . $senderEmail;
 
             $this->_addlHeaders[] = "X-purported_from_Address: " . $senderEmail . "\n";
-            $addlHeaders = $this->_generate_additional_headers();
+            $this->_addlHeaders = $this->_generate_additional_headers();
             $site = $this->modx->getOption('site_name');
 
             $this->_my_mail($errorsTo,$site,$errorsTo,$finalSubject,$content,$this->_addlHeaders);
         }
-    }
-
-   /**
-    * Read a line from a file, stripping comments and blank lines.
-    * Used by _check_banlist
-    *
-    * @param mixed $fp  file pointer to open file
-    * @return string Line from file.
-    */
-    /* ToDo: Remove this function */
-    function _read_file_line($fp) {
-        while(($inString = fgets($fp, 2048)) != false) {
-        $inString = rtrim(preg_replace('/\s*#.*/', '', $inString));
-        if(!empty($inString))
-            break;
-        }
-
-        return $inString;
     }
 }
