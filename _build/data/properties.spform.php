@@ -68,7 +68,7 @@ array(
 ),
 array(
     'name'=>'test_mode',
-    'desc'=>'spftest_mode_desc',
+    'desc'=>'spf_test_mode_desc',
     'type'=>'combo-boolean',
     'options'=>'',
     'lexicon'=>'spform:properties',
@@ -560,7 +560,7 @@ array(
     'type'=>'combo-boolean',
     'options'=>'',
     'lexicon'=>'spform:properties',
-    'value'=>'0'
+    'value'=>'spfBanlist'
 ),
 array(
     'name'=>'warnBanned',

@@ -1,6 +1,8 @@
 Version 3.1.4
 -------------
 Moved Banlist into a chunk
+Fixed bugs with property language keys
+Minor bug fixes
 Uninstall now removes the two resources
 Added language strings for spfResponse properties
 Added changelog to build
