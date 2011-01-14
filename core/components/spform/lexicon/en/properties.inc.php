@@ -59,7 +59,7 @@ $_lang['spf_warntimer_desc'] = 'Warn user of timer violations; default: 0.';
 $_lang['spf_logontimer_desc'] = 'Log timer violations; default: 0.';
 $_lang['spf_timeroffset_desc'] = "Obfuscates the timer value; default: 14543.";
 $_lang['spf_addsubjsig_desc'] = 'Add a distinctive prefix to subject field; default: 1.';
-$_lang['spf_dfltsubj_desc'] = 'Subject prefix to use. If addSubjSig = 1, this prefix is added to the subject of all messages. Another possibilty is $modx->config["site_name"]; default: Contact.';
+$_lang['spf_dfltsubj_desc'] = 'Subject prefix to use. If addSubjSig = 1, this prefix is added to the subject of all messages; default: Contact.';
 $_lang['spf_loginjections_desc'] = 'Log script injection attempts; default: 0.';
 $_lang['spf_warninjections_desc'] = 'Warn user of script injection attempts; default: 0.';
 $_lang['spf_maxrecipientlen_desc'] = 'Maximum length of recipient field. If you are sending to multiple people with very long email addresses, you may need to change this; default: 65.';
@@ -81,7 +81,7 @@ $_lang['spf_sptextrows_desc'] = 'Row size of message window (the input box for t
 $_lang['spf_sptextcols_desc'] = 'Column size of message window (the input box for the message body); default: 50.';
 $_lang['spf_includeresetbutton_desc'] = 'Include a reset button that empties all form fields; default: 0.';
 $_lang['spf_showsinglerecipientto_desc'] = 'Show the recipient name if there is only one; default: 0.';
-$_lang['spf_requireverify_desc'] = 'Use cptcha-style verification; default: 0.';
+$_lang['spf_requireverify_desc'] = 'Use captcha-style verification; default: 0.';
 $_lang['spf_usemathstring_desc'] = 'Use simple math equations as captcha images. The user is asked to solve a simple equation. This fools spambots that can read captcha images; default: 1.';
 $_lang['spf_warnverify_desc'] = 'Warn users that their captcha entry is wrong; default: 1.';
 $_lang['spf_adviseonverify_desc'] = 'email errorsTo recipient about bad captcha attempts; default: 0.';
