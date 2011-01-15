@@ -81,10 +81,10 @@ if ($cssPath == false) {
 
 
 if ($modx->getOption('spfDebug',$spfconfig,false)) {
-    echo "spfresponstTpl: ",$spfconfig['spfresponseTpl'] . "<br />";
-    echo "takeMeBack: ",$spfconfig['takeMeBack'] . "<br />";
-    echo "spfCssPath: ",$spfconfig['spfCssPath'] . "<br />";
-    echo "originalReferer: ",$_SESSION['origReferer'] . "<br />";
+    echo "spfresponseTpl: ",$spfconfig['spfresponseTpl'] . '<br />';
+    echo "takeMeBack: ",$spfconfig['takeMeBack'] . '<br />';
+    echo "spfCssPath: ",$spfconfig['spfCssPath'] . '<br />';
+    echo "originalReferer: ",$_SESSION['origReferer'] . '<br />';
 }
 
 
