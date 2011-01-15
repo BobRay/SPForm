@@ -639,7 +639,7 @@ array(
  $propArray = $obj->getProperties();
 
   foreach ($propArray as $key=>$value) {
-      $output .= $key . ": " . $value . "<br /><br />";
+      $output .= $key . ': ' . $value . '<br /><br />';
  }
 */
 

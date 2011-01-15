@@ -201,7 +201,7 @@ function set_placeholders () {
             $this->modx->lexicon->load('captcha:default');
 
             if ($this->modx->getOption('spfDebug',$this->spfconfig,false)) {
-                echo "<b>Verify URL:</b><br />".$verifyUrl."<br />";
+                echo "<b>Verify URL:</b><br />".$verifyUrl.'<br />';
             }
         } else {
             $this->modx->setPlaceholder('spf-cookie-message',"");
@@ -369,7 +369,7 @@ function set_placeholders () {
         /*   make sure we can  find the captcha files   */
 
         if (! file_exists($this->modx->getOption('assets_path'). "components/captcha/captcha.php")) {
-          echo "<br />" . $this->modx->lexicon('no-captcha');
+          echo '<br />' . $this->modx->lexicon('no-captcha');
           exit();
         }
         $useMathString = $this->modx->getOption('useMathString',$this->spfconfig,true);
