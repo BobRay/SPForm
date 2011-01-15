@@ -1,31 +1,15 @@
 <?php
 /**
- * spform
- *
- *
- *
- * SPForm is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License as published by the Free
- * Software Foundation; either version 2 of the License, or (at your option) any
- * later version.
- *
- * SPForm is distributed in the hope that it will be useful, but WITHOUT ANY
- * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
- * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along with
- * SPForm; if not, write to the Free Software Foundation, Inc., 59 Temple Place,
- * Suite 330, Boston, MA 02111-1307 USA
- *
- * @package spform
-  */
-
-/**
- * Properties (property descriptions) Lexicon Topic
+ * Properties lexicon topic for SPForm package
+ * @author Bob Ray
+ * @date 1/15/11
+ * @file default.inc.php
  *
  * @package spform
  * @subpackage lexicon
+ * @language en
  */
+
 
 /* SPForm Property Description strings */
 $_lang['spf_recipientarray_desc'] = "Comma separated list of recipient title/email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com";

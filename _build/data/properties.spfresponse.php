@@ -1,8 +1,15 @@
 <?php
+
 /**
+ * Default properties for the SPFResponse snippet
+ * @author Bob Ray
+ * @date 1/15/11
+ * @file properties.spfresponse.php
+ *
  * @package spform
  * @subpackage build
  */
+
 
 $properties = array (
     array(

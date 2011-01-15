@@ -1,4 +1,41 @@
 <?php
+
+/**
+ * SPFResponse snippet for SPForm package
+ *
+ * Copyright 2011 Bob Ray
+ *
+ * @author Bob Ray
+ * @date 1/15/11
+ *
+ * SPForm is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation; either version 2 of the License, or (at your option) any
+ * later version.
+ *
+ * SPForm is distributed in the hope that it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+ * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * SPForm; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * @package spform
+ */
+/**
+ * MODx SPForm Snippet
+ *
+ * @description SPFResponse snippet for SPForm package
+  *
+ * @package spform
+ *
+ * Properties
+ * @property takemeback - Put a "take me back" link on response page; default: 1.
+ * @property spfresponsetpl - SPF Response Template chunk name; default: spfresponseTpl.
+
+ */
+
 /**
 * This snippet creates the "Thank You" page users are sent to
 * after successfully sending mail.
@@ -9,20 +46,11 @@
 * @see spformprocclass.inc.php
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.1.4
 */
 
 /* ******************************************
-File:         spfresponse.inc.php
-
-Snippet:       SPForm
-Version: 3.1.4
-$Revision: 259 $
-$Author: Bob Ray $
-$Date: 2008-11-23 18:37:55 -0600 (Sun, 23 Nov 2008) $
 Adapted from:  Many sources but particularly scform by James Seymour and CFFormProtect by Jake Munson
 Compatibility: MODX Revolution
-
 *******************************************/
 global $modx;
 session_start();

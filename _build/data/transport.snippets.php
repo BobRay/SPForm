@@ -1,8 +1,16 @@
 <?php
+
 /**
+ * Snippet object array for the SPForm package
+ * @author Bob Ray
+ * @date 1/15/11
+ * @file transport.snippets.php
+ *
  * @package spform
  * @subpackage build
  */
+
+
 $snippets = array();
 
 $snippets[1]= $modx->newObject('modSnippet');

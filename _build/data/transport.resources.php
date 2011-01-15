@@ -1,8 +1,16 @@
 <?php
+
 /**
+ * Resource object array for the SPForm package
+ * @author Bob Ray
+ * @date 1/15/11
+ * @file transport.resources.php
+ *
  * @package spform
  * @subpackage build
  */
+
+
 $resources = array();
 
 $modx->log(modX::LOG_LEVEL_INFO,'Creating resource: Contact Page<br />');

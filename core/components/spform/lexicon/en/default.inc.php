@@ -1,4 +1,15 @@
 <?php
+/**
+ * Default lexicon topic for SPForm package
+ * @author Bob Ray
+ * @date 1/15/11
+ * @file default.inc.php
+ *
+ * @package spform
+ * @subpackage lexicon
+ * @language en
+ */
+
 /* English language file for SPForm package */
 
 /* form field labels */

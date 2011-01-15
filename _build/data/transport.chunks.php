@@ -1,8 +1,14 @@
 <?php
 /**
+ * Chunk object array for the SPForm package
+ * @author Bob Ray
+ * @date 1/15/11
+ * @file transport.chunks.php
+ *
  * @package spform
  * @subpackage build
  */
+
 $chunks = array();
 
 $chunks[1]= $modx->newObject('modChunk');
