@@ -369,7 +369,7 @@ function set_placeholders () {
         /*   make sure we can  find the captcha files   */
 
         if (! file_exists($this->modx->getOption('assets_path'). "components/captcha/captcha.php")) {
-          echo "<br>" . $this->modx->lexicon('no-captcha');
+          echo "<br />" . $this->modx->lexicon('no-captcha');
           exit();
         }
         $useMathString = $this->modx->getOption('useMathString',$this->spfconfig,true);

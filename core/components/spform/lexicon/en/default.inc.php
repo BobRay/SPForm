@@ -65,7 +65,7 @@ $_lang['bad-subject-length'] = "Subject line too long";
 $_lang['illegal-subject'] = "Illegal content in subject: ";
 $_lang['illegal-message'] = "Illegal content in message: ";
 $_lang['content-links'] = "Too many links in content: ";
-$_lang['mail-failure'] = "Sorry - Mail system reports failure in sending message<br />The most likely cause is an invalid return email address.<br><br>Note: If ISP mail() function is blocked, Webmaster should try SMTP option";
+$_lang['mail-failure'] = "Sorry - Mail system reports failure in sending message<br />The most likely cause is an invalid return email address.<br /><br />Note: If ISP mail() function is blocked, Webmaster should try SMTP option";
 /* response messages */
 $_lang['thank-you'] = "Thanks for your comments!";
 $_lang['came-from'] = "We remembered where you were.<br />Click the link below to be taken back.";

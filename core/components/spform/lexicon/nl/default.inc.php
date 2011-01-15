@@ -54,7 +54,7 @@ $_lang['bad-subject-length'] = "Onderwerp veld te lang";
 $_lang['illegal-subject'] = "Ongeldige inhoud in onderwerp: ";
 $_lang['illegal-message'] = "Ongeldige inhoud in bericht: ";
 $_lang['content-links'] = "Te veel links in de inhoud: ";
-$_lang['mail-failure'] = "Sorry - Mailing systeem rapporteert fout bij het verzenden van het bericht<br />De meest waarschijnlijke oorzaak is een ongeldig terugzend e-mail adres.<br><br>Opmerking: als de mail() functie van de ISP geblokkeerd is zou de webmaster de SMTP optie moeten proberen";
+$_lang['mail-failure'] = "Sorry - Mailing systeem rapporteert fout bij het verzenden van het bericht<br />De meest waarschijnlijke oorzaak is een ongeldig terugzend e-mail adres.<br /><br />Opmerking: als de mail() functie van de ISP geblokkeerd is zou de webmaster de SMTP optie moeten proberen";
 /* response messages */
 $_lang['thank-you'] = "Bedankt voor uw reactie!";
 $_lang['came-from'] = "We onthielden waar je was op de website.<br />Klik op de link hieronder op terug te keren.";

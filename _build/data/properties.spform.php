@@ -30,7 +30,7 @@
 global $modx;
 $obj = $modx->getObject('modSnippet',array('name'=>'SPForm'));
 if (!$obj) {
-    $output .= "Object not found<br>";
+    $output .= "Object not found<br />";
 }
 */
 
@@ -639,7 +639,7 @@ array(
  $propArray = $obj->getProperties();
 
   foreach ($propArray as $key=>$value) {
-      $output .= $key . ": " . $value . "<br><br>";
+      $output .= $key . ": " . $value . "<br /><br />";
  }
 */
 
