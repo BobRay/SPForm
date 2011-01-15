@@ -1,4 +1,4 @@
-<!-- Begin
+/* <![CDATA[ */
 function emailCheck (emailStr) {
 
 var checkTLD=1;
@@ -62,4 +62,4 @@ return false;
 
 return true;
 }
-//  End -->
+/* ]]> */
