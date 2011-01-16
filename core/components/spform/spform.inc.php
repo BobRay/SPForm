@@ -26,7 +26,7 @@
 /**
  * MODx SPForm Snippet
  *
- * @description SPForm snippet code
+ * Description: SPForm snippet code
   *
  * @package spform
  *

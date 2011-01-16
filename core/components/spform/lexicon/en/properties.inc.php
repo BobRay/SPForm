@@ -2,8 +2,7 @@
 /**
  * Properties lexicon topic for SPForm package
  * @author Bob Ray
- * @date 1/15/11
- * @file default.inc.php
+ * 1/15/11
  *
  * @package spform
  * @subpackage lexicon

@@ -5,9 +5,8 @@
  *
  * Copyright 2011 Bob Ray
  *
- * @file spformclass.inc.php
  * @author Bob Ray <http://bobsguides.com>
- * @date 1/15/11
+ * 1/15/11
  *
  * SPForm is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -27,7 +26,7 @@
 /**
  * MODx SPForm Class
  *
- * @description SPForm Class
+ * Description: SPForm Class
  * @package spform
  */
 
@@ -40,7 +39,7 @@
 
 class spform {
 /**
-     * @var array MODx instance passed in the constructor.
+     * @var modx MODx reference instance passed in the constructor.
      * @access protected
      */
     var $modx;
@@ -51,15 +50,6 @@ class spform {
     var $spfconfig;
 
 
-    /**
-     * PHP4 Constructor
-     * @access public
-     * @param array $modx MODx object.
-     * @param array $spfconfig Array of snippet properties.
-     */
-    function spform(&$modx, $spfconfig = array()) {
-        $this->__construct($spfconfig);
-    }
 /**
      * PHP5 Constructor
      * @access public

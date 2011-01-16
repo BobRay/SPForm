@@ -6,7 +6,7 @@
  * Copyright 2011 Bob Ray
  *
  * @author Bob Ray
- * @date 1/15/11
+ * 1/15/11
  *
  * SPForm is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -24,7 +24,7 @@
  * @package spform
  */
 /**
- * MODx SPForm Snippet
+ * MODx SPFResponse Snippet
  *
  * @description SPFResponse snippet for SPForm package
   *
@@ -33,19 +33,13 @@
  * Properties
  * @property takemeback - Put a "take me back" link on response page; default: 1.
  * @property spfresponsetpl - SPF Response Template chunk name; default: spfresponseTpl.
-
- */
-
-/**
-* This snippet creates the "Thank You" page users are sent to
-* after successfully sending mail.
-* @package spform
-*
-* @see spform.inc.php
-* @see spformclass.inc.php
-* @see spformprocclass.inc.php
-* @author  Bob Ray <bobray@softville.com>
-* @created 10/04/2008
+ *
+ * This snippet creates the "Thank You" page users are sent to
+ * after successfully sending mail.
+ *
+ * @see spform.inc.php
+ * @see spformclass.inc.php
+ * @see spformprocclass.inc.php
 */
 
 /* ******************************************
@@ -62,8 +56,6 @@ if ( (strlen($spf_key) < 5) || ($_SESSION['include_auth'] != md5($spf_key)) ){
     return $modx->lexicon('unauthorized');
 }
 $spfconfig = $scriptProperties;
-
-
 
 /*  If spfCssPath parameter is missing, user default.
   * IF set to "", no css file.

@@ -2,8 +2,7 @@
 /**
  * Chunk object array for the SPForm package
  * @author Bob Ray
- * @date 1/15/11
- * @file transport.chunks.php
+ * 1/15/11
  *
  * @package spform
  * @subpackage build

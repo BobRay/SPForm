@@ -3,8 +3,7 @@
 /**
  * Default properties for the SPFResponse snippet
  * @author Bob Ray
- * @date 1/15/11
- * @file properties.spfresponse.php
+ * 1/15/11
  *
  * @package spform
  * @subpackage build

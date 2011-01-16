@@ -4,9 +4,8 @@
  * Script to interact with user during SPForm package install
  *
  * Copyright 2011 Bob Ray
- * @file user_input.php
  * @author Bob Ray <http://bobsguides.com>
- * @date 1/15/11
+ * 1/15/11
  *
  *  is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -24,7 +23,7 @@
  * @package spform
  */
 /**
- * @description Script to interact with user during SPForm package install
+ * Description: Script to interact with user during SPForm package install
  * @package spform
  * @subpackage build
  */

@@ -5,9 +5,8 @@
  *
  * Copyright 2011 Bob Ray
  *
- * @file spformprocclass.inc.php
  * @author Bob Ray <http://bobsguides.com>
- * @date 1/15/11
+ * 1/15/11
  *
  * SPForm is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -27,7 +26,7 @@
 /**
  * MODx spformproc Class
  *
- * @description spformproc class for SPForm package
+ * Description: spformproc class for SPForm package
  * @package spform
  */
 

@@ -2,8 +2,7 @@
 /**
  * Default properties for the SPForm snippet
  * @author Bob Ray
- * @date 1/15/11
- * @file properties.spform.php
+ * 1/15/11
  *
  * @package spform
  * @subpackage build
@@ -12,7 +11,6 @@
 
 /**
 * include file to set spform snippet properties.
-* @access protected.
 *
 * Note: the properties recipientArray, errorsTo,
 * SPFResponseID, and formProcAllowedReferers will
