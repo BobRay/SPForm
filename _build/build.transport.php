@@ -30,6 +30,16 @@
 
 global $modx;
 
+/* The name of the package as it will appear in Workspaces will be this plus
+ * the next two variables */
+define('PKG_NAME','spform');
+define('PKG_NAME_LOWER','spform');
+define('PKG_VERSION','3.1.4');
+define('PKG_RELEASE','beta1');
+
+
+
+
 $mtime = microtime();
 $mtime = explode(" ", $mtime);
 $mtime = $mtime[1] + $mtime[0];
@@ -62,14 +72,6 @@ $packageNamespace = 'spform';
  * support files in or below in a single  directory, you'll only need one file
  * resolver.
 */
-
-/* The name of the package as it will appear in Workspaces will be this plus
- * the next two variables */
-define('PKG_NAME','spform');
-define('PKG_NAME_LOWER','spform');
-define('PKG_VERSION','3.1.4');
-define('PKG_RELEASE','beta1');
-
 
 /* override with your own defines here (see build.config.sample.php */
 require_once dirname(__FILE__).'/build.config.php';
@@ -146,7 +148,7 @@ foreach ($resources as $k => $resource) {
         $modx->log(modX::LOG_LEVEL_INFO,'Packaging install script.<br />');
         $vehicle->resolve('php',array(
             'type' => 'php',
-            'source' => $sources['build'] . 'install-script.php',
+            'source' => $sources['build'] . 'install.script.php',
             'target' => "return '" . $sources['build'] . "';"
         ));
     }
@@ -160,13 +162,10 @@ $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
     'setup-options' => array(
-        'source' => $sources['build'] . 'user_input.php',
+        'source' => $sources['build'] . 'user.input.php',
     ),
 ));
 
-
-/* load lexicon strings */
-$builder->buildLexicon($sources['lexicon']);
 
 /* zip up the package  */
 $builder->pack();
