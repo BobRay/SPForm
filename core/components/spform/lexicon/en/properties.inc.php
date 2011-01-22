@@ -11,9 +11,9 @@
 
 
 /* SPForm Property Description strings */
-$_lang['spf_recipientarray_desc'] = "Comma separated list of recipient title/email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com";
+$_lang['spf_recipientarray_desc'] = 'Comma separated list of recipient title/email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com';
 $_lang['spf_errorsto_desc'] = 'Error reports will be emailed to this address if the appropriate options are set.';
-$_lang['spf_spformtpl_desc'] = "SPForm Template chunk name; default: spformTpl.";
+$_lang['spf_spformtpl_desc'] = 'SPForm Template chunk name; default: spformTpl.';
 $_lang['spf_spformproctpl_desc'] = 'SPFormproc Template chunk name; default: spformprocTpl.';
 $_lang['spf_spfcaptchatpl_desc'] = 'SPForm captcha Template chunk name; default: spfcaptchaTpl.';
 $_lang['spf_test_mode_desc'] = 'Test SPForm without sending mail; default: 0.';
@@ -21,9 +21,9 @@ $_lang['spf_spfdebug_desc'] = 'Print debugging info - Do not leave this on for a
 $_lang['spf_formprocallowedreferers_desc'] = 'Comma separated list of allowed referers. Be sure this lists all the domains by which your contact page can be reached.';
 $_lang['spf_spfresponseid_desc'] = 'Resource ID of SPFResponse page. This value will be set automatically on the first visit to the form.';
 $_lang['spf_adviseall_desc'] = 'Email all errors to &errorsTo recipient; default: 0.';
-$_lang['spf_warnall_desc'] = "Warn the user of all errors (use this only for debugging); default: 0.";
+$_lang['spf_warnall_desc'] = 'Warn the user of all errors (use this only for debugging); default: 0.';
 $_lang['spf_spfusesmtp_desc'] = 'Use SMTP instead of mail(). Be sure to set all spfSMTP_ variables if you use this; default: 0.';
-$_lang['spf_spfsmtp_port_desc'] = "SMTP Port; default: 587.";
+$_lang['spf_spfsmtp_port_desc'] = 'SMTP Port; default: 587.';
 $_lang['spf_spfsmtp_host_desc'] = 'SMTP account Host.';
 $_lang['spf_spfsmtp_username_desc'] = 'SMTP account username.';
 $_lang['spf_spfsmtp_password_desc'] = 'SMTP account password.';
@@ -31,16 +31,16 @@ $_lang['spf_usehiddenfield_desc'] = 'Use hidden field to fool spambots. If they 
 $_lang['spf_warnhiddenfield_desc'] = 'Warn the user about hidden field violations; default: 0.';
 $_lang['spf_logonhidden_desc'] = 'Log hidden field violations; default: 0.';
 $_lang['spf_requiremouseorkeyboard_desc'] = 'Require user to use either mouse or keyboard. Should not cause accessibility problems; default: 1.';
-$_lang['spf_requirekeyboard_desc'] = "Require user to use keyboard (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.";
-$_lang['spf_requiremouse_desc'] = "Requre user to use mouse (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.";
+$_lang['spf_requirekeyboard_desc'] = 'Require user to use keyboard (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.';
+$_lang['spf_requiremouse_desc'] = 'Requre user to use mouse (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.';
 $_lang['spf_warnmouseandkeyboard_desc'] = 'Warn user of mouse or keyboard violations; default: 0.';
-$_lang['spf_logmouseandkeyboarderrors_desc'] = "Log mouse and keyboard violations; default: 0.";
+$_lang['spf_logmouseandkeyboarderrors_desc'] = 'Log mouse and keyboard violations; default: 0.';
 $_lang['spf_usetimer_desc'] = 'Use max and min time limits for the form. Spambots often fill the form very quickly or very slowly. The settings should be fairly generous to avoid accessibility issues; default: 1.';
 $_lang['spf_usetimermin_desc'] = 'Minimum time allowed (seconds); default: 10.';
-$_lang['spf_usetimermax_desc'] = "Maximum time allowed (seconds); default: 1800.";
+$_lang['spf_usetimermax_desc'] = 'Maximum time allowed (seconds); default: 1800.';
 $_lang['spf_warntimer_desc'] = 'Warn user of timer violations; default: 0.';
 $_lang['spf_logontimer_desc'] = 'Log timer violations; default: 0.';
-$_lang['spf_timeroffset_desc'] = "Obfuscates the timer value; default: 14543.";
+$_lang['spf_timeroffset_desc'] = 'Obfuscates the timer value; default: 14543.';
 $_lang['spf_addsubjsig_desc'] = 'Add a distinctive prefix to subject field; default: 1.';
 $_lang['spf_dfltsubj_desc'] = 'Subject prefix to use. If addSubjSig = 1, this prefix is added to the subject of all messages; default: Contact.';
 $_lang['spf_loginjections_desc'] = 'Log script injection attempts; default: 0.';
