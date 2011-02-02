@@ -9,7 +9,7 @@
  * @subpackage build
  */
 
-
+/* ToDo: Make sure "Thank You" page is published */
 $resources = array();
 
 $modx->log(modX::LOG_LEVEL_INFO,'Creating resource: Contact Page<br />');
