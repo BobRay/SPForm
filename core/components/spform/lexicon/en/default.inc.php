@@ -23,7 +23,7 @@ $_lang['verification'] = 'Verification';
 $_lang['enter-comments'] = 'Please enter your comments below.  Click &quot;Submit&quot; when done.';
 $_lang['submit'] = 'Submit';
 $_lang['reset'] = 'Reset';
-$_lang['wrote'] = 'wrote:\n\n';
+$_lang['wrote'] = "wrote:\n\n";
 /* error messages */
 $_lang['bad-referer'] = 'Error: Disallowed HTTP Referer!';
 $_lang['cookies-required'] = 'Cookies must be enabled to use this form.';

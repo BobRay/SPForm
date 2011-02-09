@@ -45,7 +45,7 @@ $_lang['verification'] = 'Überprüfung';
 $_lang['enter-comments'] = 'Bitte geben Sie Ihre Nachricht ein';
 $_lang['submit'] = 'Absenden';
 $_lang['reset'] = 'Leeren';
-$_lang['wrote'] = 'schrieb:\n\n';
+$_lang['wrote'] = "schrieb:\n\n";
 
 /* error messages */
 $_lang['bad-referer'] = 'Fehler: Nicht erlaubter Fremdzugriff!';
