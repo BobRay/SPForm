@@ -34,7 +34,7 @@ global $modx;
  * the next two variables */
 define('PKG_NAME','SPForm');
 define('PKG_NAME_LOWER','spform');
-define('PKG_VERSION','3.1.4');
+define('PKG_VERSION','3.1.5');
 define('PKG_RELEASE','beta1');
 
 

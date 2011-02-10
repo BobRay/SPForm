@@ -1,3 +1,7 @@
+Version 3.1.5
+-------------
+Fixed bug with newline in language string
+
 Version 3.1.4
 -------------
 Moved Banlist into a chunk
