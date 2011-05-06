@@ -132,7 +132,13 @@ $spfconfig['spformPath'] = $modx->getOption('spformPath',$spfconfig,$modx->getOp
 
 ini_set('error_log', $spformPath . 'error.log');
 
-$modx->lexicon->load('spform:default');
+/* ToDo: Test this */
+$language = !empty($spfconfig['language'])
+    ? $spfconfig['language'] . ':'
+    : '';
+$this->modx->lexicon->load($language . 'spform:default');
+
+// $modx->lexicon->load('spform:default');
 
 
 $spformTpl = $modx->getOption('spformTpl',$spfconfig,false);
