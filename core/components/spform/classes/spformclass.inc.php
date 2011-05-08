@@ -96,7 +96,7 @@ function register_js() {
 
         $src .= 'if (requireName == true) { ';
             $src .= 'if (form.name.value == "") { ';
-                $src .= 'alert( "Please enter your name" ); ';
+                $src .= 'alert("' . $this->modx->lexicon('no-name') . '"); ';
                 $src .= 'form.name.focus(); ';
                 $src .= 'return false; ';
             $src .= '} ';
@@ -104,7 +104,7 @@ function register_js() {
 
         $src .= 'if (requireEmail == true) { ';
             $src .= 'if (form.email.value.length == "") { ';
-                $src .= 'alert( "Please enter your email" ); ';
+                $src .= 'alert("' . $this->modx->lexicon('no-email') . '"); ';
                 $src .= 'form.email.focus(); ';
                 $src .= 'return false; ';
             $src .= '} ';
@@ -119,14 +119,14 @@ function register_js() {
 
         $src .= 'if (requireSubject == true) { ';
             $src .= 'if (form.subject.value == "") { ';
-                $src .= 'alert( "Please enter a subject" ); ';
+                $src .= 'alert("' . $this->modx->lexicon('no-subject') . '"); ';
                 $src .= 'form.subject.focus(); ';
                 $src .= 'return false; ';
             $src .= '} ';
         $src .= '} ';
 
          $src .= 'if (form.comments.value == "") { ';
-            $src .= 'alert( "Please enter a comment" ); ';
+            $src .= 'alert("' . $this->modx->lexicon('no-comments') . '"); ';
             $src .= 'form.comments.focus(); ';
             $src .= 'return false; ';
          $src .= '} ';
