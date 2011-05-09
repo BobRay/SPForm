@@ -668,7 +668,7 @@ function _show_errors($errors) {
 
 
 
-    $this->modx->setPlaceholder('spf-error-back-button','<br /><input type="button" value="Back" onclick="history.back(1)">');
+    $this->modx->setPlaceholder('spf-error-back-button','<br /><input type="button" value="'.$this->modx->lexicon('back').'" onclick="history.back(1)">');
 
     if ($this->modx->getOption('adviseAll',$this->spfconfig,false) || $this->_advise) {
         $this->_mail_advisory($errors);
