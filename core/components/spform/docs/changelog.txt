@@ -1,6 +1,7 @@
 Version 3.1.6
 -------------
 Fixed bug with lexicon->load for other languages
+Added language strings to JS alerts
 Added Spanish translation files
 
 Version 3.1.5

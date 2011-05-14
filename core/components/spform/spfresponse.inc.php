@@ -49,13 +49,19 @@ Compatibility: MODX Revolution
 global $modx;
 session_start();
 
-$modx->lexicon->load('spform:default');
+
 $spf_key = $modx->getOption('emailsender');
 
 if ( (strlen($spf_key) < 5) || ($_SESSION['include_auth'] != md5($spf_key)) ){
     return $modx->lexicon('unauthorized');
 }
 $spfconfig = $scriptProperties;
+
+$language = !empty($spfconfig['language'])
+    ? $spfconfig['language'] . ':'
+    : '';
+$modx->lexicon->load($language . 'spform:default');
+
 
 /*  If spfCssPath parameter is missing, user default.
   * IF set to "", no css file.

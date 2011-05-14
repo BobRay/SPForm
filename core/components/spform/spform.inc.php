@@ -136,7 +136,7 @@ ini_set('error_log', $spformPath . 'error.log');
 $language = !empty($spfconfig['language'])
     ? $spfconfig['language'] . ':'
     : '';
-$this->modx->lexicon->load($language . 'spform:default');
+$modx->lexicon->load($language . 'spform:default');
 
 // $modx->lexicon->load('spform:default');
 
