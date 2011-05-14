@@ -194,11 +194,18 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
             $id = fread($fp,20);
             $id = (int) $id;
             $obj = $object->xpdo->getObject('modResource',$id);
+
             fclose($fp);
         }
         if ($obj) {
             $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Removing "Contact" and "Thank You" resources.');
+            $children = $obj->getMany('Children');
             $obj->remove();
+            if (!empty ($children)) {
+                foreach($children as $child) {
+                    $child->remove();
+                }
+            }
         } else {
             $object->xpdo->log(xPDO::LOG_LEVEL_WARN,'Note: You may have to remove the Contact and Thank You resources manually.');
         }
