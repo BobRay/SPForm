@@ -69,4 +69,13 @@ $_lang['mail-failure'] = 'Lo siento - Systema Mail indica fallo en el envio de m
 $_lang['thank-you'] = 'Gracias por sus comentarios!';
 $_lang['came-from'] = 'Hemos recordado donde estaba.<br />Haga clik en el botón de abajo para volver atrás.';
 $_lang['back'] = 'Volver atrás';
+
+/* Captcha strings */
+$_lang['captcha_code'] = 'Codigo se seguridad';
+$_lang['captcha_mathstring_code'] = 'Respuesta';
+$_lang['login_captcha_error'] = 'Lo siento, el texto introducido no es correcto.  Por favor vuelva ha intentarlo.';
+$_lang['login_captcha_message'] = 'Por favor introduzca el codigo de seguridad indicado en la imagen. Si no puede leer el codigo, haga clik en la imagen para cambiarlo o contacte con su administrador del sitio web.';
+$_lang['login_mathstring_error'] = 'Lo siento, respuesta incorrecta. Por favor vuelve ha intentarlo.';
+$_lang['login_mathstring_message'] = 'Por favor resuelva la ecuación indicada en la imagen. Si no puede leer el codigo, haga clik en la imagen para cambiarlo o contacte con su administrador del sitio web.';
+
 ?>

@@ -185,11 +185,10 @@ function set_placeholders () {
 
         if ($this->modx->getOption('requireVerify',$this->spfconfig,false)) {
 
-            /* TODO: path to captcha should be system setting: spform.captcha_path */
+            /* ToDO: path to captcha should be system setting: spform.captcha_path? */
             $verifyUrl=$this->modx->getOption('assets_url').'components/captcha/captcha.php';
             $this->modx->setPlaceholder('spf-cookie-message','<div class="spf_cookie_msg">('.$this->modx->lexicon('cookies-required').')</div>');
-            $this->modx->lexicon->load('captcha:default');
-
+           
             if ($this->modx->getOption('spfDebug',$this->spfconfig,false)) {
                 echo "<b>Verify URL:</b><br />".$verifyUrl.'<br />';
             }
@@ -365,7 +364,7 @@ function set_placeholders () {
         $useMathString = $this->modx->getOption('useMathString',$this->spfconfig,true);
 
         if ($useMathString) {
-        $alt = $this->modx->lexicon("login_mathstring_message");
+            $alt = $this->modx->lexicon("login_mathstring_message");
         } else {
            $alt = $this->modx->lexicon("login_captcha_message");
         }

@@ -132,7 +132,7 @@ $spfconfig['spformPath'] = $modx->getOption('spformPath',$spfconfig,$modx->getOp
 
 ini_set('error_log', $spformPath . 'error.log');
 
-/* ToDo: Test this */
+
 $language = !empty($spfconfig['language'])
     ? $spfconfig['language'] . ':'
     : '';
