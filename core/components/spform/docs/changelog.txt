@@ -1,3 +1,8 @@
+Version 3.1.7
+-------------
+Added Russian Translation
+Created English nl properties file while awaiting nl translation
+
 Version 3.1.6
 -------------
 Fixed bug with lexicon->load for other languages
