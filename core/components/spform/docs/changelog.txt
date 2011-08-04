@@ -1,3 +1,7 @@
+Version 3.2.0
+-------------
+Added useemailsender and spfrom properties to override user email address in EMAIL_FROM
+
 Version 3.1.7
 -------------
 Added Russian Translation

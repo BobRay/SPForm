@@ -105,6 +105,8 @@ $_lang['spf_timeroffset_desc'] - Obfuscates the timer value; default: 14543.;
  * @property chkformrefnotself - Make sure the referer is not the form itself. Spammers often set the referer to the form itself; default: 1.
  * @property chkformrefownserver - Make sure request is coming from us. This can cause an intermittent "Disallowed HTTP referer" error if there are different urls for reaching the page or if users come directly to the contact page without visiting another page at the site first; default: 0.
  * @property chkformrefnotblank - Make sure referer is not blank. Use with care because some firewalls and proxies remove the HTTP referer; default: 0.
+ * @property spfrom - Specify email address to use for email from address; default: empty
+ * @property useemailsender - Use emailsender system setting for email from address --  overrides spfrom; default: 0.
 
  */
 

@@ -149,7 +149,7 @@ class spformproc {
 function validate() {
     $warnAll = $this->modx->getOption('warnAll',$this->spfconfig,false);
 
-    /* Get the list of valid referes from snippet properties  */
+    /* Get the list of valid referers from snippet properties  */
     $referers = explode(",",$this->spfconfig['formProcAllowedReferers']);
 
     /* Check the referer  Note: bad referer is logged in _check_allowed_referer function if logOnReferer is set */
@@ -385,8 +385,18 @@ function validate() {
     $this->_content .= preg_replace('/\r/', '', stripslashes($_POST['comments']));
 
     if (!empty($_POST['email'])) {
-        $this->_from = $_POST['email'];
+        if ($this->modx->getOption('useemailsender')) {
+            $this->_from = $this->modx->getOption('emailsender');
+        } else if ($this->modx->getoption('spfrom',$this->spfconfig)) {
+            $this->_from = $this->modx->getoption('spfrom',$this->spfconfig);
+        } else {
+            $this->_from = $_POST['email'];
+        }
         $this->_addlHeaders[] = "Reply-To: " . $_POST['email'];
+    }
+    /* if it's still empty, use emailsender system setting */
+    if (empty ($this->_from)) {
+        $this->_from = $this->modx->getOption('emailsender');
     }
 
     $this->_addlHeaders[] = $this->_generate_additional_headers();
@@ -593,6 +603,7 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
     $this->modx->mail->set(modMail::MAIL_SENDER, $from);
     $this->modx->mail->set(modMail::MAIL_SUBJECT, $finalSubject);
     $this->modx->mail->address('to', $recipient);
+
     foreach($this->_addlHeaders as $value) {
         /*  MS-Win mail servers want crlf and *don't* want a trailing pair
          *  necessary only for addl headers */

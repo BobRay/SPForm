@@ -626,6 +626,23 @@ array(
     'lexicon'=>'spform:properties',
     'value'=>'0'
 ),
+array(
+    'name'=>'spfrom',
+    'desc'=>'spf_spfrom_desc',
+    'type'=>'textfield',
+    'options'=>'',
+    'lexicon'=>'spform:properties',
+    'value'=>''
+),
+array(
+    'name'=>'useemailsender',
+    'desc'=>'spf_useemailsender_desc',
+    'type'=>'textfield',
+    'options'=>'',
+    'lexicon'=>'spform:properties',
+    'value'=>'0'
+),
+
 );
 
 /* For debugging - see note above */
