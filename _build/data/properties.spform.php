@@ -637,7 +637,7 @@ array(
 array(
     'name'=>'useemailsender',
     'desc'=>'spf_useemailsender_desc',
-    'type'=>'textfield',
+    'type'=>'combo-boolean',
     'options'=>'',
     'lexicon'=>'spform:properties',
     'value'=>'0'
