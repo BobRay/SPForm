@@ -35,7 +35,7 @@ global $modx;
 define('PKG_NAME','SPForm');
 define('PKG_NAME_LOWER','spform');
 define('PKG_VERSION','3.2.0');
-define('PKG_RELEASE','rc1');
+define('PKG_RELEASE','rc2');
 
 
 

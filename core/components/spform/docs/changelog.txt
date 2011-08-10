@@ -1,4 +1,9 @@
-Version 3.2.0
+
+Version 3.2.0-rc2
+-----------------
+Fixed bug with useemailsender property type
+
+Version 3.2.0-rc1
 -------------
 Added useemailsender and spfrom properties to override user email address in EMAIL_FROM
 
