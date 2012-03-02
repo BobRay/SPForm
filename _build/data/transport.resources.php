@@ -16,7 +16,7 @@ $modx->log(modX::LOG_LEVEL_INFO,'Creating resource: Contact Page<br />');
 $resources[1]= $modx->newObject('modResource');
 $resources[1]->fromArray(array(
     'id' => 1,
-    'class_key' => 'modResource',
+    'class_key' => 'modDocument',
     'context_key' => 'web',
     'type' => 'document',
     'contentType' => 'text/html',
@@ -41,7 +41,7 @@ $modx->log(modX::LOG_LEVEL_INFO,'Creating resource: Response Page<br />');
 $resources[2]= $modx->newObject('modResource');
 $resources[2]->fromArray(array(
     'id' => 2,
-    'class_key' => 'modResource',
+    'class_key' => 'modDocument',
     'context_key' => 'web',
     'type' => 'document',
     'contentType' => 'text/html',
