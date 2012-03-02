@@ -2,9 +2,10 @@
 <div id="spf_form">
 
 <form action="[[~[[*id]]]]" method="post" onsubmit="return checkform(this);">
-
-  [[+spf-use-mouse-or-keyboard1]]
-  [[+spf-use-mouse-or-keyboard2]]
+  <fieldset style="display:none">
+     [[+spf-use-mouse-or-keyboard1]]
+     [[+spf-use-mouse-or-keyboard2]]
+  </fieldset>
 
   [[+spf-use-hidden-field]]
 
