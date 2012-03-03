@@ -2,7 +2,8 @@
 /**
  * spform properties German lexicon file for fields and error messages
  *
- * Translation by Guido Gallenkamp (dogo)
+ * Translation by Guido Gallenkamp (dogo) and Roland Solenthaler
+ *
  *
  * Encoding: UTF-8
  *
@@ -92,3 +93,13 @@ $_lang['mail-failure'] = 'Entschuldigung. Das E-MailSystem meldet einen Fehler b
 $_lang['thank-you'] = 'Vielen Dank für Ihre Nachricht!';
 $_lang['came-from'] = 'Klicken Sie auf den unten stehenden Link um zur zuletzt besuchten Seite zurück zu kehren.';
 $_lang['back'] = 'Zurück';
+
+
+/* Captcha messages  */
+$_lang['area_captcha'] = 'CAPTCHA';
+$_lang['captcha_code'] = 'Sicherheits Code';
+$_lang['captcha_mathstring_code'] = 'Antwort';
+$_lang['login_captcha_error'] = 'Sie haben den Text des Captcha-Bildes falsch eingegeben. Bitte versuchen Sie es erneut!';
+$_lang['login_captcha_message'] = 'Bitte geben Sie den Sicherheits-Code so ein, wie er im Captcha-Bild erscheint. Wenn Sie den Code nicht lesen können, klicken Sie erneut auf das Bild um einen neuen Code zu generieren - oder kontaktieren Sie Ihren Site-Administatoren.';
+$_lang['login_mathstring_error'] = 'Falsche Antwort. Bitte versuchen Sie es erneut.';
+$_lang['login_mathstring_message'] = 'Bitte lösen Sie die Rechenaufgabe. Wenn Sie die Rechenaufgabe nicht lesen können, klicken Sie erneut auf das Bild um eine neue Aufgabe zu generieren - oder kontaktieren Sie Ihren Site-Administatoren.';
