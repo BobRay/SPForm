@@ -27,8 +27,9 @@
  * @package spform
  */
 
-/*
+/**
  * This section prints the debugging information if $spfDebug=true
+ * @var $spfconfig array
  */
  echo "spfCssPath: ",$spfconfig['spfCssPath'] . '<br />';
  echo "referer: " . $_SERVER['HTTP_REFERER'] . '<br />';

@@ -36,7 +36,7 @@
 * @package spform
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.1.5
+* @version 3.2.0
 */
 
 /* error_reporting(E_ALL); */
@@ -63,7 +63,7 @@ define('CRLF',chr(13) . chr(10));
  */
 class spformproc {
     /**
-     * @var array MODx instance passed in the constructor.
+     * @var $modx MODx instance passed in the constructor.
      * @access protected
      */
     var $modx;
@@ -194,7 +194,8 @@ function validate() {
     /* Check for banned email addresses and remote hosts */
     if ($this->modx->getOption('useBanList',$this->spfconfig,false)) {
         $logOnBan = $this->modx->getOption('logOnBan',$this->spfconfig,false);
-        if ($banned = $this->_check_banlist($logOnBan, $_POST['email'])) {
+        $banned = $this->_check_banlist($logOnBan, $_POST['email']);
+        if ($banned) {
 
             if ($this->modx->getOption('adviseOnBan',$this->spfconfig,false)) {
                 $this->_advise = true;
@@ -260,7 +261,8 @@ function validate() {
             }
         }
     }
-
+    $keysUsed = 0;
+    $mouseMove = 0;
     /*  If we're requiring the keyboard and/or mouse, make sure they were used  */
     if ($this->modx->getOption('requireKeyboard',$this->spfconfig,false)
      || $this->modx->getOption('requireMouseOrKeyboard',$this->spfconfig,false)) {
@@ -832,7 +834,7 @@ function _show_errors($errors) {
         }
 
         $notAllowed = false;    /* Default to allowed */
-
+        $bannedOn = '';
         if(count($banList)) {
             $emailFix = trim(strtolower($email));
             $remoteHostFix = trim(strtolower($_SERVER['REMOTE_HOST']));
@@ -862,15 +864,16 @@ function _show_errors($errors) {
                 } elseif(preg_match('/^\d{1,3}(\\\.\d{1,3}){0,3}(\/\d{1,2})?$/',
                                     $banFix)) {
                     /* IP address  */
-                    if($notAllowed = $this->_check_ip($banFix, $_SERVER['REMOTE_ADDR'])) {
+                    $notAllowed = $this->_check_ip($banFix, $_SERVER['REMOTE_ADDR']);
+                    if($notAllowed) {
                         $bannedOn = $_SERVER['REMOTE_ADDR'];
                         break;
                     }
 
                     /* If the client is working through a proxy...*/
                     if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                        if($notAllowed =
-                            $this->_check_ip($banFix, $_SERVER['HTTP_X_FORWARDED_FOR']))
+                        $notAllowed = $this->_check_ip($banFix, $_SERVER['HTTP_X_FORWARDED_FOR']);
+                        if($notAllowed)
                         {
                         $bannedOn = $_SERVER['HTTP_X_FORWARDED_FOR'];
                         break;
@@ -878,7 +881,8 @@ function _show_errors($errors) {
                     }
 
                 } else {                /* Must be a host/domain name  */
-                    if(($notAllowed = pregMatch("#$banFix$#", $remoteHostFix))) {
+                    $notAllowed = preg_match("#$banFix$#", $remoteHostFix);
+                    if($notAllowed) {
                         $bannedOn = $remoteHostFix;
                         break;
                     }

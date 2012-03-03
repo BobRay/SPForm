@@ -1,5 +1,5 @@
 
-SPForm Version: 3.1.5 - Simple Spam-proof Contact Form Snippet
+SPForm - Simple Spam-proof Contact Form Snippet
 ==============================================================
 
 Author: Bob Ray

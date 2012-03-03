@@ -1,3 +1,7 @@
+Version 3.2.0-pl
+----------------
+Better validation with strict DOCTYPE (thanks Roland)
+Corrected class of created resources
 
 Version 3.2.0-rc2
 -----------------

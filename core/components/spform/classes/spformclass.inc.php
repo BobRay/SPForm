@@ -35,7 +35,7 @@
 *    @package spform
 *    @author  Bob Ray <bobray@softville.com>
 *    @created 10/04/2008
-*    @version 3.1.5  */
+*    @version 3.2.0  */
 
 class spform {
 /**
@@ -291,6 +291,8 @@ function set_placeholders () {
 
     /*  If we've more than one choice: present a menu  */
     $val = "";
+    $options = array();
+    $selected = '';
     if(count($options) > 1) {
     /*   If we were given a single arg, that'll be the selected menu item.  */
         $val = '<span class="spf_inline_prompt">'.$this->modx->lexicon('send-to').': </span>';
@@ -421,6 +423,7 @@ function set_placeholders () {
 */
 
     function render() {
+        /* @var $chunk modChunk */
         $spformTpl = $this->modx->getOption('spformTpl',$this->spfconfig,'spformTpl');
         $chunk = $this->modx->getObject('modChunk',array(
             'name' => $spformTpl,

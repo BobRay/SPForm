@@ -120,8 +120,11 @@ $_lang['spf_timeroffset_desc'] - Obfuscates the timer value; default: 14543.;
 * @see spformresponse
 * @author  Bob Ray <bobray@softville.com>
 * @created 10/04/2008
-* @version 3.1.5
+* @version 3.2.0
 *
+* @var $modx modX
+* @var $scriptProperties array
+* @var $spformPath array path to spform file
 */
 
 /* error_reporting(E_ALL); */

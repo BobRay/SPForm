@@ -31,12 +31,13 @@
  * @package spform
  *
  * Properties
- * @property takemeback - Put a "take me back" link on response page; default: 1.
- * @property spfresponsetpl - SPF Response Template chunk name; default: spfresponseTpl.
+ * @property takemeback boolean - Put a "take me back" link on response page; default: 1.
+ * @property spfresponsetpl string - SPF Response Template chunk name; default: spfresponseTpl.
  *
  * This snippet creates the "Thank You" page users are sent to
  * after successfully sending mail.
  *
+ * @var $scriptProperties array
  * @see spform.inc.php
  * @see spformclass.inc.php
  * @see spformprocclass.inc.php
