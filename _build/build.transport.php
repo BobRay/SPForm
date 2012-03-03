@@ -108,11 +108,13 @@ $attr = array(
         ),
     )
 );
+/** @var $categoryObject modCategory */
 $categoryObject= $modx->newObject('modCategory');
 $categoryObject->set('id',1);
 $categoryObject->set('category','SPForm');
 
 /* add snippets to category */
+/** @var $snippets array(modSnippet) */
 $snippets = require_once $sources['data'].'transport.snippets.php';
 $categoryObject->addMany($snippets,'Snippets');
 
@@ -143,6 +145,8 @@ $attributes= array(
     xPDOTransport::PRESERVE_KEYS => false,
 );
 foreach ($resources as $k => $resource) {
+    /** @var $vehicle modTransportVehicle
+     *  @var $resource modResource */
     $vehicle = $builder->createVehicle($resource,$attributes);
     if ($resource->get('pagetitle') == 'Thank You') {
         $modx->log(modX::LOG_LEVEL_INFO,'Packaging install script.<br />');

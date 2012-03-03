@@ -26,9 +26,14 @@
  * Description: Resolver script for SPForm package
  * @package spform
  * @subpackage build
+ *
+ * @var $object modX
+ * @var $options array
+ * @var $resource modResource
  */
 
 $success = false;
+/** @var */
 $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Running PHP Resolver.');
 switch($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
@@ -54,6 +59,7 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         }
 
         /* get snippet */
+        /** @var $obj modSnippet */
         $obj = $object->xpdo->getObject('modSnippet',array(
             'name'=>'SPForm'
         ));
@@ -188,6 +194,9 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         $success = true;
         break;
     case xPDOTransport::ACTION_UNINSTALL:
+        /** @var $obj modResource
+         *  @var $child modResource
+         * */
         $object->xpdo->log(xPDO::LOG_LEVEL_INFO,'Uninstalling . . .');
         $fp = fopen(MODX_CORE_PATH . 'components/spform/contactid.txt','r');
         if ($fp) {

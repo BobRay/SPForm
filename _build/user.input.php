@@ -26,6 +26,8 @@
  * Description: Script to interact with user during SPForm package install
  * @package spform
  * @subpackage build
+ *
+ * @var $options array
  */
 
 switch ($options[XPDO_TRANSPORT_PACKAGE_ACTION]) {
