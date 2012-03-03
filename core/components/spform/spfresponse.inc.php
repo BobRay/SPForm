@@ -61,6 +61,13 @@ $spfconfig = $scriptProperties;
 $language = !empty($spfconfig['language'])
     ? $spfconfig['language'] . ':'
     : '';
+
+/* allow different language than used in Manager */
+if (!empty($spfconfig['language'])) {
+  $modx->setOption('cultureKey', $spfconfig['language']);
+}
+
+
 $modx->lexicon->load($language . 'spform:default');
 
 
