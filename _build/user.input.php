@@ -30,11 +30,6 @@
  * @var $options array
  */
 
-switch ($options[XPDO_TRANSPORT_PACKAGE_ACTION]) {
-    case XPDO_TRANSPORT_ACTION_INSTALL: break;
-    case XPDO_TRANSPORT_ACTION_UPGRADE: break;
-    case XPDO_TRANSPORT_ACTION_UNINSTALL: break;
-}
 
 $output = '<p>&nbsp;</p>
 <label for="user_email">Please enter the email address you would like SPForm to send to.</label>
