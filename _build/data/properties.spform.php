@@ -288,7 +288,7 @@ array(
     'type'=>'textfield',
     'options'=>'',
     'lexicon'=>'spform:properties',
-    'value'=>" Contact"
+    'value'=>"Contact"
 ),
 array(
     'name'=>'logInjections',
