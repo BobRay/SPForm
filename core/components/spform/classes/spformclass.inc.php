@@ -279,10 +279,11 @@ function set_placeholders () {
 
     $ra = $this->modx->getOption('recipientArray',$this->spfconfig,'');
     $this->spfconfig['recipientArray'] = explode(',',$ra);
+
     unset($ra);
 
     /* split each entry at the :  and set an option with the first part */
-
+    $options = array();
     foreach ($this->spfconfig['recipientArray'] as $inString) {
         list($key, $value) =  explode(':', $inString);
         $options[$key] = $key;
@@ -291,7 +292,6 @@ function set_placeholders () {
 
     /*  If we've more than one choice: present a menu  */
     $val = "";
-    $options = array();
     $selected = '';
     if(count($options) > 1) {
     /*   If we were given a single arg, that'll be the selected menu item.  */
