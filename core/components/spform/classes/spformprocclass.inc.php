@@ -151,9 +151,7 @@ function validate() {
         }
 
         return $this->_show_fatal($this->_errors);
-
     }
-
 
     /*  Convert recipient list to an array  */
     $recipientArray = $this->modx->getOption('recipientArray',$this->spfconfig,'');
@@ -163,7 +161,6 @@ function validate() {
         list($key, $value) = explode(':', $inString);
         $this->_whotos[trim($key)] = trim($value);
     }
-
 
     /* Convert "whoto" to recipient. */
     foreach($this->_whotos as $key => $value) {
@@ -204,7 +201,7 @@ function validate() {
     /* These will apply only if JS is turned off.
      * If it's on, these errors will be caught before the form is submitted.
      * An exception is certain errors in the email address because we do
-     * more thourough testing here.
+     * more thorough testing here.
      *  */
 
     /* Gave an email address?  It's an error if not--unless we allow no email address. */
