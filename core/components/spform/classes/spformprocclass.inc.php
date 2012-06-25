@@ -593,12 +593,14 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
     $this->modx->mail->set(modMail::MAIL_SUBJECT, $finalSubject);
     $this->modx->mail->address('to', $recipient);
 
-    foreach($this->_addlHeaders as $value) {
+    foreach($this->_addlHeaders as $key => $value) {
         /*  MS-Win mail servers want crlf and *don't* want a trailing pair
          *  necessary only for addl headers */
         if(PHP_OS == "WIN32" || PHP_OS == "WINNT") {
-            $$value = preg_replace("/\n$/", "", $$value);
-            $$value = preg_replace("/\n/", "\r\n", $$value);
+            if (isset($value) && ! empty($value)) {
+               $this->_addlHeaders[$key] = preg_replace("/\n$/", "", $value);
+               $this->_addlHeaders[$key] = preg_replace("/\n/", "\r\n", $value);
+            }
         }
         $this->modx->mail->header($value);
     }
