@@ -48,7 +48,7 @@ Adapted from:  Many sources but particularly scform by James Seymour and CFFormP
 Compatibility: MODX Revolution
 *******************************************/
 global $modx;
-session_start();
+//session_start();
 
 
 $spf_key = $modx->getOption('emailsender');
