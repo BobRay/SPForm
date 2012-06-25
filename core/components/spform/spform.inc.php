@@ -180,7 +180,7 @@ if (isset($_POST['s'])) {
     if ((strlen($spf_key) < 5) || ($_SESSION['include_auth'] != md5($spf_key))) {
         die ('Unauthorized Access in spformproc');
     }
-    $iFile = $spfconfig['spformPath'] . "classes/spformprocclass.inc.php";
+    $iFile = $spfconfig['spformPath'] . "model/spform/spformprocclass.inc.php";
 
     require_once $iFile;
 
@@ -220,7 +220,7 @@ if (strlen($localKey) < 5) {
 $localKey = md5($localKey);
 $_SESSION['include_auth'] = $localKey;
 
-$iFile = $spfconfig['spformPath'] . "classes/spformclass.inc.php";
+$iFile = $spfconfig['spformPath'] . "model/spform/spformclass.inc.php";
 require_once $iFile;
 
 $spform = new spform($modx, $spfconfig);
