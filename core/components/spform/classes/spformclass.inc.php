@@ -30,6 +30,7 @@
  * @package spform
  */
 
+
 /**  This class is instantiated on the first request to the page.
 *    It does some preliminary checks, then renders the form.
 *    @package spform
@@ -431,7 +432,7 @@ function set_placeholders () {
         if ($chunk == null) {
             die($this->modx->lexicon('no-template'). $spformTpl);
         }
-
+        $chunk->setCacheable(false);
        return $chunk->process();
     }
 
