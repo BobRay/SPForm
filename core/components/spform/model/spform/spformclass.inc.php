@@ -51,6 +51,8 @@ class spform {
      */
     protected $spfconfig;
 
+    /** @var $placeholders array array of placeholders */
+    protected $placeholders;
 
 /**
      * PHP5 Constructor
@@ -189,13 +191,13 @@ function set_placeholders () {
 
             /* ToDO: path to captcha should be system setting: spform.captcha_path? */
             $verifyUrl=$this->modx->getOption('assets_url').'components/captcha/captcha.php';
-            $this->modx->setPlaceholder('spf-cookie-message','<div class="spf_cookie_msg">('.$this->modx->lexicon('cookies-required').')</div>');
+            $this->placeholders['spf-cookie-message'] = '<div class="spf_cookie_msg">('.$this->modx->lexicon('cookies-required').')</div>';
            
             if ($this->modx->getOption('spfDebug',$this->spfconfig,false)) {
                 echo "<b>Verify URL:</b><br />".$verifyUrl.'<br />';
             }
         } else {
-            $this->modx->setPlaceholder('spf-cookie-message',"");
+            $this->placeholders['spf-cookie-message'] = "";
         }
 
 
@@ -214,10 +216,10 @@ function set_placeholders () {
             $val .= $str;
             $val .= ' /* ]]>  */ ';
             $val .= '</script>';
-            $this->modx->setPlaceholder('spf-use-mouse-or-keyboard1',$val);
+            $this->placeholders['spf-use-mouse-or-keyboard1'] = $val;
         }
     } else {
-        $this->modx->setPlaceholder('spf-use-mouse-or-keyboard1',"");
+        $this->placeholders['spf-use-mouse-or-keyboard1'] = "";
     }
 
     /* send the mouse movement value */
@@ -235,10 +237,10 @@ function set_placeholders () {
             $val .= $str;
             $val .= ' /* ]]>  */ ';
             $val .= '</script>';
-            $this->modx->setPlaceholder('spf-use-mouse-or-keyboard2',$val);
+            $this->placeholders['spf-use-mouse-or-keyboard2'] = $val;
         }
     } else {
-        $this->modx->setPlaceholder('spf-use-mouse-or-keyboard2',"");
+        $this->placeholders['spf-use-mouse-or-keyboard2'] = "";
     }
 
     /*  Add hidden field to output if $useHiddenField == true.
@@ -247,9 +249,9 @@ function set_placeholders () {
     if ($this->modx->getOption('useHiddenField',$this->spfconfig,true)) {
         $val = '<div class="spform_input">';
         $val .= $this->modx->lexicon('hidden-last-name').': ' . '<input type="text" name="Last__Name" size="30" /></div>';
-        $this->modx->setPlaceholder('spf-use-hidden-field',$val);
+        $this->placeholders['spf-use-hidden-field'] = $val;
     } else {
-        $this->modx->setPlaceholder('spf-use-hidden-field',"");
+        $this->placeholders['spf-use-hidden-field'] = "";
     }
 
     /*  Set timer variables, if using timer */
@@ -265,9 +267,9 @@ function set_placeholders () {
             $val .= 'time = ' . $tm . '<br /><br />';
         }
         $val .= '<div class="spform_normal_input"><input type="hidden" name="tmStart" value="' . $tm . '" /></div>';
-        $this->modx->setPlaceholder('spf-use-timer',$val);
+        $this->placeholders['spf-use-timer'] = $val;
     } else {
-        $this->modx->setPlaceholder('spf-use-timer',"");
+        $this->placeholders['spf-use-timer'] = "";
     }
 
     /*  Now we'll create the input form itself  */
@@ -311,7 +313,7 @@ function set_placeholders () {
         }
         $val .= "</select></span>\n";
 
-        $this->modx->setPlaceholder('spf-recipient',$val);
+        $this->placeholders['spf-recipient'] = $val;
     } else {
         /* There'll be only one...  */
         if ($this->modx->getOption('showSingleRecipientTo',$this->spfconfig,false)) {
@@ -329,7 +331,7 @@ function set_placeholders () {
                 trim($key) . "\" />\n";
             }
         }
-        $this->modx->setPlaceholder('spf-recipient',$val);
+        $this->placeholders['spf-recipient'] = $val;
     }
 
     /* Set $_SESSION variable used by the spfresponse page to create a "take me back" link.*/
@@ -345,13 +347,13 @@ function set_placeholders () {
     }
 
     $val = $this->modx->lexicon('your-name') ;
-    $this->modx->setPlaceholder('spf-name-prompt',$val);
+    $this->placeholders['spf-name-prompt'] = $val;
 
     $val = $this->modx->lexicon('email-address');
-    $this->modx->setPlaceholder('spf-email-prompt',$val);
+    $this->placeholders['spf-email-prompt'] = $val;
 
     $val = $this->modx->lexicon('subject');
-    $this->modx->setPlaceholder('spf-subject-prompt',$val);
+    $this->placeholders['spf-subject-prompt'] = $val;
 
     $val = "";
 
@@ -386,36 +388,36 @@ function set_placeholders () {
         $captcha_image= '<img '. 'onclick="this.src=' . "'" . $this->modx->getOption('assets_url') . "components/captcha/captcha.php?rand='" .
             "+Math.floor(Math.random()*200);".'"' .' src="'. $this->modx->getOption('assets_url') . 'components/captcha/captcha.php?rand='.rand().'" alt="'.$alt.'" />';
 
-        $this->modx->setPlaceholder('spf-captcha-instructions',$captcha_prompt);
-        $this->modx->setPlaceholder('spf-captcha-image',$captcha_image);
-        $this->modx->setPlaceholder('spf-captcha-input-prompt',$captcha_input_prompt);
-        $this->modx->setPlaceholder('spf-captcha-input','<input type="text" name="verify"  value="" />');
+        $this->placeholders['spf-captcha-instructions'] = $captcha_prompt;
+        $this->placeholders['spf-captcha-image'] = $captcha_image;
+        $this->placeholders['spf-captcha-input-prompt'] = $captcha_input_prompt;
+        $this->placeholders['spf-captcha-input'] = '<input type="text" name="verify"  value="" />';
 
         $spfCaptchaTpl = $this->modx->getOption('spfcaptchaTpl',$this->spfconfig,'spfcaptchaTpl');
-        $this->modx->setPlaceholder('spf-captcha-stuff',$this->modx->getChunk($spfCaptchaTpl));
+        $this->placeholders['spf-captcha-stuff'] = $this->modx->getChunk($spfCaptchaTpl);
 
     } else {
-        $this->modx->setPlaceholder('spf-captcha-instructions',"");
-        $this->modx->setPlaceholder('spf-captcha-image',"");
-        $this->modx->setPlaceholder('spf-captcha-input-prompt',"");
-        $this->modx->setPlaceholder('spf-captcha-input',"");
-        $this->modx->setPlaceholder('spf-captcha-stuff',"");
+        $this->placeholders['spf-captcha-instructions'] = "";
+        $this->placeholders['spf-captcha-image'] = "";
+        $this->placeholders['spf-captcha-input-prompt'] = "";
+        $this->placeholders['spf-captcha-input'] = "";
+        $this->placeholders['spf-captcha-stuff'] = "";
     }
 
 
 
     $val =  $this->modx->lexicon('enter-comments');
-    $this->modx->setPlaceholder('spf-comments-prompt',$val);
-    $this->modx->setPlaceholder('spf-text-rows',$this->modx->getOption('spTextRows',$this->spfconfig,10));
-    $this->modx->setPlaceholder('spf-text-cols',$this->modx->getOption('spTextCols',$this->spfconfig,50));
+    $this->placeholders['spf-comments-prompt'] = $val;
+    $this->placeholders['spf-text-rows'] = $this->modx->getOption('spTextRows',$this->spfconfig,10);
+    $this->placeholders['spf-text-cols'] = $this->modx->getOption('spTextCols',$this->spfconfig,50);
 
-    $this->modx->setPlaceholder('spf-submit',$this->modx->lexicon('submit'));
+    $this->placeholders['spf-submit'] = $this->modx->lexicon('submit');
 
     if ($this->spfconfig['includeResetButton']) {
         $val =  '<input type="reset" value="'.$this->modx->lexicon('reset').'" />';
-        $this->modx->setPlaceholder('spf-reset',$val);
+        $this->placeholders['spf-reset'] = $val;
     } else {
-        $this->modx->setPlaceholder('spf-reset','');
+        $this->placeholders['spf-reset'] = '';
     }
 
 }
@@ -427,14 +429,16 @@ function set_placeholders () {
     function render() {
         /* @var $chunk modChunk */
         $spformTpl = $this->modx->getOption('spformTpl',$this->spfconfig,'spformTpl');
-        $chunk = $this->modx->getObject('modChunk',array(
+        /*$chunk = $this->modx->getObject('modChunk',array(
             'name' => $spformTpl,
-        ));
+        ));*/
+        $chunk = $this->modx->getChunk($spformTpl, $this->placeholders);
         if ($chunk == null) {
             die($this->modx->lexicon('no-template'). $spformTpl);
         }
-        $chunk->setCacheable(false);
-       return $chunk->process();
+        /*$chunk->setCacheable(false);
+       return $chunk->process();*/
+       return $chunk;
     }
 
 }
