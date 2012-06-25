@@ -28,16 +28,16 @@
  * @subpackage build
  */
 
-global $modx;
+define('MODX_BASE_URL','http://localhost/addons/');
+define('MODX_MANAGER_URL','http://localhost/addons/manager/');
+define('MODX_ASSETS_URL','http://localhost/addons/assets/');
+define('MODX_CONNECTORS_URL','http://localhost/addons/connectors/');
 
-/* The name of the package as it will appear in Workspaces will be this plus
- * the next two variables */
+
 define('PKG_NAME','SPForm');
 define('PKG_NAME_LOWER','spform');
 define('PKG_VERSION','3.2.0');
 define('PKG_RELEASE','pl');
-
-
 
 
 $mtime = microtime();
