@@ -64,61 +64,51 @@ define('CRLF',chr(13) . chr(10));
 class spformproc {
     /**
      * @var $modx MODx instance passed in the constructor.
-     * @access protected
      */
-    var $modx;
+    protected $modx;
     /**
-     * @var array Array of snippet properties passed in the constructor.
-     * @access protected
+     * @var $spfconfig array of snippet properties passed in the constructor.
+
      */
-    var $spfconfig;
+    protected $spfconfig;
     /**
-     * @var array Array to hold the recipient's titles and email addresses.
-     * @access protected
+     * @var $_whotos array Array to hold the recipient's titles and email addresses.
      */
-    var $_whotos = array();
+    protected $_whotos = array();
     /**
-     * @var array List of error messages for errors that have occurred -- both fatal and non-fatal.
-     * @access protected
+     * @var $_errors array of error messages for errors that have occurred -- both fatal and non-fatal.
      */
-    var $_errors = array();
+    protected $_errors = array();
     /**
-     * @var string Mail header from.
-     * @access protected
+     * @var $_from string Mail header from.
      */
-    var $_from = "";
+    protected  $_from = "";
     /**
-     * @var string Mail header from name.
-     * @access protected
+     * @var $_fromName string Mail header from name.
      */
-    var $_fromName = "";
+    protected $_fromName = "";
     /**
-     * @var string Mail header recipient (addressee).
-     * @access protected
+     * @var $_recipient string Mail header recipient (addressee).
      */
-    var $_recipient = "";
+    protected  $_recipient = "";
     /**
-     * @var string Mail header message subject.
-     * @access protected
+     * @var _finalSubject string Mail header message subject.
      */
-    var $_finalSubject = "";
+    protected $_finalSubject = "";
     /**
-     * @var string Mail header message content.
-     * @access protected
+     * @var $_content string Mail header message content.
      */
-    var $_content = "";
+    protected $_content = "";
 
 /**
-     * @var boolean Should we send an advisory email on errors?
-     * @access protected
+     * @var $_advise boolean Should we send an advisory email on errors?
      */
-    var $_advise = false;
+    protected $_advise = false;
 
     /**
-     * @var string Mail header optional additional headers.
-     * @access protected
+     * @var $_addlHeaders string Mail header optional additional headers.
      */
-    var $_addlHeaders = array();
+    protected $_addlHeaders = array();
 
 
 /**

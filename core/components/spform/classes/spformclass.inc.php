@@ -43,12 +43,13 @@ class spform {
      * @var modx MODx reference instance passed in the constructor.
      * @access protected
      */
-    var $modx;
+    /* @var $modx modX */
+    protected $modx;
     /**
-     * @var array Array of snippet properties passed in the constructor.
+     * @var $spfconfig array of snippet properties passed in the constructor.
      * @access protected
      */
-    var $spfconfig;
+    protected $spfconfig;
 
 
 /**
