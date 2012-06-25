@@ -410,7 +410,7 @@ function validate() {
     }
 
     /* Subject line  */
-    $defaultSubject = $this->modx->getOption('dfltSubj',$this->spfconfig,$_SERVER['SERVER_NAME'].' Contact');
+    $defaultSubject = $this->modx->getOption('dfltSubj',$this->spfconfig,$_SERVER['SERVER_NAME'].'Contact');
     if (empty($_POST['subject'])) {
         /* no subject from users, use the default subject */
         $this->_finalSubject = $defaultSubject;
@@ -837,7 +837,7 @@ function _show_errors($errors) {
         $bannedOn = '';
         if(count($banList)) {
             $emailFix = trim(strtolower($email));
-            $remoteHostFix = trim(strtolower($_SERVER['REMOTE_HOST']));
+            $remoteHostFix = trim(strtolower(gethostbyaddr($_SERVER['REMOTE_ADDR'])));
 
             foreach($banList as $banned) {
                 $banFix = trim(strtolower(preg_replace('#\.#', '\\.', $banned)));
