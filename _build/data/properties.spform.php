@@ -192,7 +192,7 @@ array(
     'type'=>'combo-boolean',
     'options'=>'',
     'lexicon'=>'spform:properties',
-    'value'=>'1'
+    'value'=>'0'
 ),
 array(
     'name'=>'requireKeyboard',
