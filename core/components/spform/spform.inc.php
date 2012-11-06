@@ -135,7 +135,7 @@ global $modx;
 $spfconfig = $scriptProperties;
 $spfconfig['spformPath'] = $modx->getOption('spformPath',$spfconfig,$modx->getOption('core_path').'components/spform/');
 
-ini_set('error_log', $spformPath . 'error.log');
+ini_set('error_log', $spconfig['spformPath'] . 'error.log');
 
 
 $language = !empty($spfconfig['language'])
