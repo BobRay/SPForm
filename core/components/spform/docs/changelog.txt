@@ -1,3 +1,7 @@
+Version 3.2.1-pl
+----------------
+Minor bug fixes and improvements
+
 Version 3.2.0-pl
 ----------------
 Better validation with strict DOCTYPE (thanks Roland)
