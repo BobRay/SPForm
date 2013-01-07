@@ -244,6 +244,7 @@ function validate() {
             if ($this->modx->getOption('warnHiddenField',$this->spfconfig,false) || $warnAll) {
                 $this->_errors[] = $this->modx->lexicon('last-name');
             } else {
+                session_write_close();
                 exit; /* die quietly  */
             }
         }
@@ -271,6 +272,7 @@ function validate() {
             if ($this->modx->getOption('warnMouseAndKeyboard',$this->spfconfig,false) || $warnAll) {
                 $this->_errors[] = $this->modx->lexicon('mouse-kb-warning');
             } else {
+                session_write_close();
                 exit();
             }
         }
@@ -285,6 +287,7 @@ function validate() {
                 if ($this->modx->getOption('warnMouseAndKeyboard',$this->spfconfig,false) || $warnAll) {
                     $this->_errors[] = $this->modx->lexicon('kb-warning');
                 } else {
+                    session_write_close();
                     exit();
                 }
             }
@@ -300,6 +303,7 @@ function validate() {
                 if ($this->modx->getOption('warnMouseAndKeyboard',$this->spfconfig,false) || $warnAll) {
                     $this->_errors[] = $this->modx->lexicon('mouse-warning');
                 } else {
+                    session_write_close();
                     exit();
                 }
             }
@@ -325,6 +329,7 @@ function validate() {
                 if ($this->modx->getOption('warnTimer',$this->spfconfig,false) || $warnAll) {
                      $this->_errors[] = $this->modx->lexicon('timeout1');
                 } else {
+                    session_write_close();
                     exit;
                 }
             }
@@ -352,6 +357,7 @@ function validate() {
             if ($this->modx->getOption('warnVerify',$this->spfconfig,false) || $warnAll) {
                $this->_errors[] = $this->modx->lexicon('bad-verification');
             } else {
+                session_write_close();
                 exit;  /* if not warning, die quietly with no error message */
             }
 
@@ -419,6 +425,7 @@ function validate() {
         if ($this->modx->getOption('warnInjections',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('bad-recipient');
         } else {
+            session_write_close();
             exit;  /* die quietly with no warning */
         }
     }
@@ -432,6 +439,7 @@ function validate() {
         if ($this->modx->getOption('warnRecipientLen',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('bad-recipient-length');
         } else {
+            session_write_close();
             exit; /* die quietly with no warning */
         }
     }
@@ -444,6 +452,7 @@ function validate() {
         if ($this->modx->getOption('warnSubjectLen',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('bad-subject-length');
         } else {
+            session_write_close();
             exit; /* die quietly with no warning */
         }
     }
@@ -457,6 +466,7 @@ function validate() {
         if ($this->modx->getOption('warnIllegalSubject',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('illegal-subject');
         } else {
+            session_write_close();
             exit; /* die quietly with no warning */
         }
     }
@@ -470,6 +480,7 @@ function validate() {
             $this->_errors[] = $this->modx->lexicon('illegal-message');
 
         } else {
+            session_write_close();
             exit; /* die quietly with no warning */
         }
     }
@@ -483,6 +494,7 @@ function validate() {
          if ($this->modx->getOption('warnMaxLinks',$this->spfconfig,false) || $warnAll) {
             $this->_errors[] = $this->modx->lexicon('content-links');
          } else {
+            session_write_close();
             exit; /* die quietly with no warning */
          }
     }
@@ -582,6 +594,7 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
         return;
     }
     if (!$this->modx->getService('mail', 'mail.modPHPMailer')) {
+        session_write_close();
         die($this->modx->lexicon('could-not-initiate-mail-service'));
     }
 
@@ -625,9 +638,10 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
             $this->modx->mail->mailer->SMTPDebug = 2;
             $this->modx->mail->send();
             echo '<br /><br /><b>' . "Mailer ErrorInfo:</b><br />";
+            session_write_close();
             die($this->modx->mail->mailer->ErrorInfo);
         }
-
+       session_write_close();
        die('<b>' . $this->modx->lexicon('mail-failure') . '</b>');
     }
     $this->modx->mail->reset();

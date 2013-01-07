@@ -12,7 +12,7 @@
 /* Still awaiting translation */
 
 /* SPForm Property Description strings */
-$_lang['spf_recipientarray_desc'] = 'Comma separated list of recipient title/email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com';
+$_lang['spf_recipientarray_desc'] = 'Comma separated list of recipient title:email pairs for the sent mail. Should be in this form:  Webmaster :webmaster@mydomain.com,Sales :sales@mydomain.com';
 $_lang['spf_errorsto_desc'] = 'Error reports will be emailed to this address if the appropriate options are set.';
 $_lang['spf_spformtpl_desc'] = 'SPForm Template chunk name; default: spformTpl.';
 $_lang['spf_spformproctpl_desc'] = 'SPFormproc Template chunk name; default: spformprocTpl.';

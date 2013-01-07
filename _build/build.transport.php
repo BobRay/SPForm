@@ -183,5 +183,5 @@ $totalTime= sprintf("%2.4f s", $totalTime);
 
 $modx->log(MODX_LOG_LEVEL_INFO,'Package completed.<br />Execution time: '
         . $totalTime . '<br />');
-
+session_write_close();
 exit();

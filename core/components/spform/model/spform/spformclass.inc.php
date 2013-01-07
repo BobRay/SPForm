@@ -173,6 +173,7 @@ function check_referer() {
         print('<div align="center">'.$this->modx->lexicon('bad-referer').' "'.
             $_SERVER['HTTP_REFERER'] .'"</div>');
         print("</body></html>");
+        session_write_close();
         exit;
     }
 
@@ -183,8 +184,24 @@ function check_referer() {
  */
 
 function set_placeholders () {
+  echo print_r($_POST,true);
+  $this->placeholders['spf-submit-var'] = isset($this->spfconfig['spf-submit-var'])? $this->spfconfig['spf-submit-var'] : 'defaultSubmitVar';
+  /* set values from $_POST */
+  $ph = array(
+      'name',
+      'email',
+      'subject',
+      'comments',
+  );
 
-
+  foreach($ph as $p) {
+      if (isset($_POST[$p])) {
+          $this->placeholders['spf-' . $p] = $_POST[$p];
+      } else {
+          $this->placeholders['spf-' . $p] = '';
+      }
+  }
+  
 /*  Create CAPTCHA image URL for use later if requireVerify is true  */
 
         if ($this->modx->getOption('requireVerify',$this->spfconfig,false)) {
@@ -208,6 +225,7 @@ function set_placeholders () {
         $file = $this->spfconfig['assets_path'] . "js/usedkeyboard.js";
         if( false == ($str = file_get_contents($file))) {
             $val = $this->modx->lexicon('no-js') . $file;
+            session_write_close();
             die($val);
         } else {
             $val = '<input type="hidden" name="keyCount" id="keyCount" value="" />';
@@ -229,6 +247,7 @@ function set_placeholders () {
         $file = $this->spfconfig['assets_path'] . "js/mousemovement.js";
         if( false == ($str = file_get_contents($file))) {
             $val = $this->modx->lexicon('no-js') . $file;
+            session_write_close();
             die($val);
         } else {
             $val =  '<input type="hidden" name="mouseTravel" id="mouseTravel" value="" />';
@@ -365,6 +384,7 @@ function set_placeholders () {
 
         if (! file_exists($this->modx->getOption('assets_path'). "components/captcha/captcha.php")) {
           echo '<br />' . $this->modx->lexicon('no-captcha');
+          session_write_close();
           exit();
         }
         $useMathString = $this->modx->getOption('useMathString',$this->spfconfig,true);
@@ -434,6 +454,7 @@ function set_placeholders () {
         ));*/
         $chunk = $this->modx->getChunk($spformTpl, $this->placeholders);
         if ($chunk == null) {
+            session_write_close();
             die($this->modx->lexicon('no-template'). $spformTpl);
         }
         /*$chunk->setCacheable(false);

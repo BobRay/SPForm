@@ -175,7 +175,11 @@ if (!$cssPath) {
 
 /* This section processes the submitted form and sends mail */
 if (isset($_POST['s'])) {
-
+    if (isset($_POST['spf-submit-var']) && isset($spfconfig['spf-submit-var'])) {
+        if ($_POST['spf-submit-var'] != $spfconfig['spf-submit-var']) {
+            return '';
+        }
+    }
     $spf_key = $modx->getOption('emailsender');
     if ((strlen($spf_key) < 5) || ($_SESSION['include_auth'] != md5($spf_key))) {
         die ('Unauthorized Access in spformproc');
