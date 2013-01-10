@@ -184,7 +184,7 @@ function check_referer() {
  */
 
 function set_placeholders () {
-  echo print_r($_POST,true);
+  // echo print_r($_POST,true);
   $this->placeholders['spf-submit-var'] = isset($this->spfconfig['spf-submit-var'])? $this->spfconfig['spf-submit-var'] : 'defaultSubmitVar';
   /* set values from $_POST */
   $ph = array(
