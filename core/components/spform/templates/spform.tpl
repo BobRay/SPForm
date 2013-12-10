@@ -37,7 +37,7 @@
 
 <div class="spf_textarea">
 <label for="comments">
-<textarea id="comments" name="comments" rows="[[+spf-text-rows]]" cols="[[+spf-text-cols]]"">[[+spf-comments]]</textarea></label>
+<textarea id="comments" name="comments" rows="[[+spf-text-rows]]" cols="[[+spf-text-cols]]">[[+spf-comments]]</textarea></label>
 </div>
 
 <div class="spf_buttons"><input type="submit" name="s" value="[[+spf-submit]]" />&nbsp;
