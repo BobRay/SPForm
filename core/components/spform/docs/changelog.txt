@@ -1,3 +1,9 @@
+Version 3.3.0-pl
+----------------
+Add JS popup if captcha input is empty
+Fix bug with cssPath property
+Fix bug with useemailsender property
+
 Version 3.2.2-pl
 ----------------
 Removed leftover debugging code
