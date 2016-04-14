@@ -92,7 +92,7 @@ class spformproc {
      */
     protected  $_recipient = "";
     /**
-     * @var _finalSubject string Mail header message subject.
+     * @var string  _finalSubject Mail header message subject.
      */
     protected $_finalSubject = "";
     /**
@@ -317,7 +317,7 @@ function validate() {
         if(!(empty($_POST['tmStart']))) {  /* start time for form  */
             $currentTime = time();
             $startTime = $_POST['tmStart'];
-            /* deobfuscate time  */
+            /* de-obfuscate time  */
             $startTime -= $this->modx->getOption('timerOffset',$this->spfconfig,14543);
             $elapsedTime = $currentTime - $startTime;
             if ($elapsedTime < $this->modx->getOption('useTimerMin',$this->spfconfig,10)
@@ -380,7 +380,7 @@ function validate() {
     $this->_content .= preg_replace('/\r/', '', stripslashes($_POST['comments']));
 
     if (!empty($_POST['email'])) {
-        if ($this->modx->getOption('useemailsender')) {
+        if ($this->modx->getOption('useemailsender', $this->spfconfig, false, true)) {
             $this->_from = $this->modx->getOption('emailsender');
         } else if ($this->modx->getoption('spfrom',$this->spfconfig)) {
             $this->_from = $this->modx->getoption('spfrom',$this->spfconfig);
@@ -394,7 +394,7 @@ function validate() {
         $this->_from = $this->modx->getOption('emailsender');
     }
 
-    $this->_addlHeaders[] = $this->_generate_additional_headers();
+    $this->_generate_additional_headers();
 
     /* Additional recipients?  */
     $mailAlso = $this->modx->getOption('mailAlso',$this->spfconfig,'');
@@ -412,6 +412,7 @@ function validate() {
         if ($this->modx->getOption('addSubjSig',$this->spfconfig,true)) {
             $this->_finalSubject = "[". $defaultSubject . "] ";
         }
+
         $this->_finalSubject .= addcslashes(stripslashes($_POST['subject']), "\x00..\x1f");
     }
 
