@@ -162,8 +162,8 @@ if (empty($spformTpl)) {
  * IF set to "", no css file.
  * If it's set to a path, use that
  */
-$cssPath = $modx->getOption('spfCssPath',$spfconfig,false);
-if (!$cssPath) {
+$cssPath = $modx->getOption('spfCssPath',$spfconfig,false, true);
+if ($cssPath === false) {
     $spfCSS = $modx->getOption('assets_url') . 'components/spform/css/spform.css';
     $modx->regClientCSS($spfCSS);
 
