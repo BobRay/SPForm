@@ -135,6 +135,14 @@ function register_js() {
             $src .= 'return false; ';
          $src .= '} ';
 
+        if ($this->modx->getOption('requireVerify', $this->spfconfig, false)) {
+            $src .= 'if (form.verify.value == "") { ';
+            $src .= 'alert("' . $this->modx->lexicon('forgot-captcha') . '" ); ';
+            $src .= 'form.verify.focus(); ';
+            $src .= 'return false; ';
+            $src .= '} ';
+        }
+
     $src .= '} ';
 
     $src .= ' /* ]]> */ ';

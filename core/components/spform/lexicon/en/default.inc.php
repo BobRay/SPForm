@@ -80,4 +80,6 @@ $_lang['login_captcha_message'] = 'Please enter the security code shown in the g
 $_lang['login_mathstring_error'] = 'Sorry, wrong answer. Please try again.';
 $_lang['login_mathstring_message'] = 'Please solve the equation shown in the graphic. If you can\'t read the code, click the image to generate a new one or contact your site admin.';
 
+$_lang['forgot-captcha'] = 'You forgot to enter the Captcha code';
+
 
