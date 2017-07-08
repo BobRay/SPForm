@@ -3,7 +3,7 @@
 /**
  * SPForm snippet
  *
- * Copyright 2011 Bob Ray
+ * Copyright 2011-2017 Bob Ray
  *
  * @author Bob Ray
  * @date 1/15/11
@@ -24,7 +24,7 @@
  * @package spform
  */
 /**
- * MODx SPForm Snippet
+ * MODX SPForm Snippet
  *
  * Description: SPForm snippet code
   *
@@ -118,7 +118,7 @@ $_lang['spf_timeroffset_desc'] - Obfuscates the timer value; default: 14543.;
 * @see spformclass.inc.php
 * @see spformprocclass.inc.php
 * @see spformresponse
-* @author  Bob Ray <bobray@softville.com>
+* @author  Bob Ray <https://bobsguides.com>
 * @created 10/04/2008
 * @version 3.2.0
 *
@@ -241,13 +241,13 @@ return $spform->render();
    scform.php. I've made extensive modifications to the code, but much of
    Jim's original code remains.
 
-   Some changes were to integrate the package with MODx. Others were (hopefully)
+   Some changes were to integrate the package with MODX. Others were (hopefully)
    improvements I found in various other contact forms. I've also changed
    some of the original defaults and added many parameters.
 
    If the form works for you, James deserves most of the credit. If it doesn't,
    I probably deserve most of the blame. Please don't ask Jim for help with the
-   snippet. As far as I know, he is not MODx-aware. I have left his GPL statement
+   snippet. As far as I know, he is not MODX-aware. I have left his GPL statement
    below  -- Bob Ray
 
 

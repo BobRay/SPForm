@@ -20,7 +20,7 @@
 */
 
 /* This section and the one at the end are for debugging
- *  They allow this run as a standalone script within MODx
+ *  They allow this run as a standalone script within MODX
  * that sets the properties and prints debugging info
  */
 

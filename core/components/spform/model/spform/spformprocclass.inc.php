@@ -3,9 +3,9 @@
 /**
  * spformproc class for SPForm package
  *
- * Copyright 2011 Bob Ray
+ * Copyright 2011-2017 Bob Ray
  *
- * @author Bob Ray <http://bobsguides.com>
+ * @author Bob Ray <https://bobsguides.com>
  * 1/15/11
  *
  * SPForm is free software; you can redistribute it and/or modify it
@@ -24,7 +24,7 @@
  * @package spform
  */
 /**
- * MODx spformproc Class
+ * MODX spformproc Class
  *
  * Description: spformproc class for SPForm package
  * @package spform
@@ -34,7 +34,7 @@
 * This class processes the form on postback
 * and redirects to the "Thank You" page
 * @package spform
-* @author  Bob Ray <bobray@softville.com>
+* @author  Bob Ray <https://bobsguides.com>
 * @created 10/04/2008
 * @version 3.2.0
 */
@@ -63,7 +63,7 @@ define('CRLF',chr(13) . chr(10));
  */
 class spformproc {
     /**
-     * @var $modx MODx instance passed in the constructor.
+     * @var $modx MODX instance passed in the constructor.
      */
     protected $modx;
     /**
@@ -114,7 +114,7 @@ class spformproc {
 /**
      * PHP5 Constructor
      * @access public
-     * @param array $modx MODx object.
+     * @param array $modx MODX object.
      * @param array $spfconfig Array of snippet properties.
      */
     function  __construct(&$modx, $spfconfig = array()) {
@@ -539,13 +539,13 @@ function send() {
    scform.php. I've made extensive modifications to the code, but much of
    Jim's original code remains.
 
-   Some changes were to integrate the package with MODx. Others were (hopefully)
+   Some changes were to integrate the package with MODX. Others were (hopefully)
    improvements I found in various other contact forms. I've also changed
    some of the original defaults and added some parameters.
 
    If the form works for you, James deserves most of the credit. If it doesn't,
    I probably deserve most of the blame. Please don't ask Jim for help with the
-   snippet. As far as I know, he is not MODx-aware. I have left his GPL statement
+   snippet. As far as I know, he is not MODX-aware. I have left his GPL statement
    below  -- Bob Ray
 
 
@@ -650,7 +650,7 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
 
 /** Function is shared by the _show_errors() and _show_fatal() functions,
 *   to emit the list of problems as <li> items.  (Note: Assumes <ul> is set in the
-*   Tpl chunk. Also assumes HTML "opening" stuff has been done by MODx.
+*   Tpl chunk. Also assumes HTML "opening" stuff has been done by MODX.
 *   @access protected
 *   @param array $errors  Array of error messages for errors that have occurred.
 *   @return string Returns the processed contents of the spformprocTPL chunk

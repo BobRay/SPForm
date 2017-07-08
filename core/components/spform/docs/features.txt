@@ -11,7 +11,7 @@ logging errors, emailing error reports to you -- or not.
 Features
 --------
 
-MODx Revolution compatible
+MODX Revolution compatible
 No email addresses on the screen or in the page source
 Multiple, configurable, spam-proofing options
 Full documentation on all options

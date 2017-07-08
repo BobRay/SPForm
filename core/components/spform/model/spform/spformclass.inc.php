@@ -3,9 +3,9 @@
 /**
  * SPForm Class file
  *
- * Copyright 2011 Bob Ray
+ * Copyright 2011-2017 Bob Ray
  *
- * @author Bob Ray <http://bobsguides.com>
+ * @author Bob Ray <https://bobsguides.com>
  * 1/15/11
  *
  * SPForm is free software; you can redistribute it and/or modify it
@@ -24,7 +24,7 @@
  * @package spform
  */
 /**
- * MODx SPForm Class
+ * MODX SPForm Class
  *
  * Description: SPForm Class
  * @package spform
@@ -34,13 +34,13 @@
 /**  This class is instantiated on the first request to the page.
 *    It does some preliminary checks, then renders the form.
 *    @package spform
-*    @author  Bob Ray <bobray@softville.com>
+*    @author  Bob Ray <https://bobsguides.com>
 *    @created 10/04/2008
 *    @version 3.2.0  */
 
 class spform {
 /**
-     * @var modx MODx reference instance passed in the constructor.
+     * @var modx MODX reference instance passed in the constructor.
      * @access protected
      */
     /* @var $modx modX */
@@ -57,7 +57,7 @@ class spform {
 /**
      * PHP5 Constructor
      * @access public
-     * @param array $modx MODx object.
+     * @param array $modx MODX object.
      * @param array $spfconfig Array of snippet properties.
      */
 
@@ -478,13 +478,13 @@ function set_placeholders () {
    scform.php. I've made extensive modifications to the code, but much of
    Jim's original code remains.
 
-   Some changes were to integrate the package with MODx. Others were (hopefully)
+   Some changes were to integrate the package with MODX. Others were (hopefully)
    improvements I found in various other contact forms. I've also changed
    some of the original defaults and added some parameters.
 
    If the form works for you, James deserves most of the credit. If it doesn't,
    I probably deserve most of the blame. Please don't ask Jim for help with the
-   snippet. As far as I know, he is not MODx-aware. I have left his GPL statement
+   snippet. As far as I know, he is not MODX-aware. I have left his GPL statement
    below  -- Bob Ray
 
 

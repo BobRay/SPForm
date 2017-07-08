@@ -2,13 +2,14 @@
 SPForm - Simple Spam-proof Contact Form Snippet
 ==============================================================
 
-Author: Bob Ray
+Author: Bob Ray <https://bobsguide.com>
+Copyright 2011-2017 Bob Ray
 
-Tutorial: http://bobsguides.com/spform-tutorial.html
-Troubleshooting: http://bobsguides.com/spform-faq.html
+Tutorial: https://bobsguides.com/spform-tutorial.html
+Troubleshooting: https://bobsguides.com/spform-faq.html
 Bugs and Requests: https://github.com/BobRay/SPForm/issues
 
-SPForm is a simple spam-proof contact form for MODx.
+SPForm is a simple spam-proof contact form for MODX.
 
 Basic Usage
 -----------

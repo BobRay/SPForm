@@ -3,7 +3,7 @@
 /**
  * SPFResponse snippet for SPForm package
  *
- * Copyright 2011 Bob Ray
+ * Copyright 2011-2017 Bob Ray
  *
  * @author Bob Ray
  * 1/15/11
@@ -24,7 +24,7 @@
  * @package spform
  */
 /**
- * MODx SPFResponse Snippet
+ * MODX SPFResponse Snippet
  *
  * @description SPFResponse snippet for SPForm package
   *

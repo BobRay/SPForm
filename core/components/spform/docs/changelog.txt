@@ -54,14 +54,14 @@ Added changelog to build
 Removed deprecated PHP functions
 Internationalized property descriptions
 Refactored for Git
-Build tested with MODx 2.0.6-pl2
+Build tested with MODX 2.0.6-pl2
 
 
 Version 3.1.0
 -------------
 Changed resources to published
 Fixed minor bugs
-Fixed MODx xPDO and Log constants for RC1
+Fixed MODX xPDO and Log constants for RC1
 Added return email to message body.
 
 Version 3.0.8
