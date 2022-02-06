@@ -1,35 +1,31 @@
-<br />
-<p>For basic SPForm troubleshooting, see the <a target="_blank" href="spform-faq.html">SPForm FAQ</a> page.
-
-<p>SPForm is a really simple e-mail contact form that is as spam-proof as I could make it. It creates a contact form like the one <a href="contact-form.html" target="_blank" title="Bob's Guides Contact Form">here</a>. This tutorial will walk you through the steps necessary to install and configure SPForm on your MODX site.</p>
-<p>SPForm has a number of useful features including:</p>
+<p>SPForm is a really simple e-mail contact form that is as spam-proof as I could make it. It creates a contact form like the one <a href="[[++site_url]]contact-form.html" target="_blank" title="Contact Form">here.</a> This tutorial will walk you through the steps necessary to install and configure SPForm on your MODX site.</p><p>SPForm has a number of useful features including:</p>
 <ul>
-<li>No e-mail addresses on the screen or in the page source</li>
-<li>Multiple, configurable, spam-proofing options</li>
-<li>Full documentation on all options</li>
-<li>Easily editable drop-down list of recipients</li>
-<li>Relatively easy to install and configure</li>
-<li>Easily ban individual spammers, domain names, or IP addresses</li>
-<li>Send mail with phpMailer using mail() or authenticated SMTP</li>
-<li>Multi-language support</li>
+  <li>No e-mail addresses on the screen or in the page source</li>
+  <li>Multiple, configurable, spam-proofing options</li>
+  <li>Easily editable drop-down list of recipients</li>
+  <li>Relatively easy to install and configure</li>
+  <li>Send mail with phpMailer using <code>mail()</code> or authenticated SMTP</li>
+  <li>Multi-language support</li>
 </ul>
-<p>SPForm's options are set in the configuration file: spfconfig.cfg.php. Here's a partial list of the options:</p>
+
+<p>Here's a partial list of the options:</p>
+
 <ul>
-<li>Require keyboard and/or mouse activity</li>
-<li>Time users and set minimum and maximum times allowed to submit the form</li>
-<li>Present CAPTCHA-style image verification (requires the Captcha plugin in MODX Revolution)</li>
-<li>Present a simple random math problem as an image and ask the user to solve it</li>
-<li>Use an invisible (but not hidden) field that autobots will get caught filling</li>
-<li>Require name, subject, e-mail with JS validation</li>
-<li>Set maximum length of subject and recipient</li>
-<li>Add subject prefix to message subject field</li>
-<li>cc all messages to a specified address (in addition to recipient)</li>
-<li>Set maximum number of http links in message</li>
-<li>Restrict the use of the form to certain domains</li>
-<li>Report remote host, user, address, identity, and referrer in msg headers</li>
-<li>Disallow blank referrer</li>
-<li>Reject messages with fake referrer set to self</li>
-<li>Require messages to be sent from one's own server</li>
+  <li>Require keyboard and/or mouse activity</li>
+  <li>Time users and set minimum and maximum times allowed to submit the form</li>
+  <li>Present CAPTCHA-style image verification (requires the Captcha plugin in MODX Revolution)</li>
+  <li>Present a simple random math problem as an image and ask the user to solve it</li>
+  <li>Use an invisible (but not hidden) field that autobots will get caught filling</li>
+  <li>Require name, subject, e-mail with JS validation</li>
+  <li>Set maximum length of subject and recipient</li>
+  <li>Add subject prefix to message subject field</li>
+  <li>cc all messages to a specified address (in addition to recipient)</li>
+  <li>Set maximum number of http links in message</li>
+  <li>Restrict the use of the form to certain domains</li>
+  <li>Report remote host, user, address, identity, and referrer in msg headers</li>
+  <li>Disallow blank referrer</li>
+  <li>Reject messages with fake referrer set to self</li>
+  <li>Require messages to be sent from one's own server</li>
 </ul>
 
 <p>&nbsp;</p>
@@ -37,525 +33,172 @@
 
 <h3>Installing SPForm for MODX Revolution 2.0.0 and Beyond</h3>
 
-<p>This couldn't be much easier. Just go to System | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository (AKA Web Transport Facility). Find the SPForm snippet and put a check next to it (it should be under "Communication"). Check any other packages you might want to install and click on "Finish."  That should bring you back to your Package Management grid. Right click on SPForm and select "Install Package." You'll be asked for a return email address and can specify whether you want the sample contact form installed (highly recommended). When the install completes, you'll have a working, relatively spam-proof contact form on your site. </p>
-
-<p>You can skip all the way down to the section on <a href="[[~[[*id]] ]]#configure">Configuring SPForm in MODX Revolution.</a></p>
-
+<p>This couldn't be much easier. Just go to System (gear icon) | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Type SPForm in the search box and hit enter. Click on the &quot;Download button&quot; and wait for the download to finish. Then, click on the "Back to Package Manager" button. That should bring you back to your Package Management grid. Click on the "Install" button next to the SPForm package. You'll be asked for a return email address you want the contact form to send to. When the install completes, you'll have a working, relatively spam-proof contact form on your site. </p>
 
 <p>&nbsp;</p>
 
+<h3>Testing SPForm</h3>
 
-<h3>Installing SPForm for MODX Evolution and Earlier</h3>
-<p>
-The first step is to go <a href="https://bobsguides.com/downloads/spform-1.0.5.zip">here</a> to download the current version of SPForm.zip (1.0.5) to your computer.
-</p>
-<p>
-Next, extract the contents of the SPForm zip file to your assets/snippets directory. The files should end up in a directory called /assets/snippets/spform. 
-</p>
-<p>
-Make sure all the files are there. You should see this structure: 
-</p>
+<p>The pagetitle of the contact form resource is "Contact" If you preview that page, you should see your contact form, fill it in and click on the "Submit" button. It should send an email to the address you entered during the installation. If you don't get the email, it's likely that something is wrong with the email system on your site. In Package Manager, download and install the QuickEmail snippet to test the system. Create a test page with this code:</p>
+
+<pre class="brush: php; toolbar: false;"><fixedpre>
+  [[!QuickEmail? &debug=1]]
+</fixedpre></pre>
+
+<p>By default, SPForm and QuickEmail use the <code>mail()</code> function which depends on an active mail server being up at your site. If your site is on your local machine, and you have no mail server, the form will operate normally, but no e-mail will be sent. If it is on a remote server, it still may not work because some ISPs have <code>mail()</code> turned off for security reasons.</p>
+
+<p>Wait a while for your test e-mail message to arrive. On some ISPs, it can take a while for the mail to actually go out, and it can be held up along the way. If you never get the mail, don't despair. There's another method of sending mail that should work on any server. SMTP mail is an option that can use mail account of yours that allows sending SMTP mail.
+
+<p>In MODX Revolution, there's no need to mess with SPForm's SMTP settings. Instead, set the MODX SMTP System Settings. Go to System (gear icon) | System Settings and type SMTP in the search filter box at the upper right and press "Enter". Once the values are set properly, any MODX snippet or plugin that calls the <code>mail()</code> function will operate using SMTP.</p>
+
+<p>These are the ones to set (consult your hosts help pages or email support for the Host specification and SMTP port number):</p>
+
 <ul>
-    <li>lang (folder)</li>
-	<ul>
-		<li>en.inc.php</li>
-		<li>phpmailer.lang-en.php</li>
-	</ul>
-    
-    <li>noises (folder)</li>
-	<ul>
-		<li>noise1.jpg</li>
-		<li>noise2.jpg</li>
-		<li>noise3.jpg</li>
-		<li>noise4.jpg</li>
-	</ul>
-
-    <li>ttf (folder)</li>
-	<ul>
-		<li>arial.ttf</li>
-		<li>ftb_____.ttf</li>
-		<li>pala.ttf</li>
-		<li>tahoma.ttf</li>
-		<li>verdana.ttf</li>
-
-	</ul>
-
-    
-        
-   
-             <li>index.html</li>
-	     <li>spform.inc.php</li>
-	     <li>spformproc.inc.php</li>
-	     <li>spfresponse.inc.php</li>
-	     <li>spfconfig.cfg.php</li>
-             <li>spfdebug.php</li>
-	     <li>contacts.cfg.php</li>
-	     <li>banlist.cfg.php</li>
-	     <li>spfveriword.php</li>
-	     <li>spfvericlass.inc.php</li>
-	     <li>mathstringclass.inc.php</li>
-	     <li>mouseMovement.js</li>
-	     <li>usedKeyboard.js</li>
-   
-
+  <li>SMTP Hosts &mdash; The host SMTP specification (e.g. <code>a2ss29.a2hosting.com</code>)</li>
+  <li>SMTP Port &mdash; Your hosts SMTP port number</li>
+  <li>SMTP Authentication &mdash; set to <code>true</code></li>
+  <li>SMTP User &mdash; The username for your email account</li>
+  <li>SMTP Password &mdash; The password for your email account</li>
 </ul>
-
-<p>&nbsp;</p>
-
-<h3>Creating the Three SPForm Resources</h3>
-<p>
-SPForm requires three MODX documents to do its work: one to show the contact form, a second one to process the contact form, and a third to display the "thank you" page. Remember that snippet names and file names are case-sensitive so be very careful to use the exact case in all the examples below. If your contact form doesn't display or if you don't end up with a display of the "Thank You" page after submitting it, there's a good chance that you misspelled one of the names.</p>
-<p>Since SPForm finds the three documents by ID number, you can change their names, although it's recommended that you get SPForm working before doing so.</p>
-<h4>Creating the Contact Page Document</h4>
-<p>
-Launch the <strong>MODX Manager</strong>, (log on with <a href="http://yoursite.com/manager">http://yoursite.com/manager</a>).
-</p>
-<p>
-Select the <strong>Site</strong> tab near the top of the page and click on <strong>New Document</strong>. 
-</p>
-<p>
-Fill in the fields on the document editing screen as follows (your "Uses template" field will be different): 
-</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial1.png" /> 
-</p>
-<p>
-The Menu index number tells MODX where to show this document in the menu. If you'd like your contact form to be at the end of your menu, for example, you can put 99 in the Menu index box. If you're not sure, don't worry, you can come back to this page and change it later.
-</p>
-<p>
-Look at the top of the Create/edit document window (scroll up if you have to). You should see three tabs like the ones below: 
-</p>
-<p>
-<img alt="ezfaqtutorial-image2" border="0" height="47" src="images/ezfaqtutorial2.png" width="321" /> 
-</p>
-<p>
-Click on the <strong>Page Settings</strong> tab. This tab allows you to set some of the characteristics of the document we're creating. 
-</p>
-<p>
-The <strong>Published</strong> checkbox determines whether visitors to your site will see the document or not. You might want to leave it unchecked until you're done creating the SPForm pages. If you leave it unchecked, you'll have to come back here and check it to make the page visible to visitors. If you don't care if people see the unfinished page, you can check it now. 
-</p>
-<p>
-Notice also, the <strong>Published date</strong> and <strong>Unpublished date</strong> boxes. If you'd like to have a page appear and/or disappear from the site, you can put dates in these boxes by clicking on the little calendar icon next to each box. You can try these now if you like. You can remove the date by clicking on the other calendar icon (the one with the red circle and slash over it). 
-</p>
-<p>
-Make sure the <strong>Show in menu</strong> checkbox is checked.  
-</p>
-<p>
-Next, scroll down to the <strong>Document content</strong> window and paste in the following line: 
-</p>
-<p>
-[<!-- -->!SPForm!<!-- -->] 
-</p>
-<p>
-Note: For MODX 0.9.7, use the following instead: [<!-- -->[<!-- -->!SPForm]<!-- -->]
-</p>
-
-<p>
-Now, scroll up to the top of the page and click on <strong>Save</strong>. 
-</p>
-<h4>Creating the Form Processing Document</h4>
-<p>As you did above, create a new document by selecting <strong>Create New Document</strong>. Fill in the fields on the document editing screen as follows: 
-</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial2.png" />
-<p>Make sure the "Show in menu check box is UNchecked. Make sure the "Published" checkbox on the <strong>Page settings</strong> tab is checked.</p>
-<p>
-Next, scroll down to the <strong>Document content</strong> window and paste in the following line: 
-</p>
-<p>
-[<!-- -->!SPFormProc!<!-- -->] 
-</p>
-<p>
-Note: For MODX Revolution, use the following instead: [<!-- -->[<!-- -->!SPFormProc]<!-- -->]
-</p>
-
-<p>
-Now, scroll up to the top of the page and click on <strong>Save</strong>. Make a note of the document ID after you save the document (it's in parentheses next to the document title in the Resource tree at the left side of the screen). We'll need it later. 
-</p>
-
- 
-</p><h4>Creating the "Thank You" Page Document</h4><p>
-
-<p>As you did above, create a new document by selecting <strong>Create New Document</strong>. Fill in the fields on the document editing screen as follows: 
-</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial3.png" /></p>
-<p>Make sure the "Show in menu check box is UNchecked. Make sure the "Published" checkbox on the <strong>Page settings</strong> tab is checked.</p>
-<p>
-Next, scroll down to the <strong>Document content</strong> window and paste in the following line: 
-</p>
-<p>
-[<!-- -->!SPFResponse!<!-- -->] 
-</p>
-<p>
-Note: For MODX Revolution, use the following instead: [<!-- -->[<!-- -->!SPFResponse]<!-- -->]
-
-<p>
-Now, scroll up to the top of the page and click on <strong>Save</strong>. Make a note of the document ID after you save the document (it's in parentheses next to the document title in the Resource tree at the left side of the screen). We'll need it later.
-</p>
-
-
-<p>&nbsp;</p>
-
-
-<h3>Creating the Three Snippets</h3>
-<p>If we looked at our contact page now, there would be nothing there because we haven't created the snippets called on the three pages yet.</p>
-
-<h4>Creating the SPForm Snippet</h4>
-<p>In the <strong>MODX Manager</strong> click on <strong>Resources</strong> at the top of the screen and select <strong>Manage Resources</strong>. On the right side of the screen, click on <strong>Snippets</strong>.</p>
-<p>
-Click on <strong>New Snippet</strong>. Fill in the fields as shown below:
-</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial4.png" /></p>
-<p>Since you can't paste the code from the image, here is the line that goes in the php section:<br>
-<pre>require_once $modx->config['base_path']."assets/snippets/spform/spform.inc.php";</pre>
-</p>
-<p>Now, let's give our snippet a category so it will be easier to find among all the other MODX snippets. Click on the <strong>Properties</strong> tab. Don't worry, your code is still there on the <strong>General</strong> tab. In the <strong>New Category:</strong> field, type: SPForm Snippets.</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial5.png" /></p>
- 
-<p>Now click on <strong>Save</strong>. You should see your new snippet under the new category in the list.</p>
-
-<h4>Creating the SPFormProc Snippet</h4>
-
-Click on <strong>New Snippet</strong> again. Fill in the fields as shown below:
-</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial6.png" /></p>
-<p>Since you can't paste the code from the image, here is the line that goes in the php section:<br>
-<pre>require_once $modx->config['base_path']."assets/snippets/spform/spformproc.inc.php";</pre>
-</p>
-<p>Click on the <strong>Properties</strong> tab and select <strong>SPForm Snippets</strong> from the <strong>Existing Category</strong> drop-down list. Now click on <strong>Save</strong>. You should see this second snippet under that category in the list.</p>
-
-<h4>Creating the SPFResponse Snippet</h4>
-
-Click on <strong>New Snippet</strong> again. Fill in the fields as shown below:
-</p>
-<p>
-<img alt="spform-image1" border="0" src="images/spformtutorial7.png" /></p>
-<p>Since you can't paste the code from the image, here is the line that goes in the php section:<br>
-<pre>require_once $modx->config['base_path']."assets/snippets/spform/spfresponse.inc.php";</pre>
-</p>
-<p>Click on the <strong>Properties</strong> tab and select <strong>SPForm Snippets</strong> from the drop-down list. Now click on <strong>Save</strong>. You should see this third snippet under that category in the list.</p>
-
-
-<p>&nbsp;</p>
 
 
 <h3>Configuring SPForm</h3>
 
-<p>If you look at your site now, you should see your contact form but it won't list your desired recipients or send any e-mail because we haven't configured it yet.</p>
+<p>SPForm is quite spam-proof as installed, so if you like the content and styling of the form and "Thank You" page, you don't have to do any configuration at all.</p>
 
-<p>There are two files that need to be edited to make SPForm work. The first is the file <strong>contacts.cfg.php</strong>, the second is the file <strong>spfconfig.cfg.php</strong>.
-<h4>Editing contact.cfg.php</h4>
-<p>This file is the easiest, so let's do it first. It sets the recipient(s) that will receive e-mail from the form. The file is in the assets/snippets/spform directory and, if you're doing this on your local machine, you can edit it with any text editor. If you're site is on a remote server, you can either edit the file locally and FTP it to the remote site or use the MODX file editor.</p>
-<p>To use the MODX file editor, click on the <strong>Resources</strong> tab at the top of the screen, then click on <strong>Manage Files</strong>. You should see a directory list with the assets folder at the top. If not, you may need to go to Tools | Configuration | File Manager and correct the File Manager Path to match the actual physical path to the root of your site.<p>
-<p>Click on <strong>assets</strong>, then on <strong>snippets</strong>, then <strong>spform</strong>. To edit the contacts file, click on the edit button (the white check mark in the green box) next to contacts.cfg.php. Note: Depending on your screen size, after clicking on the edit button, you may not see the code until you scroll down.</p>
+<p>If you do want to configure SPForm, one way is to add properties to the snippet tag on the Contact page, and the one on the "Thank You" page like this:</p>
 
-<p>The lines in the file that start with a pound sign (#) are comments. You can delete them later if you'd like to gain a very slight speed increase. These three lines do the actual work:</p>
+<pre class="brush: php; toolbar: false;"><fixedpre>
+  [[!SPForm?
+      &recipientArray=`support:support@yoursite.com,admin:adminusername@yoursite.com`
+      &useTimer=`0`
+      &warnAll=`1`
+      &spfDebug=`1`
+]]
+</fixedpre></pre>
 
-<pre>
-Please choose a recipient: Please choose a recipient:
-WebMaster: Webmaster: you@yourdomain.com
-Sales: Sales: sales@yourdomain.com
-</pre>
+<p>The snippets on the two pages have different properties, so make sure you use the ones for the snippet tag you're altering.</p>
 
-<p>Notice that each line has three colons (:). These separate the parts of the line. The first part (before the first colon) is for your use and will also appear in error messages. The second part is what will appear on the form. The third part is the e-mail address that the form contents will be sent to. Notice that the first line has no third part so the user can't send to that choice. <p>
-<p>If you have only one recipient to send to, you'll have only one line here. Delete the first and third lines and edit the remaining line as appropriate.</p>
-<p>If you have more than one recipient, the first line is optional. It prompts the user to select a recipient, but if you delete it, the first line will be the default recipient. Edit the lines to match your situation and click on <strong>Save</strong>.
-<p>If you look at your form now, you should see the recipients as you set them up but you should <strong>not</strong> see any e-mail addresses.</p>
-<h4>Editing spfconfig.cfg.php</h4>
-<p>This form sets all the various options and parameters for SPForm. Edit it the same way you edited the contacts file. The first thing to do is to set the allowed referers for your form. This helps keep spammers from using your form to send e-mail. Edit the following lines to match your environment. Be careful not to delete the single quotes or the commas:</p>
-<pre>
-'yoursite.com','www.yoursite.com',
-	'localhost'
-</pre>
-<p>If you make a mistake here, you will get an error message from SPForm telling you that the form was sent from an invalid referer.<p>
-<p>Next, change the following lines to match the document IDs of the two SPForm pages. If you forgot them, you can see the document ID numbers in parentheses next to the document names in the Resource tree at the left side of the <strong>MODX Manager</strong>.</p>
-<pre>
-$spformProcID = 7;  // Doc ID of spformproc page
-$spfResponseID = 8; // Doc ID of spfresponse page
-</pre>
-<p>Finally, change the "errorsTo" address to your own e-mail address.</p>
+<p>You can see the properties and their descriptions by editing the SPForm snippet or the SPFResponse snippet. Click on the "Properties" tab. (To see the descriptions, click on the "Default Properties Locked" button to unlock them and click on the small plus sign next to each property).</p>
 
-<pre>
-$errorsTo = "you@yourdomain.com";
-</pre>
-<p>Take a look at the options in the rest of the file. Many of the spam-proof options are turned off by default because it's best to get the form working first and then turn them on, one at a time, to make sure they don't cause any trouble. To turn on an option, you simply change false to true. but it's strongly advised that you save that for later when you've made sure that the form is sending mail.
+<p>You can also see the default values in the properties grid. It's strongly recommended that you *not* change the property values here. If you do, your changes will be undone whenever you update or reinstall SPForm. Instead, add the ones you want to override to the snippet tag as in the example above, or create a custom property set as described below. Use back-ticks to surround the values. For "Yes/No" values use <code>1</code> for yes and <code>0</code> for no. </p>
 
-<a name="configure"> </a>
+<p>You can modify the form and the text on the two pages by duplicating the Tpl chunks used and use properties in the tag to tell SPForm to use your Tpl chunks instead of the default ones (more on this below). You can also tell SPForm to use your own CSS file for the styling by changing the <code>&cssPath</code> property in the snippet tag for either resource, or both of them. (See the "Styling the SPForm Pages" section below.)</p>
+
+
+
+<h3>The <code>&recipientArray</code> property</h3>
+
+<p>You can add multiple recipients separated by commas in this property (as in the example above). If you do, the user will be presented with a drop-down list of recipients. The email will be sent to the one selected. The value before the colon (:) in each entry is the name that will be displayed. The email address after the colon is where the message will be sent.</p>
 
 <p>&nbsp;</p>
 
+<h3>Custom Property Set</h3>
 
-<h3>Configuring SPForm in MODX Revolution</h3>
+<p>Another method you can use to override the default values is to create a custom property set, but it's more complicated than just adding properties to the snippet tag.</p>
 
-<p>Configuring SPForm is much easier in MODX Revolution. Almost all configuration is done with the snippet properties (parameters) of the SPForm and SPFResponse snippets.</p>
+<p>Here's how to do that:</p>
 
-<p>To see SPForm's options, just go to the elements section of the Manager
-    and select the SPForm snippet. Then click on the "Properties" tab.</p>
-
-<p>There are three ways to set SPForm's options in Revolution.</p>
-
-<p>1. You can add parameters to the snippet call. You can use any properties
-    you see in the snippet properties grid. Values sent as parameters will
-    override any other settings.<p>
-
-<p>Example:</p>
-<pre>
-    [<!-- -->[<!-- -->!<!-- -->SPForm? &useTimer=`0` &warnAll=`1` &spfDebug=`1`]<!-- -->]
-</pre>
-
-<p>This will turn off the timer and turn on all warnings and debug messages.
-    You can override any property in the grid with a parameter in the snippet call,
-    however, it's usually easier to create a custom property set and edit
-    the properties (options) in the grid. See number 3 below.</p>
-
-<p>2. You can edit the default properties grid. We STRONGLY recommend that you
-    NOT do this. It is a bad practice because your values will all be overwritten
-    when you upgrade the snippet.</p>
-
-<p>3. The recommended method is to create a custom property set. Here's how:</p>
 <ul>
-       <li>In the tree, click on Elements | Snippets | SPForm snippets | SPForm.</li>
-       <li>Click on the properties tab.</li>
-       <li>On the right side, click on "Add Property Set."</li>
-       <li>Check the checkbox for "Create New Property Set."</li>
-       <li>Give the set a name (e.g. SPFormLocal) and a description.</li>
-       <li>Click on Save.</li>
-       <li>Edit any properties you want to change (the names of the changed
-         items will appear in green after you save the set).</li>
-       <li>Click on "Save Property Set."</li>
-       <li>In the tree, click on Resources.</li>
-       <li>Right-click on "Contact" and select edit.</li>
-       <li>Change the snippet call to look like this:
-<pre>
-[<!-- -->[<!-- -->!<!-- -->SPForm@SPFormLocal]<!-- -->]</pre></li>
+  <li>In the Elements tree | Snippets | SPForm | SPForm.</li>
+  <li>Click on the properties tab.</li>
+  <li>On the right side, click on "Add Property Set."</li>
+  <li>Check the checkbox for "Create New Property Set."</li>
+  <li>Give the set a name (e.g. SPFormLocal) and a description.</li>
+  <li>Click on Save.</li>
+  <li>Edit any properties you want to change (the names of the changed items will appear in green after you save the set).</li>
+  <li>Click on "Save Property Set."</li>
+  <li>In the tree, click on Resources.</li>
+  <li>Right-click on "Contact" and select edit.</li>
+  <li>Change the snippet call to look like this:
+
+<pre class="brush: php; toolbar: false;"><fixedpre>
+[[!SPForm@SPFormLocal]]
+</fixedpre></pre>
+  </li>
 </ul>
-           
 
-<p>SPForm will then use your custom property set to override any values in
-       the default set. You can still override any values by sending parameters
-       in the snippet call.</p>
 
-<p><b>Important:</b> When changing SPForm options, be sure to select your custom
-       property set before editing. Be careful not to edit the default property
-       set by accident!</p>
+<p>SPForm will then use your custom property set to override any values in the default set. You can still override any values by sending parameters in the snippet call.</p>
 
-<p>A few properties are attached to the SPFResponse snippet and you'll have to set
-    those as you did for the SPForm snippet.</p>
+<p><b>Important:</b> When changing SPForm options in a property set, be sure to select your custom property set before editing. Be careful not to edit the default property set by accident!</p>
 
-<p>Hopefully, everything you need to know about the property settings is there
-    in the snippet properties grids. Just click on the little plus sign next to
-    a property to see an explanation of what it does.</p>
+<p>A few properties are attached to the SPFResponse snippet. You can set those as you did for the SPForm snippet with either properties in the tag, or a custom property set.</p>
 
-<p>Important Note: If you have the "log" properties on at a busy site, your
-    error log (assets/components/spform/error.log) can get very big, very fast.
-    You can delete it or save it empty it at any time.</p>
+<p>Hopefully, everything you need to know about the property settings is there in the snippet properties grids. Just click on the little plus sign next to a property to see an explanation of what it does (Click on the "Default Properties Locked" button first).</p>
+
+<p>Important Note: If you have the "log" properties turned on at a site that receives a lot of email, your error log (<code>assets/components/spform/error.log</code>) can get very big, very fast. You can delete it or save it empty it at any time.</p>
 
 
 <p>&nbsp;</p>
 
 
-<h3>Styling the Pages in Revolution</h3>
+<h3>Styling the SPForm Pages</h3>
 
-<p>Almost anything you want to do in the way of styling the form and the response
-    page can be done by editing the spformTpl and spfresponseTpl files and by
-    changing the SPForm CSS file at assets/components/spform/css/spform.css.
-    The error page can be styled by editing the spformprocTpl chunk and
-    the spform.css file.</p>
+<p>Almost anything you want to do in the way of styling the form and the response page can be done by using your own Tpl chunks, and by using a different CSS file.</p>
 
-<p>Note that the default is to have the prompts and inputs on separate lines
-    of the form, but CSS for having then inline is already in the CSS file.
-    Just change spf_block_prompt to spf_inline_prompt in the spformTpl chunk.</p>
+<p>You can rename the two resources, but for other changes, it's best to use your own Tpl chunks. Duplicate the chunks and put the names of the duplicates in the <code>&spformTpl</code> property (for the form on the Contact page) and/or the <code>&spformProcTpl</code> property (for the content of the "Thank You" page).</p>
 
-<p>If you want to have your own CSS file (a good idea if you've made changes
-    that you don't want overwritten when you update the snippet), just create
-    your css file and pass the path to it as a parameter in the snippet call:</p>
-<pre>
-    [<!-- -->[<!-- -->!<!-- -->SPForm? &spfCssPath=`path_to_your_css_file`]<!-- -->]
-    [<!-- -->[<!-- -->!<!-- -->SPFResponse? &spfCssPath=`path_to_your_css_file`]<!-- -->]
-</pre>
-<p>Be sure to do this for both snippet calls if you've made changes that will
-    affect the response page. You can also add an spfCssPath property to any
-    custom property set you've attached to the SPForm and SPFResponse snippets.</p>
+<p>Note that the default is to have the prompts and inputs on separate lines of the form, but CSS for having then inline is already in the CSS file. Just change <code>spf_block_prompt</code> to <code>spf_inline_prompt</code> in the spformTpl chunk.</p>
 
-<p>Another option is to paste the spform CSS file into your main CSS file and
-    use &spfCssPath=`""` in the snippet calls. SPForm will then ignore its own
-    CSS file.</p>
+<p>Remember that if you want to have your own CSS file (a good idea if you've made changes that you don't want overwritten when you update the snippet), just create your CSS file from a copy of the original and pass the path to it in the <code>&spfCssPath</code> property as a parameter in the snippet call or in your property set. The default CSS file is at <code>assets/components/spform/css/spform.css</code>.</p>
+
+<p>Be sure to do this for both snippet calls if you've made changes that will affect the response page.</p>
+
+<p>Another option is to paste the SPForm CSS file into your site's main CSS file, make your changes there, and use &spfCssPath=`""` in the snippet calls. SPForm will then ignore its own CSS file. Make sure the template you use includes a reference to your CSS file.</p>
 
 <p>&nbsp;</p>
-
-
-<h3>Testing the Form</h3>
-<p>Your form should now work. If you fill out all the forms fields with appropriate values, you should be redirected to the "Thank You" page. Your form still might not send e-mail, however. By default, SPForm uses the mail() function which depends on an active mail server being up at your site. If your site is on your local machine and you have no mail server, the form will operate normally, but no e-mail will be sent. If it is on a remote server, it still may not work because some ISPs have mail() turned off for security reasons.</p>
-<p>Wait a while for your test e-mail message to arrive. On some ISPs it can take quite a while for the mail to actually go out and it can be held up along the way. If you never get the mail, don't despair. There's another method of sending mail that should work on any server. SMTP mail is an option that can use most any mail account that you have.
-
-<p>In MODX Evolution, you configure it by editing the following lines of the spfconfig.cfg.php file:</p>
-<pre>
- $spfUseSMTP= false; // default false -- if this is false, the next four parameters are ignored
-
- if ($spfUseSMTP) {
-	 $spfSMTP_Port = 587; // default port for authenticated e-mail - many hosts now block port 25.
-     $spfSMTP_Host = "smtp.your-isp.com";
-     $spfSMTP_UserName = "your-username@your-isp.com";
-     $spfSMTP_Password = "your-password";
- }
-</pre>
-<p>Change $spfUseSMTP= false to $spfUseSMTP= true. Then edit the host, username, and password lines to match those of your e-mail account (just as you would configure a mail client like Eudora, Pegasus, Windows Mail, etc.). Your form should now send mail.</p>
-
-<p>In MODX Revolution, the best method is simply to set the SMTP system settings. Go to System | System Settings and type SMTP in the search filter box at the upper right, then click anywhere in the grid. Once the values are set properly, any MODX snippet or plugin that calls the mail() function will operate using SMTP.</p>
-
-<p>&nbsp;</p>
-
 
 <h3>Adding Spam-proofing Options</h3>
-<p>Once your form is working, you can try adding the various options. Requiring use of the mouse or keyboard is a good option since most spambots are automated. The timer is another option because automated spambots tend to fill out the form very quickly or very slowly.</p>
-<p>The veriword option presents the user with a CAPTCHA-like image that must be entered. Using the mathstring option with this is even better because it will ask the user to solve a very simple math equation. Some spambots are getting good at deciphering CAPTCHA images and entering them and this will foil them completely.</p>
-<p>Note that in order to use the veriword and mathstring options, your host must have the graphics engine turned on. If it's not on, there is no way to make the images appear. The user must also have cookies turned on. In addition, users with seriously impaired vision, especially those who use audible screen readers will be unable to use your form. Frankly, the other options combined will do a very good job of preventing spam even without the veriword and/or mathstring options.</p>
-<p>The hidden field option is another good one. Most spambots will fill in all fields in a form and, since this one doesn't actually appear to users, no real user will fill it in. If you use this option, be sure to add the .CSS lines listed in the spfconfig.cfg.php file to your .CSS file or the field <strong>will</strong> appear to real users and many will fill it in.</p>
-<p>Sometimes, spammers will actually visit your site and paste their spam into your form manually. This is fairly rare, but the only way to stop them is to put their IP numbers in the banlist.cfg.php file. It's located in the assets/snippets/spform directory and comments in the file will tell you what to do. The IP number is available in most mail clients when you look at the spam e-mail you receive if you click on something like "show details."
 
+<p>Once your form is working, you can try adding the various options if spammers are still getting through. Requiring use of the mouse or keyboard is a good option since most spambots are automated. The timer is another option because automated spambots tend to fill out the form very quickly or very slowly.</p>
 
-<p>&nbsp;</p>
+<p>The veriword option presents the user with a CAPTCHA-like image that must be entered. Using the mathstring option with this is even better because it will ask the user to solve a very simple math equation. Some spambots are quite good at deciphering CAPTCHA images and entering them and this will foil them completely.</p>
 
+<p>Note that in order to use the veriword and mathstring options, your host must have the graphics engine turned on. If it's not on, there is no way to make the images appear. The user must also have cookies turned on. In addition, users with seriously impaired vision, especially those who use audible screen readers will be unable to use your form.</p>
 
-<h3>The Ban List</h3>
+<p>Frankly, the other options combined will do a very good job of preventing spam even without the veriword and/or mathstring options, but they're there if spammers are still getting through.</p>
 
-<p>You can ban individual email addresses, domains and subdomains either
-    by name or by IP number by editing the banlist file at
-    assets/components/spform/banlist.inc.php.</p>
-<p>in MODX Evolution, the files is at     core/components/spform/banlist.inc.php.</p>
-
-<p>There are instructions in the comments section of the
-    file on how to do it. With all the spam-proofing options,
-    banning is usually unnecessary but if someone is manually
-    entering stuff in the form and annoying you, this is the
-    way to stop them.</p>
-
+<p>Sometimes, spammers will actually visit your site and paste their spam into your form manually. This is fairly rare, but the only way to stop them is to block their IP numbers in your <code>.htaccess file</code>. The IP number is available in most mail clients when you look at the spam e-mail you receive if you click on something like "show details."</p>
 
 <p>&nbsp;</p>
-
-
-<h3>SPForm CSS</h3>
-<p>SPForm is designed to be really easy to use and install so the display is fairly simple and the styling options are somewhat limited. You can add the following to your MODX .CSS file to hide the hidden field and style the form they way it looks on this site. Feel free to modify the .CSS to make the form look the way you want it to, but <strong>don't change the .spform_input section</strong>. It makes sure the hidden field remains hidden.</p>
-<pre>
-.spform_input {
-    position:absolute;
-    text-decoration:underline;
-    background-color:#CC0000;
-    left:0px;
-    top:-500px;
-    width:1px;
-    height:1px;
-    overflow:hidden;
-}
-.spf_prompt {
-    display:block;
-    padding-right:10px;
-    font-weight:bold;
-}
-.spf_normal_input {
-    font-weight:normal;
-    padding-left:0px;
-}
-.spf_verify_msg {
-    font-weight:bold;
-}
-.spf_verify_prompt {
-    font-weight:bold;
-}
-.spf_cookie_msg {
-    font-weight:normal;
-    color:#ff0000;
-    padding-top:30px;
-}
-</pre>
-
-<p>&nbsp;</p>
-
 
 <h3>About SPForm</h3>
 
-<p>Adapted from:  Many sources but particularly scform by James Seymour and CFFormProtect by Jake Munson</p>
+<p>Adapted from: Many sources but particularly scform by James Seymour and CFFormProtect by Jake Munson</p>
 
 
 <p>Special thanks to the following for their help and support:</p>
 <ul>
-        <li>Rene Tschannen</li>
-        <li>Susan Ottwell</li>
-        <li>Jason Coward</li>
-        <li>Ryan Thrash</li>
-        <li>Shaun McCormick</li>
+  <li>Rene Tschannen</li>
+  <li>Susan Ottwell</li>
+  <li>Jason Coward</li>
+  <li>Ryan Thrash</li>
+  <li>Shaun McCormick</li>
 </ul>
 
-<p>I created this snippet for people who want a really simple, easy to
-    install, easy to use, easy to reconfigure, email contact form with the
-    best spam protection I could manage. The MODX eForm snippet is available
-    for use in email contact forms, but it is extremely flexible and
-    powerful. As a result, it is somewhat daunting for some people to
-    install and use.</p>
+<p>Some of the original code for SPForm comes from Scform.php, written by James Seymour. I left Jim's GPL notice in the snippet source code. I've made extensive modifications to Jim's code. Some are to make the form work as a MODX snippet. Others are based on ideas I've found in other spam-proof contact forms including Jake Munson's CFFormProtect. Some of the ideas are my own. If SPForm works for you, Jim and Jake deserve most of the credit. If it doesn't, I deserve most of the blame. Please don't contact Jim or Jake for help with the snippet. As far as I know, neither are MODX-aware and they almost certainly won't be able to help you.</p>
 
-<p>If you need complex templates, multiple templates, file uploads,
-    multi-language support, or communication between your contact form and
-    the MODX DB, you want eForm. If you want extra fields, you can modify
-    the SPForm snippet code, or use eForm. SPForm may have those features
-    in the future, but it doesn't now.</p>
+<p>Please let me know via the MODX forum if you have any problems with SPForm or suggestions for improving it or these instructions.</p>
 
-<p>SPForm is as spam proof as I could make it. It protects well against
-    email injection attacks, flooding, and various other techniques. The
-    email addresses of your recipients are well hidden and never appear in
-    the source code of a page. It also has a number of options that will
-    give even more protection against spammers such as pseudo form fields
-    and CAPTCHA. You can also enter spammers with specific email addresses
-    or IP numbers into the banlist file to prevent them from using your
-    form. You can ban whole domains if you want. It also allows you to set
-    the maximum length of the e-mail and subject fields and limit the
-    number of URLs that can be sent in a single message. It has options to
-    use hidden form fields, and to require keyboard or mouse action in
-    filling the form. You can set maximum and minimum times that users can
-    take to fill out your form. You can even ask users to solve simple math
-    problems to prove that they are human. All the options are individually
-    configurable, the idea being that everyone will use a different
-    configuration and spammers will find it more work to adjust to yours
-    than it's worth.</p>
-
-<p>Please note that no contact form can prevent spammers from visiting
-    your site and manually sending you spam through your contact form.
-    SPForm will protect you from most autospammers and will let you limit
-    the number of http links in each e-mail message.</p>
-
-<p>SPForm has been completely refactored for MODX Revolution. It now has
-    templates, classes, and its behavior can be controlled by setting the snippet properties (parameters).</p>
-
-<p>Installation is now fully automated in MODX Revolution and SPForm should work for you
-    with little or no configuration.</p>
-
-    <p>Some of the original code for SPForm comes from Scform.php, written by
-    James Seymour. I left Jim's GPL notice in the snippet source code. I've
-    made extensive modifications to Jim's code. Some are to make the form
-    work as a MODX snippet. Others are based on ideas I've found in other
-    spam-proof contact forms including Jake Munson's CFFormProtect. Some of
-    the ideas are my own. If SPForm works for you, Jim and Jake deserve
-    most of the credit. If it doesn't, I deserve most of the blame. Please
-    don't contact Jim or Jake for help with the snippet. As far as I know,
-    neither are MODX-aware and they almost certainly won't be able to help
-    you.</p>
-
-    <p>Please let me know via the MODX forum if you have any problems with
-    SPForm or suggestions for improving it or these instructions.</p>
-
-    <p>&nbsp;</p>
+<p>&nbsp;</p>
 
 <h3>Beyond SPForm</h3>
 
-<p>SPForm is designed to be easy to install and configure, but it isn't very flexible. If you find that SPForm isn't meeting your needs, there is an alternative snippet for MODX Evolution called <a target="_blank" href="https://rtfm.modx.com/extras/evo/eform">eForm</a> that almost certainly will. eForm is more complex and time-consuming to configure than SPForm, but it is infinitely more powerful. It gives you complete control over how the form looks, allows custom fields and custom responses, and has many other options as well. With the <a target="_blank" href="https://forums.modx.com/index.php/topic,8111.0.html">eForm2DB</a> snippet, it even allows you to use your form to interact with the MODX database.</p>
-
-<p>For MODX Revolution, the <a target="_blank" href="https://rtfm.modx.com/extras/revo/formit">FormIt</a> package will create a much more customized contact form.</p>
+<p>SPForm is designed to be easy to install and configure, but it isn't very flexible. If you find that SPForm isn't meeting your needs, there is an alternative snippet for MODX Revolution called <a target="_blank" href="https://docs.modx.com/current/en/extras/formit/index">FormIt</a> that almost certainly will. FormIt is more complex and time-consuming to configure than SPForm, but it is infinitely more powerful. It gives you complete control over how the form looks, allows custom fields and custom responses, and has many other options as well. With the <a target="_blank" href="https://docs.modx.com/current/en/extras/formit2db/index">FormIt2DB</a> snippet, it even allows you to use your form to interact with the MODX database.</p>
 
 
 <p>&nbsp;</p>
 
-        
-        
+<h3>Troubleshooting</h3>
+
+<p>For basic SPForm troubleshooting, see the <a target="_blank" href="[[++site_url]]spform-faq.html">SPForm FAQ</a> page.</p>
+
+<h3>Uninstalling SPForm</h3>
+
+<p>You can uninstall SPForm in package manager, but you may need to remove the two resources manually. They are not modified during upgrades to preserve any properties you've added to the snippet tags.</p>
+
+<p>&nbsp;</p>
+
+
+
