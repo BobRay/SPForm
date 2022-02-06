@@ -1,5 +1,5 @@
 .spf_recipient {
-margin-top:0px;
+margin-top:0;
 margin-bottom:20px;
 font-size:larger;
 }
@@ -8,7 +8,7 @@ font-size:larger;
 position:absolute;
 text-decoration:underline;
 background-color:#CC0000;
-left:0px;
+left:0;
 top:-500px;
 width:1px;
 height:1px;
@@ -30,13 +30,13 @@ font-weight:bold;
 }
 .spf_normal_input {
 font-weight:normal;
-padding-left:0px;
+padding-left:0;
 }
 .spf_cookie_msg {
 font-weight:normal;
 color:#ff0000;
 margin-top:20px;
-margin-bottom:0px;
+margin-bottom:0;
 }
 .spf_captcha_instructions {
 font-weight:normal;
@@ -44,17 +44,17 @@ margin-top:10px;
 margin-bottom:10px;
 }
 .spf_captcha_image {
-margin: 20px 0px 20px 0px;
+margin: 20px 0 20px 0;
 }
 .spf_textarea textarea {
 font-weight:normal;
 }
 .spf_buttons {
-margin: 15px 0px 20px 20px;
+margin: 15px 0 20px 20px;
 }
 
 #spf_errors {
-margin-left: 0px;
+margin-left: 0;
 margin-bottom: 20px;
 }
 
