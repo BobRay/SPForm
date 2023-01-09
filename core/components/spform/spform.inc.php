@@ -182,7 +182,7 @@ if (isset($_POST['s'])) {
     }
     $spf_key = $modx->getOption('emailsender');
     if ((strlen($spf_key) < 5) || ($_SESSION['include_auth'] != md5($spf_key))) {
-        die ('Unauthorized Access in spformproc');
+        die ('Cookies must be enabled to use this form');
     }
     $iFile = $spfconfig['spformPath'] . "model/spform/spformprocclass.inc.php";
 
