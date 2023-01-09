@@ -33,7 +33,13 @@
 
 <h3>Installing SPForm for MODX Revolution 2.0.0 and Beyond</h3>
 
-<p>This couldn't be much easier. Just go to System (gear icon) | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Type SPForm in the search box and hit enter. Click on the &quot;Download button&quot; and wait for the download to finish. Then, click on the "Back to Package Manager" button. That should bring you back to your Package Management grid. Click on the "Install" button next to the SPForm package. You'll be asked for a return email address you want the contact form to send to. When the install completes, you'll have a working, relatively spam-proof contact form on your site. </p>
+<p>This couldn't be much easier. Just go to System (gear icon) | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Type SPForm in the search box and hit enter. Click on the &quot;Download button&quot; and wait for the download to finish. Then, click on the "Back to Package Manager" button. That should bring you back to your Package Management grid. Click on the "Install" button next to the SPForm package. You'll be asked for a return email address you want the contact form to send to. When the installation process is finished, you'll have a working, relatively spam-proof contact form on your site. </p>
+
+<div class="box">
+  <h4>Important Warning</h4>
+
+  <p>SPForm creates a page with the pagetitle &quot;Thank You&quot; and the alias &quot;thankyou&quot;. If you already have such a page, be sure to rename it, or at least change the alias to something else, (like "thank-you") before installing SPForm. Otherwise, SPForm may overwrite your existing page. </p>
+</div>
 
 <p>&nbsp;</p>
 
@@ -60,6 +66,10 @@
   <li>SMTP User &mdash; The username for your email account</li>
   <li>SMTP Password &mdash; The password for your email account</li>
 </ul>
+
+<div class="box">
+    SPForm uses cookies for some of its spam-proofing operations. That means it won't work for users who have cookies turned off. They will see a message letting them know what's wrong when they submit the form.
+</div>
 
 
 <h3>Configuring SPForm</h3>
@@ -159,9 +169,16 @@
 
 <p>Frankly, the other options combined will do a very good job of preventing spam even without the veriword and/or mathstring options, but they're there if spammers are still getting through.</p>
 
-<p>Sometimes, spammers will actually visit your site and paste their spam into your form manually. This is fairly rare, but the only way to stop them is to block their IP numbers in your <code>.htaccess file</code>. The IP number is available in most mail clients when you look at the spam e-mail you receive if you click on something like "show details."</p>
+<h3>The Ban list</h3>
 
-<p>&nbsp;</p>
+<p>Sometimes, spammers will actually visit your site and paste their spam into your form manually. This is fairly
+  rare, but the only way to stop them is to block them either in your <code>.htaccess file</code> or in the
+  spfBanlist chunk. The spfBanlist chunk is easier to use. There are instructions in comments in the spfBbanlist
+  chunk explaining how to do it. You can ban users by IP number, email address, or domain name (or partial versions
+  of each). The IP number is available in most mail clients when you look at the spam e-mail you receive if you
+  click on something like "show details."</p>
+
+
 
 <h3>About SPForm</h3>
 
