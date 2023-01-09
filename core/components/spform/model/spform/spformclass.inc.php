@@ -457,16 +457,13 @@ function set_placeholders () {
     function render() {
         /* @var $chunk modChunk */
         $spformTpl = $this->modx->getOption('spformTpl',$this->spfconfig,'spformTpl');
-        /*$chunk = $this->modx->getObject('modChunk',array(
-            'name' => $spformTpl,
-        ));*/
+
         $chunk = $this->modx->getChunk($spformTpl, $this->placeholders);
         if ($chunk == null) {
             session_write_close();
             die($this->modx->lexicon('no-template'). $spformTpl);
         }
-        /*$chunk->setCacheable(false);
-       return $chunk->process();*/
+       
        return $chunk;
     }
 
