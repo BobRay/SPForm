@@ -594,58 +594,69 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
     if ($this->modx->getOption('test_mode',$this->spfconfig,false)) {
         return;
     }
-    if (!$this->modx->getService('mail', 'mail.modPHPMailer')) {
+    $isMODX3 = $this->modx->getVersionData()['version'] >= 3;
+    if ($isMODX3) {
+        if (!$this->modx->services->has('mail')) {
+            $this->modx->services->add('mail', new MODX\Revolution\Mail\modPhpMailer($this->modx));
+        }
+        $mail = $this->modx->services->get('mail');
+    } else {
+        $mail = $this->modx->getService('mail', 'mail.modPhpMailer');
+    }
+
+    if (!$mail) {
         session_write_close();
         die($this->modx->lexicon('could-not-initiate-mail-service'));
     }
 
-    $this->modx->mail->set(modMail::MAIL_CHARSET,$this->modx->getOption('modx_charset'));
-    $this->modx->mail->set(modMail::MAIL_BODY, $content);
-    $this->modx->mail->set(modMail::MAIL_FROM, $from);
-    $this->modx->mail->set(modMail::MAIL_FROM_NAME, $fromName);
-    $this->modx->mail->set(modMail::MAIL_SENDER, $from);
-    $this->modx->mail->set(modMail::MAIL_SUBJECT, $finalSubject);
-    $this->modx->mail->address('to', $recipient);
+    $mail->set(modMail::MAIL_CHARSET,$this->modx->getOption('modx_charset'));
+    $mail->set(modMail::MAIL_BODY, $content);
+    $mail->set(modMail::MAIL_FROM, $from);
+    $mail->set(modMail::MAIL_FROM_NAME, $fromName);
+    $mail->set(modMail::MAIL_SENDER, $from);
+    $mail->set(modMail::MAIL_SUBJECT, $finalSubject);
+    $mail->address('to', $recipient);
 
     foreach($this->_addlHeaders as $key => $value) {
         /*  MS-Win mail servers want crlf and *don't* want a trailing pair
          *  necessary only for addl headers */
         if(PHP_OS == "WIN32" || PHP_OS == "WINNT") {
             if (isset($value) && ! empty($value)) {
-               $this->_addlHeaders[$key] = preg_replace("/\n$/", "", $value);
-               $this->_addlHeaders[$key] = preg_replace("/\n/", "\r\n", $value);
+               $value = preg_replace("/\n$/", "", $value);
+               $value = preg_replace("/\n/", "\r\n", $value);
+               $this->_addlHeaders[$key] = $value;
             }
         }
-        $this->modx->mail->header($value);
+        $mail->header($value);
     }
 
 
     if ($this->modx->getOption('spfUseSMTP',$this->spfconfig,false)) {
-        $this->modx->mail->set(modMail::MAIL_ENGINE, 'smtp');
-        $this->modx->mail->set(modMail::MAIL_SMTP_AUTH, true);
-        $this->modx->mail->set(modMail::MAIL_SMTP_HOSTS,$this->modx->getOption('spfSMTP_Host',$this->spfconfig,'localhost'));
+        $mail->set(modMail::MAIL_ENGINE, 'smtp');
+        $mail->set(modMail::MAIL_SMTP_AUTH, true);
+        $mail->set(modMail::MAIL_SMTP_HOSTS,$this->modx->getOption('spfSMTP_Host',$this->spfconfig,'localhost'));
 
-        $this->modx->mail->set(modMail::MAIL_SMTP_PASS,$this->modx->getOption('spfSMTP_Password',$this->spfconfig,'password'));
+        $mail->set(modMail::MAIL_SMTP_PASS,$this->modx->getOption('spfSMTP_Password',$this->spfconfig,'password'));
 
-        $this->modx->mail->set(modMail::MAIL_SMTP_PORT,$this->modx->getOption('spfSMTP_Port',$this->spfconfig,587));
+        $mail->set(modMail::MAIL_SMTP_PORT,$this->modx->getOption('spfSMTP_Port',$this->spfconfig,587));
 
-        $this->modx->mail->set(modMail::MAIL_SMTP_USER,$this->modx->getOption('spfSMTP_UserName',$this->spfconfig,'username'));
+        $mail->set(modMail::MAIL_SMTP_USER,$this->modx->getOption('spfSMTP_UserName',$this->spfconfig,'username'));
     }
 
-    if (!$this->modx->mail->send()) {
+    if (!$mail->send()) {
         /* if debug is on, resend with error reporting */
         if ($this->modx->getOption('spfDebug',$this->spfconfig,false)) {
             echo "<b>SMTP errors:</b><br />";
-            $this->modx->mail->mailer->SMTPDebug = 2;
-            $this->modx->mail->send();
+            $mail->mailer->SMTPDebug = 2;
+            $mail->send();
             echo '<br /><br /><b>' . "Mailer ErrorInfo:</b><br />";
             session_write_close();
-            die($this->modx->mail->mailer->ErrorInfo);
+            die($mail->mailer->ErrorInfo);
         }
        session_write_close();
        die('<b>' . $this->modx->lexicon('mail-failure') . '</b>');
     }
-    $this->modx->mail->reset();
+    $mail->reset();
 }
 
 /** Function is shared by the _show_errors() and _show_fatal() functions,
