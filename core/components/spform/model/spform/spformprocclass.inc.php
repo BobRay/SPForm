@@ -601,7 +601,8 @@ function _my_mail($from, $fromName, $recipient, $finalSubject, $content, $addlHe
         }
         $mail = $this->modx->services->get('mail');
     } else {
-        $mail = $this->modx->getService('mail', 'mail.modPhpMailer');
+        $this->modx->getService('mail', 'mail.modPhpMailer');
+        $mail = $this->modx->mail;
     }
 
     if (!$mail) {
