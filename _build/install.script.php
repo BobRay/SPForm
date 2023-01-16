@@ -33,51 +33,104 @@
  */
 
 $success = false;
-$modx =& $object->xpdo;
 
+/** @var xPDOTransport $transport */
+
+if ($transport->xpdo) {
+    $modx =& $transport->xpdo;
+} else {
+    $modx =& $object->xpdo;
+}
+
+if (! $modx instanceof modX) {
+    die("no MODX");
+}
 $prefix = $modx->getVersionData()['version'] >= 3
     ? 'MODX\Revolution\\'
     : '';
 
 $modx->log(xPDO::LOG_LEVEL_INFO,'Running PHP Resolver.');
+
+$action = $options[xPDOTransport::PACKAGE_ACTION];
+
+/* Stuff that should happen for both upgrade and install */
+if ($action !== xPDOTransport::ACTION_UNINSTALL) {
+    /** @var modResource $contactPage */
+    $contactPage = $modx->getObject($prefix . 'modResource', array('alias' => 'contact'));
+
+    if (!$contactPage) {
+        $modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not get "Contact" Resource');
+        return false;
+    }
+
+    $c = $contactPage->getContent();
+
+    if (strpos($c, '[[!SPForm') === false) {
+        /* not our contact page */
+        $modx->log(xPDO::LOG_LEVEL_ERROR, 'Site already has a resource with alias "contact". Please change its alias and try again.');
+        return false;
+    }
+    $temp_spform_id = (integer)$contactPage->id; /* used below to set the Thank-You page parent */
+
+    /* get thank you resource */
+    $thanksPage = $modx->getObject($prefix . 'modResource', array(
+        'alias' => 'thankyou',
+    ));
+    if ($thanksPage == null) {
+        $modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not find resource with alias "thankyou".');
+        return false;
+    }
+    /** @var string $c */
+    $c = $thanksPage->getContent();
+
+    if (strpos($c, '[[!SPFResponse]]') === false) {
+        /* not our thank-you page */
+        $modx->log(xPDO::LOG_LEVEL_ERROR, 'Site already has a resource with alias "thankyou". Please change its alias and try again.');
+        return false;
+    }
+
+    $thanksPageId = $thanksPage->get('id');
+
+    /* Set Contact form content from spformpropsTpl chunk,
+       but only if it's a first install, not a reinstall */
+
+    if (!file_exists(MODX_CORE_PATH . 'components/spform/contactid.txt')) {
+        /* Set snippet properties */
+        $modx->log(modX::LOG_LEVEL_INFO, 'Setting properties in contact resource tag');
+        $props = array();
+
+        $myServer = $_SERVER['HTTP_HOST'];
+        /* remove port number, if any */
+        $myServer = explode(':',$myServer)[0];
+        $emailSender = $modx->getOption('emailsender', null);
+        $recipients = $options['user_email'];
+        $recipients = empty($recipients)
+            ? $emailSender
+            : $options['user_email'];
+        $recipientArray = 'Webmaster :' . $recipients;
+
+        $props['recipientArray'] = $recipients;
+        $props['errorsTo'] = $emailSender;
+        $props['recipientArray'] = $recipientArray;
+        $props['formProcAllowedReferers'] = MODX_HTTP_HOST;
+        $props['spfResponseId'] = $thanksPageId;
+
+        $cc = $modx->getChunk('spformpropsTpl', $props);
+        if (!$cc) {
+           $modx->log(modX::LOG_LEVEL_ERROR, 'Could not find spformpropsTpl chunk');
+        }
+        $contactPage->setContent($cc);
+        $contactPage->save();
+    }
+}
+
+/* Separate operations for install, upgrade & uninstall */
 switch($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_INSTALL:
-        /* get thank you resource */
         /** @var modResource $thanksPage */
-        $thanksPage = $modx->getObject($prefix . 'modResource',array(
-            'alias' => 'thankyou',
-        ));
-        if ($thanksPage == null) {
-            $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not find resource with alias "thankyou".');
-            return false;
-        }
-        /** @var string $c */
-        $c = $thanksPage->getContent();
 
-        if (strpos($c, '[[!SPFResponse]]') === false) {
-            /* not our thank-you page */
-            $modx->log(xPDO::LOG_LEVEL_ERROR, 'Site already has a resource with alias "thankyou". Please change its alias and try again.');
-            return false;
-        }
-
-        /** @var modResource $contactPage */
-        $contactPage = $modx->getObject($prefix . 'modResource', array('alias' => 'contact'));
-
-        if (!$contactPage) {
-            $modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not get "Contact" Resource');
-             return false;
-        }
-
-        $c = $contactPage->getContent();
-
-        if (strpos($c, '[[!SPForm]]') === false) {
-            /* not our contact page */
-            $modx->log(xPDO::LOG_LEVEL_ERROR, 'Site already has a resource with alias "contact". Please change its alias and try again.');
-            return false;
-        }
-        $temp_spform_id = (integer)$contactPage->id; /* used below to set the Thank-You page parent */
         $temp_spfresponse_id = (integer) $thanksPage->get('id');
-        $myServer = $_SERVER['HTTP_HOST'];
+
         $default_template = $modx->getOption('default_template');
 
         $modx->log(xPDO::LOG_LEVEL_INFO, 'Setting Contact and Thank You pages to default template: ' . $default_template);
@@ -86,85 +139,23 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         $fp = fopen(MODX_CORE_PATH . 'components/spform/contactid.txt', 'w');
         fwrite($fp, $temp_spform_id);
         fclose($fp);
-        $contactPage->set('template', $default_template);  /* give it the default template */
+
+        /* give it the default template; make it a folder*/
+        $contactPage->set('template', $default_template);
         $contactPage->set('isfolder', 1);
         if ($contactPage->save() === false) {
             $modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not save Contact page');
         }
 
         /*  Now the "Thank You" page  */
-        $thanksPage->set('template', $default_template);  /* give it the default template */
-        $thanksPage->set('parent', $temp_spform_id);   /* set parent to contact page */
+
+        /* give it the default template */
+        $thanksPage->set('template', $default_template);
+
+        /* set parent to contact page */
+        $thanksPage->set('parent', $temp_spform_id);
         if ($thanksPage->save() === false) {
             $modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not save Thanks page');
-        }
-
-        /* Set recipient array in snippet properties */
-        $modx->log(xPDO::LOG_LEVEL_INFO,'Setting recipientArray.');
-
-        if (strstr($myServer,'www')) {
-            $temp = str_replace('www.','',$myServer);
-            $myServer = $myServer . ',' . $temp;
-        } else {
-            $myServer = 'www.' .$myServer . ',' . $myServer;
-        }
-
-        /* get snippet */
-        /** @var $snippet modSnippet */
-        $snippet = $modx->getObject($prefix . 'modSnippet',array(
-            'name'=>'SPForm'
-        ));
-        if (!$snippet) {
-          $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not get SPForm snippet object');
-        } else {
-            $newRecipientArray = 'Webmaster :' . $options['user_email'];
-            $modx->log(xPDO::LOG_LEVEL_INFO,'Setting recipientArray: ' . $newRecipientArray);
-            $modx->log(xPDO::LOG_LEVEL_INFO,'Setting errorsTo: ' . $options['user_email'] );
-            $modx->log(xPDO::LOG_LEVEL_INFO,'Setting spfResponseID: ' . $temp_spfresponse_id);
-            $modx->log(xPDO::LOG_LEVEL_INFO,'Setting formProcAllowedReferers: ' . $myServer);
-
-            $props = array(
-                array (
-                    'name'=>'recipientArray',
-                    'desc'=>'spf_recipientarray_desc',
-                    'type'=>'textfield',
-                    'options'=>'',
-                    'lexicon'=>'spform:properties',
-                    'value'=>$newRecipientArray
-                ),
-                array(
-                    'name'=>'errorsTo',
-                    'desc'=>'spf_errorsto_desc',
-                    'type'=>'textfield',
-                    'options'=>'',
-                    'lexicon'=>'spform:properties',
-                    'value'=>$options['user_email']
-                ),
-                array(
-                    'name'=>'spfResponseID',
-                    'desc'=>'spf_spfresponseid_desc',
-                    'type'=>'integer',
-                    'options'=>'',
-                    'lexicon'=>'spform:properties',
-                    'value'=>$temp_spfresponse_id
-                ),
-                array(
-                    'name'=>'formProcAllowedReferers',
-                    'desc'=>'spf_formprocallowedreferers_desc',
-                    'type'=>'textfield',
-                    'options'=>'',
-                    'lexicon'=>'spform:properties',
-                    'value'=>$myServer
-                )
-            );
-
-             if ($snippet->setProperties($props, true) == false) {
-                 $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not set properties of SPForm object');
-             }
-
-            if ($snippet->save() === false ) {
-                $modx->log(xPDO::LOG_LEVEL_ERROR,'Could not save SPForm properties');
-            }
         }
 
         /* This just loads and saves the SPFResponse snippet unchanged, so it will appear last in the tree */
@@ -183,7 +174,10 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_UPGRADE:
         $fName = MODX_CORE_PATH . 'components/spform/banlist.inc.php';
         $modx->log(xPDO::LOG_LEVEL_INFO,'Upgrading SPForm.');
-        if (file_exists($fName)) {
+
+        /* Moves Banlist file content to spfBanlist chunk if it
+           hasn't been done already */
+        if (file_exists($fName) && ! $modx->getChunk('spfBanlist')) {
             $c = file_get_contents($fName);
             $chunkObj = $modx->getObject($prefix . 'modChunk', array('name'=>'spfBanlist'));
             if ($chunkObj && ! empty($c)) {
@@ -200,7 +194,7 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         break;
 
     case xPDOTransport::ACTION_UNINSTALL:
-        /** @var $obj modResource
+        /** @var $contactResource modResource
          *  @var $child modResource
          * */
         $modx->log(xPDO::LOG_LEVEL_INFO,'Uninstalling . . .');
@@ -208,22 +202,24 @@ switch($options[xPDOTransport::PACKAGE_ACTION]) {
         if ($fp) {
             $id = fread($fp,20);
             $id = (int) $id;
-            $obj = $modx->getObject($prefix . 'modResource',$id);
-
+            $contactResource = $modx->getObject($prefix . 'modResource',$id);
             fclose($fp);
         }
-        if ($obj) {
+        if ($contactResource) {
             $modx->log(xPDO::LOG_LEVEL_INFO,'Removing "Contact" and "Thank You" resources.');
-            $children = $obj->getMany('Children');
-            $obj->remove();
+            $children = $contactResource->getMany('Children');
             if (!empty ($children)) {
-                foreach($children as $child) {
+                foreach ($children as $child) {
                     $child->remove();
                 }
             }
+            /* This is necessary, even though it generates a warning later */
+            $contactResource->remove();
+
         } else {
             $modx->log(xPDO::LOG_LEVEL_WARN,'Note: You may have to remove the Contact and Thank You resources manually.');
         }
+
         $success = true;
         break;
 
