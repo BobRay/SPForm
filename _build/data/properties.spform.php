@@ -40,7 +40,7 @@ array (
     'type'=>'textfield',
     'options'=>'',
     'lexicon'=>'spform:properties',
-    'value'=>'Webmaster: Webmaster: you@yourdomain.com'
+    'value'=>'Webmaster: you@yourdomain.com'
 ),
 array(
     'name'=>'errorsTo',
