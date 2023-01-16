@@ -38,8 +38,8 @@ $output = '<p>&nbsp;</p>
 <input type="text" name="user_email" id="user_email" value="" align="left" width="60" maxlength="60" />
 <p>&nbsp;</p>
 <p>
-Note: You can change this easily, or add multiple recipients, later<br />
-by going to the SPForm snippet page, selecting the "properties" tab,<br />
-and changing the value of the recipientArray property.</p>';
+Note: You can change this easily, or add multiple recipients.<br>
+Just edit the SPForm resource, and change the value of the<br>
+recipientArray property. See the <a href="https://bobsguides.com/spform-tutorial.html" target="_blank" rel="noopener nofollow noreferrer">docs</a> for details.</p>';
 
 return $output;
