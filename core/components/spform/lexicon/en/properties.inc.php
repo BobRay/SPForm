@@ -17,12 +17,12 @@ $_lang['spf_spformtpl_desc'] = 'SPForm Template chunk name; default: spformTpl.'
 $_lang['spf_spformproctpl_desc'] = 'SPFormproc Template chunk name; default: spformprocTpl.';
 $_lang['spf_spfcaptchatpl_desc'] = 'SPForm captcha Template chunk name; default: spfcaptchaTpl.';
 $_lang['spf_test_mode_desc'] = 'Test SPForm without sending mail; default: 0.';
-$_lang['spf_spfdebug_desc'] = 'Print debugging info - Do not leave this on for a working site; default: 0.';
+$_lang['spf_spfdebug_desc'] = 'Print debugging info - Do not leave this on for a public site; default: 0.';
 $_lang['spf_formprocallowedreferers_desc'] = 'Comma separated list of allowed referers. Be sure this lists all the domains by which your contact page can be reached.';
-$_lang['spf_spfresponseid_desc'] = 'Resource ID of SPFResponse page. This value will be set automatically on the first visit to the form.';
+$_lang['spf_spfresponseid_desc'] = 'Resource ID of SPFResponse page. This value will be set automatically.';
 $_lang['spf_adviseall_desc'] = 'Email all errors to &errorsTo recipient; default: 0.';
 $_lang['spf_warnall_desc'] = 'Warn the user of all errors (use this only for debugging); default: 0.';
-$_lang['spf_spfusesmtp_desc'] = 'Use SMTP instead of mail(). Be sure to set all spfSMTP_ variables if you use this; default: 0.';
+$_lang['spf_spfusesmtp_desc'] = 'DO NOT USE - use MODX SMTP System Settings instead; default: 0.';
 $_lang['spf_spfsmtp_port_desc'] = 'SMTP Port; default: 587.';
 $_lang['spf_spfsmtp_host_desc'] = 'SMTP account Host.';
 $_lang['spf_spfsmtp_username_desc'] = 'SMTP account username.';
@@ -32,7 +32,7 @@ $_lang['spf_warnhiddenfield_desc'] = 'Warn the user about hidden field violation
 $_lang['spf_logonhidden_desc'] = 'Log hidden field violations; default: 0.';
 $_lang['spf_requiremouseorkeyboard_desc'] = 'Require user to use either mouse or keyboard. Should not cause accessibility problems; default: 1.';
 $_lang['spf_requirekeyboard_desc'] = 'Require user to use keyboard (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.';
-$_lang['spf_requiremouse_desc'] = 'Requre user to use mouse (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.';
+$_lang['spf_requiremouse_desc'] = 'Require user to use mouse (ignored if requireMouseOrKeyboard=1). This creates accessibility issues and should only be used for debugging; default: 0.';
 $_lang['spf_warnmouseandkeyboard_desc'] = 'Warn user of mouse or keyboard violations; default: 0.';
 $_lang['spf_logmouseandkeyboarderrors_desc'] = 'Log mouse and keyboard violations; default: 0.';
 $_lang['spf_usetimer_desc'] = 'Use max and min time limits for the form. Spambots often fill the form very quickly or very slowly. The settings should be fairly generous to avoid accessibility issues; default: 1.';
@@ -77,7 +77,7 @@ $_lang['spf_reportorigreferer_desc'] = 'Put original referer in x-headers (if th
 $_lang['spf_formprocblankrefokay_desc'] = 'Allow HTTP REFERER to be blank; default: 1.';
 $_lang['spf_adviseonreferer_desc'] = 'Email errorsTo recipient about invalid referer hits; default: 0.';
 $_lang['spf_logonreferer_desc'] = 'Log invalid referer hits; default: 0.';
-$_lang['spf_usebanlist_desc'] = 'Check every attempt against the Ban List. To use the banlist, manually edit the banlist file: core/components/spform/banlist.inc.php; default: 0.';
+$_lang['spf_usebanlist_desc'] = 'Check every attempt against the Ban List. To use the banlist, manually edit the banlist chunk: core/components/spform/banlist.inc.php; default: 0.';
 $_lang['spf_banlistchunk_desc'] = 'Name of Banlist chunk; default: spfBanlist.';
 $_lang['spf_warnbanned_desc'] = 'Warn people that they are banned; default: 0.';
 $_lang['spf_adviseonban_desc'] = 'Email errorsTo recipient about banned attempts; default: 0.';
