@@ -8,7 +8,20 @@
   <li>Multi-language support</li>
 </ul>
 
-<p>Here's a partial list of the options:</p>
+<div class="box">
+    <h4>Version 3.3.3-pl updates</h4>
+    <p>For new installs, SPForm adds basic properties to the snippet tag, so they will survive upgrades. If you are upgrading, take a look at the <code>spformpropsTpl</code> chunk and add desired properties to your snippet tag (replace the placeholders).</p>
+
+    <p>The following lexicon string in the <code>properties.inc.php</code> file in <code>core/components/spform/lexicon/en</code> have been modified. If you use other languages, you may want to update their <code>properties.inc.php</code> files.</p>
+  <ul>
+      <li>$_lang['spf_spfdebug_desc']</li>
+      <li>$_lang['spf_spfresponseid_desc']</li>
+      <li>$_lang['spf_spfusesmtp_desc']</li>
+      <li>$_lang['spf_usebanlist_desc']</li>
+  </ul>
+</div>
+
+<p>Here's a partial list of the SPForm options:</p>
 
 <ul>
   <li>Require keyboard and/or mouse activity</li>
@@ -28,18 +41,19 @@
   <li>Require messages to be sent from one's own server</li>
 </ul>
 
+   <p>See the properties tab of the SPForm snippet for a full list.</p>
+
 <p>&nbsp;</p>
-
-
-<h3>Installing SPForm for MODX Revolution 2.0.0 and Beyond</h3>
-
-<p>This couldn't be much easier. Just go to System (gear icon) | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Type SPForm in the search box and hit enter. Click on the &quot;Download button&quot; and wait for the download to finish. Then, click on the "Back to Package Manager" button. That should bring you back to your Package Management grid. Click on the "Install" button next to the SPForm package. You'll be asked for a return email address you want the contact form to send to. When the installation process is finished, you'll have a working, relatively spam-proof contact form on your site. </p>
 
 <div class="box">
   <h4>Important Warning</h4>
 
-  <p>SPForm creates a page with the pagetitle &quot;Thank You&quot; and the alias &quot;thankyou&quot;. If you already have such a page, be sure to rename it, or at least change the alias to something else, (like "thank-you") before installing SPForm. Otherwise, SPForm may overwrite your existing page. </p>
+  <p>SPForm creates pages with the alias &quot;thankyou&quot; and "contact". If you already have pages not related to SPForm with either alias, be sure to change the alias to something else, before installing SPForm. Otherwise, the SPForm install will fail. </p>
 </div>
+
+<h3>Installing SPForm for MODX Revolution 2.0.0 and Beyond</h3>
+
+<p>This couldn't be much easier. Just go to System (gear icon) | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Type SPForm in the search box and hit enter. Click on the &quot;Download button&quot; and wait for the download to finish. Then, click on the "Back to Package Manager" button. That should bring you back to your Package Management grid. Click on the "Install" button next to the SPForm package. You'll be asked for a return email address you want the contact form to send to. When the installation process is finished, you'll have a working, relatively spam-proof contact form on your site. </p>
 
 <p>&nbsp;</p>
 
@@ -55,22 +69,40 @@
 
 <p>Wait a while for your test e-mail message to arrive. On some ISPs, it can take a while for the mail to actually go out, and it can be held up along the way. If you never get the mail, don't despair. There's another method of sending mail that should work on any server. SMTP mail is an option that can use mail account of yours that allows sending SMTP mail.
 
-<p>In MODX Revolution, there's no need to mess with SPForm's SMTP settings. Instead, set the MODX SMTP System Settings. Go to System (gear icon) | System Settings and type SMTP in the search filter box at the upper right and press "Enter". Once the values are set properly, any MODX snippet or plugin that calls the <code>mail()</code> function will operate using SMTP.</p>
+<p>It's recommended that you use SMTP to send your emails. In MODX Revolution, there's no need to mess with SPForm's SMTP settings. Instead, set the MODX SMTP System Settings. Go to System (gear icon) | System Settings and type SMTP in the search filter box at the upper right and press "Enter". Once the values are set properly, any MODX snippet or plugin that calls the <code>mail()</code> function will operate using SMTP.</p>
 
-<p>These are the ones to set (consult your hosts help pages or email support for the Host specification and SMTP port number):</p>
+<p>These are the ones to set (consult your hosts help pages or email support for the Host specification and SMTP port number). These settings work with Gmail:</p>
 
 <ul>
-  <li>SMTP Hosts &mdash; The host SMTP specification (e.g. <code>a2ss29.a2hosting.com</code>)</li>
-  <li>SMTP Port &mdash; Your hosts SMTP port number</li>
-  <li>SMTP Authentication &mdash; set to <code>true</code></li>
-  <li>SMTP User &mdash; The username for your email account</li>
-  <li>SMTP Password &mdash; The password for your email account</li>
+  <li>
+    mail_smtp_hosts &mdash; The host SMTP specification (e.g. <code>smtp.bobsguides.com</code>, <code>smtp.gmail.com</code>)</li>
+  <li>mail_smtp_port &mdash; Your hosts SMTP port number, <code>465</code></li>
+  <li>mail_smtp_auth &mdash; set to <code>Yes</code></li>
+  <li>mail_smtp_prefix &mdash; <code>ssl</code></li>
+  <li>mail_smtp_user &mdash; The username for your email account, your Gmail address</li>
+  <li>mail_smtp_pass &mdash; The password for your email account (see note below)</li>
+  <li>mail_use_smtp &mdash; Set to Yes</li>
 </ul>
+
+<p>For the other SMTP System Settings, the defaults should work fine.</p>
+
+<p><b>Important Note</b>: For Gmail, if you use two-factor authentication (and you should), Gmail now requires you to create an <a href="https://support.google.com/accounts/answer/185833?hl=en#zippy=%2Capp-passwords-revoked-after-password-change" target="_blank" rel="noopener nofollow noreferrer">App password</a>.</p>
+
+<ol>
+    <li>Click on "Select app" and select "mail"</li>
+    <li>Click on "Select device" and select "Other (<i>custom name</i>)"</li>
+    <li>Make up a name for your device</li>
+    <li>Click on the "Generate" button</li>
+    <li>Copy the generated password at the upper right</li>
+    <li>Paste that password into the <code>mail_smtp_pass</code> System Setting</li>
+</ol>
+
+<p>If you change your Gmail password, any App passwords are revoked, and you have to recreate them.</p>
+<p>&nbsp;</p>
 
 <div class="box">
     SPForm uses cookies for some of its spam-proofing operations. That means it won't work for users who have cookies turned off. They will see a message letting them know what's wrong when they submit the form.
 </div>
-
 
 <h3>Configuring SPForm</h3>
 
@@ -87,6 +119,8 @@
 ]]
 </fixedpre></pre>
 
+<p>For spam proofing, the <code>&warnAll</code> property should only be turned on for debugging, since it gives too much information to hackers.</p>
+
 <p>The snippets on the two pages have different properties, so make sure you use the ones for the snippet tag you're altering.</p>
 
 <p>You can see the properties and their descriptions by editing the SPForm snippet or the SPFResponse snippet. Click on the "Properties" tab. (To see the descriptions, click on the "Default Properties Locked" button to unlock them and click on the small plus sign next to each property).</p>
@@ -94,8 +128,6 @@
 <p>You can also see the default values in the properties grid. It's strongly recommended that you *not* change the property values here. If you do, your changes will be undone whenever you update or reinstall SPForm. Instead, add the ones you want to override to the snippet tag as in the example above, or create a custom property set as described below. Use back-ticks to surround the values. For "Yes/No" values use <code>1</code> for yes and <code>0</code> for no. </p>
 
 <p>You can modify the form and the text on the two pages by duplicating the Tpl chunks used and use properties in the tag to tell SPForm to use your Tpl chunks instead of the default ones (more on this below). You can also tell SPForm to use your own CSS file for the styling by changing the <code>&cssPath</code> property in the snippet tag for either resource, or both of them. (See the "Styling the SPForm Pages" section below.)</p>
-
-
 
 <h3>The <code>&recipientArray</code> property</h3>
 
@@ -147,7 +179,7 @@
 
 <p>Almost anything you want to do in the way of styling the form and the response page can be done by using your own Tpl chunks, and by using a different CSS file.</p>
 
-<p>You can rename the two resources, but for other changes, it's best to use your own Tpl chunks. Duplicate the chunks and put the names of the duplicates in the <code>&spformTpl</code> property (for the form on the Contact page) and/or the <code>&spformProcTpl</code> property (for the content of the "Thank You" page).</p>
+<p>You can rename the two resources, but it's recommended that you not change the aliases. For other changes, it's best to use your own Tpl chunks. Duplicate the chunks and put the names of the duplicates in the <code>&spformTpl</code> property (for the form on the Contact page) and/or the <code>&spformProcTpl</code> property (for the content of the "Thank You" page).</p>
 
 <p>Note that the default is to have the prompts and inputs on separate lines of the form, but CSS for having then inline is already in the CSS file. Just change <code>spf_block_prompt</code> to <code>spf_inline_prompt</code> in the spformTpl chunk.</p>
 

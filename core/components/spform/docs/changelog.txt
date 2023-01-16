@@ -1,74 +1,82 @@
+Version 3.3.3-pl
+----------------
+ - Fully compatible with MODX 3
+ - Improve documentation
+ - Refactor install script
+ - Update Gmail SMTP information
+ - Create snippet tag with properties on new installation
+ - Fix bug with existing contact or thank you pages (thanks to
+ Fred Bone)
+
 Version 3.3.0-pl
 ----------------
-Add JS popup if captcha input is empty
-Fix bug with cssPath property
-Fix bug with useemailsender property
+ - Add JS popup if captcha input is empty
+ - Fix bug with cssPath property
+ - Fix bug with useemailsender property
 
 Version 3.2.2-pl
 ----------------
-Removed leftover debugging code
+ - Removed leftover debugging code
 
 Version 3.2.1-pl
 ----------------
-Minor bug fixes and improvements
+ - Minor bug fixes and improvements
 
 Version 3.2.0-pl
 ----------------
-Better validation with strict DOCTYPE (thanks Roland)
-Corrected class of created resources
+ - Better validation with strict DOCTYPE (thanks Roland)
+ - Corrected class of created resources
 
 Version 3.2.0-rc2
 -----------------
-Fixed bug with useemailsender property type
-Refactored snippet property array
+ - Fixed bug with useemailsender property type
+ - Refactored snippet property array
 
 Version 3.2.0-rc1
 -------------
-Added useemailsender and spfrom properties to override user email address in EMAIL_FROM
+ - Added useemailsender and spfrom properties to override user email address in EMAIL_FROM
 
 Version 3.1.7
 -------------
-Added Russian Translation
-Created English nl properties file while awaiting nl translation
+ - Added Russian Translation
+ - Created English nl properties file while awaiting nl translation
 
 Version 3.1.6
 -------------
-Fixed bug with lexicon->load for other languages
-Added language strings to JS alerts
-Added Spanish translation files
+ - Fixed bug with lexicon->load for other languages
+ - Added language strings to JS alerts
+ - Added Spanish translation files
 
 Version 3.1.5
 -------------
-Fixed bug with newline in language string
+ - Fixed bug with newline in language string
 
 Version 3.1.4
 -------------
-Moved Banlist into a chunk
-Fixed bugs with property language keys
-Minor bug fixes
-Uninstall now removes the two resources
-Added language strings for SPFResponse properties
-Added language strings for SPForm properties
-Removed PHP4 constructor
-Added changelog to build
-Removed deprecated PHP functions
-Internationalized property descriptions
-Refactored for Git
-Build tested with MODX 2.0.6-pl2
-
+ - Moved Banlist into a chunk
+ - Fixed bugs with property language keys
+ - Minor bug fixes
+ - Uninstall now removes the two resources
+ - Added language strings for SPFResponse properties
+ - Added language strings for SPForm properties
+ - Removed PHP4 constructor
+ - Added changelog to build
+ - Removed deprecated PHP functions
+ - Internationalized property descriptions
+ - Refactored for Git
+ - Build tested with MODX 2.0.6-pl2
 
 Version 3.1.0
 -------------
-Changed resources to published
-Fixed minor bugs
-Fixed MODX xPDO and Log constants for RC1
-Added return email to message body.
+ - Changed resources to published
+ - Fixed minor bugs
+ - Fixed MODX xPDO and Log constants for RC1
+ - Added return email to message body.
 
 Version 3.0.8
 -------------
-Fixed critical bug in PHP4 Constructor.
-
+ - Fixed critical bug in PHP4 Constructor.
 
 Version 3.0.7
 --------------
-Completely refactored for Revolution.
+ - Completely refactored for Revolution.
