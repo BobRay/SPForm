@@ -36,11 +36,7 @@ $success = false;
 
 /** @var xPDOTransport $transport */
 
-if ($transport->xpdo) {
-    $modx =& $transport->xpdo;
-} else {
-    $modx =& $object->xpdo;
-}
+$modx =& $transport->xpdo;
 
 if (! $modx instanceof modX) {
     die("no MODX");
