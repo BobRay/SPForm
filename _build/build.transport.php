@@ -36,7 +36,7 @@ define('MODX_CONNECTORS_URL','http://localhost/addons/connectors/');
 
 define('PKG_NAME','SPForm');
 define('PKG_NAME_LOWER','spform');
-define('PKG_VERSION','3.3.3');
+define('PKG_VERSION','3.3.4');
 define('PKG_RELEASE','pl');
 
 
