@@ -38,9 +38,6 @@ $success = false;
 
 $modx =& $transport->xpdo;
 
-if (! $modx instanceof modX) {
-    die("no MODX");
-}
 $prefix = $modx->getVersionData()['version'] >= 3
     ? 'MODX\Revolution\\'
     : '';
