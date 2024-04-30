@@ -171,12 +171,12 @@ function check_referer() {
 
 
 
-    if(($this->modx->getOption('chkFormRefNotBlank'.$this->spfconfig,false) && !$_SERVER['HTTP_REFERER']) ||
+    if(($this->modx->getOption('chkFormRefNotBlank',$this->spfconfig,false) && !$_SERVER['HTTP_REFERER']) ||
        ($this->modx->getOption('chkFormRefNotSelf',$this->spfconfig,false) && preg_match("#$selfChkStr$#i", $_SERVER['HTTP_REFERER'])) ||
        ($this->modx->getOption('chkFormRefOwnServer',$this->spfconfig,false) && $_SERVER['HTTP_REFERER'] &&
         !preg_match("#^$serverChkStr#i", $referer)))
     {
-        /* Almost certainly web form spammers "terminate" the page early)*/
+        /* Almost certainly web form spammers "terminate" the page early */
 
         print('<div align="center">'.$this->modx->lexicon('bad-referer').' "'.
             $_SERVER['HTTP_REFERER'] .'"</div>');
@@ -209,7 +209,7 @@ function set_placeholders () {
           $this->placeholders['spf-' . $p] = '';
       }
   }
-  
+
 /*  Create CAPTCHA image URL for use later if requireVerify is true  */
 
         if ($this->modx->getOption('requireVerify',$this->spfconfig,false)) {
@@ -217,7 +217,7 @@ function set_placeholders () {
             /* ToDO: path to captcha should be system setting: spform.captcha_path? */
             $verifyUrl=$this->modx->getOption('assets_url').'components/captcha/captcha.php';
             $this->placeholders['spf-cookie-message'] = '<div class="spf_cookie_msg">('.$this->modx->lexicon('cookies-required').')</div>';
-           
+
             if ($this->modx->getOption('spfDebug',$this->spfconfig,false)) {
                 echo "<b>Verify URL:</b><br />".$verifyUrl.'<br />';
             }
@@ -463,7 +463,7 @@ function set_placeholders () {
             session_write_close();
             die($this->modx->lexicon('no-template'). $spformTpl);
         }
-       
+
        return $chunk;
     }
 
