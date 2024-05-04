@@ -1,3 +1,7 @@
+Version 3.3.5-pl
+----------------
+ - Fix array to string conversion error
+
 Version 3.3.4-pl
 ----------------
  - Fix issue with MODX 3 install
